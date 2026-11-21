@@ -1,0 +1,9 @@
+{
+  "id": "B3",
+  "label": "w/o Failure-specific Revision",
+  "topology": "expert",
+  "expert": true,
+  "review": true,
+  "classified_revision": false,
+  "dependency_reuse": true
+}

@@ -1,0 +1,269 @@
+{
+  "source_url": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2018.02.003.json",
+  "publication_doi": "10.1016/j.fluid.2018.02.003",
+  "source_sha256": "34e593831c504836b4dd4dfa701eed5d249be238c725bba27d409f8d5b969770",
+  "dataset": 18,
+  "component_order": [
+    "7732-18-5",
+    "64-19-7",
+    "141-78-6"
+  ],
+  "basis": "mole_fraction",
+  "selection": "Only water/acetic-acid/ethyl-acetate measured tie-lines. Other esters, binodal-only datasets and all pure-property datasets excluded.",
+  "holdout_rule": "Every third row, offset 1, frozen before regression; 8 calibration and 4 holdout tie-lines.",
+  "pressure_approximation": "Liquid activity coefficients assumed pressure-independent over 95\u2013101.325 kPa; explicitly a project approximation.",
+  "points": [
+    {
+      "id": "nist-2018-d18-01",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9631,
+        0.0192,
+        0.017700000000000046
+      ],
+      "organic": [
+        0.2103,
+        0.0495,
+        0.7402000000000001
+      ],
+      "split": "calibration",
+      "property_uncertainties": [
+        0.016,
+        0.0147,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-02",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9542,
+        0.0248,
+        0.020999999999999953
+      ],
+      "organic": [
+        0.2653,
+        0.0779,
+        0.6568
+      ],
+      "split": "holdout",
+      "property_uncertainties": [
+        0.0157,
+        0.0142,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-03",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9433,
+        0.0315,
+        0.025199999999999972
+      ],
+      "organic": [
+        0.3336,
+        0.1064,
+        0.56
+      ],
+      "split": "calibration",
+      "property_uncertainties": [
+        0.0158,
+        0.0132,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-04",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9216,
+        0.0444,
+        0.03400000000000002
+      ],
+      "organic": [
+        0.414,
+        0.1304,
+        0.4556000000000001
+      ],
+      "split": "calibration",
+      "property_uncertainties": [
+        0.0152,
+        0.0123,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-05",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.8831,
+        0.0653,
+        0.05160000000000001
+      ],
+      "organic": [
+        0.5332,
+        0.1471,
+        0.3197
+      ],
+      "split": "holdout",
+      "property_uncertainties": [
+        0.0151,
+        0.012,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-06",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.8693,
+        0.0722,
+        0.05850000000000004
+      ],
+      "organic": [
+        0.5639,
+        0.1477,
+        0.28840000000000005
+      ],
+      "split": "calibration",
+      "property_uncertainties": [
+        0.015,
+        0.0118,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-07",
+      "temperature_K": 313.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9709,
+        0.014,
+        0.015100000000000014
+      ],
+      "organic": [
+        0.2409,
+        0.0389,
+        0.7202
+      ],
+      "split": "calibration",
+      "property_uncertainties": [
+        0.014,
+        0.0149,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-08",
+      "temperature_K": 313.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9543,
+        0.0247,
+        0.020999999999999963
+      ],
+      "organic": [
+        0.3068,
+        0.0741,
+        0.6191
+      ],
+      "split": "holdout",
+      "property_uncertainties": [
+        0.0158,
+        0.0142,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-09",
+      "temperature_K": 313.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9311,
+        0.0388,
+        0.03009999999999996
+      ],
+      "organic": [
+        0.3868,
+        0.1068,
+        0.5064
+      ],
+      "split": "calibration",
+      "property_uncertainties": [
+        0.0156,
+        0.0131,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-10",
+      "temperature_K": 313.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9096,
+        0.0512,
+        0.03920000000000003
+      ],
+      "organic": [
+        0.4726,
+        0.1298,
+        0.39759999999999995
+      ],
+      "split": "calibration",
+      "property_uncertainties": [
+        0.0152,
+        0.0123,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-11",
+      "temperature_K": 313.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.887,
+        0.0632,
+        0.04979999999999998
+      ],
+      "organic": [
+        0.5424,
+        0.1391,
+        0.3185
+      ],
+      "split": "holdout",
+      "property_uncertainties": [
+        0.0147,
+        0.0119,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-12",
+      "temperature_K": 313.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.8634,
+        0.0749,
+        0.06170000000000006
+      ],
+      "organic": [
+        0.6114,
+        0.1402,
+        0.24839999999999995
+      ],
+      "split": "calibration",
+      "property_uncertainties": [
+        0.0146,
+        0.0118,
+        null
+      ]
+    }
+  ]
+}

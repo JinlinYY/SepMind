@@ -1,0 +1,250 @@
+{
+  "$defs": {
+    "ColumnFeed": {
+      "additionalProperties": false,
+      "properties": {
+        "feed_id": {
+          "minLength": 1,
+          "title": "Feed Id",
+          "type": "string"
+        },
+        "flow_mol_s": {
+          "exclusiveMinimum": 0.0,
+          "maximum": 100000.0,
+          "title": "Flow Mol S",
+          "type": "number"
+        },
+        "mole_fractions": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Mole Fractions",
+          "type": "array"
+        },
+        "temperature_K": {
+          "description": "Specified T for TP feeds; numerical temperature guess only when specific_enthalpy_kJ_kg supplies a PH state",
+          "maximum": 570.0,
+          "minimum": 293.15,
+          "title": "Temperature K",
+          "type": "number"
+        },
+        "stage_index": {
+          "minimum": 0,
+          "title": "Stage Index",
+          "type": "integer"
+        },
+        "source_evidence_id": {
+          "minLength": 1,
+          "title": "Source Evidence Id",
+          "type": "string"
+        },
+        "specific_enthalpy_kJ_kg": {
+          "anyOf": [
+            {
+              "maximum": 1000000.0,
+              "minimum": -1000000.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Specific Enthalpy Kj Kg"
+        }
+      },
+      "required": [
+        "feed_id",
+        "flow_mol_s",
+        "mole_fractions",
+        "temperature_K",
+        "stage_index",
+        "source_evidence_id"
+      ],
+      "title": "ColumnFeed",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "property_card_id": {
+      "enum": [
+        "mch_toluene_phenol_unifac_v1",
+        "mch_toluene_phenol_hydraulic_sensitivity_v2",
+        "mch_toluene_phenol_source_pure_v2",
+        "acetone_water_3methylhexane_unifac_candidate",
+        "mch_toluene_sulfolane_vle_brouwer2021",
+        "sulfolane_recovery_ternary_vle_seed_v1"
+      ],
+      "title": "Property Card Id",
+      "type": "string"
+    },
+    "purpose": {
+      "enum": [
+        "source_reconstruction",
+        "design_candidate"
+      ],
+      "title": "Purpose",
+      "type": "string"
+    },
+    "feeds": {
+      "items": {
+        "$ref": "#/$defs/ColumnFeed"
+      },
+      "maxItems": 4,
+      "minItems": 1,
+      "title": "Feeds",
+      "type": "array"
+    },
+    "pressure_pa": {
+      "maximum": 110000.0,
+      "minimum": 8000.0,
+      "title": "Pressure Pa",
+      "type": "number"
+    },
+    "bottom_pressure_pa": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Bottom Pressure Pa"
+    },
+    "distillate_flow_mol_s": {
+      "exclusiveMinimum": 0.0,
+      "title": "Distillate Flow Mol S",
+      "type": "number"
+    },
+    "reflux_ratio": {
+      "maximum": 30.0,
+      "minimum": 0.0,
+      "title": "Reflux Ratio",
+      "type": "number"
+    },
+    "column_mode": {
+      "default": "total_condenser",
+      "enum": [
+        "total_condenser",
+        "reboiled_absorber"
+      ],
+      "title": "Column Mode",
+      "type": "string"
+    },
+    "equilibrium_stages": {
+      "maximum": 100,
+      "minimum": 3,
+      "title": "Equilibrium Stages",
+      "type": "integer"
+    },
+    "save_path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Save Path"
+    },
+    "include_profiles": {
+      "default": true,
+      "title": "Include Profiles",
+      "type": "boolean"
+    },
+    "solver_preference": {
+      "default": "default",
+      "enum": [
+        "default",
+        "modified_bubble_point",
+        "simultaneous_correction"
+      ],
+      "title": "Solver Preference",
+      "type": "string"
+    },
+    "solver_iteration_limit": {
+      "default": 300,
+      "maximum": 1000,
+      "minimum": 20,
+      "title": "Solver Iteration Limit",
+      "type": "integer"
+    },
+    "solver_attempt_limit": {
+      "default": 3,
+      "maximum": 3,
+      "minimum": 1,
+      "title": "Solver Attempt Limit",
+      "type": "integer"
+    },
+    "solver_tolerance": {
+      "default": 1e-05,
+      "maximum": 1e-05,
+      "minimum": 1e-12,
+      "title": "Solver Tolerance",
+      "type": "number"
+    },
+    "numerical_solver": {
+      "default": "native",
+      "enum": [
+        "native",
+        "sparse_trust_region"
+      ],
+      "title": "Numerical Solver",
+      "type": "string"
+    },
+    "numerical_jacobian_policy": {
+      "default": "sparse_finite_difference",
+      "enum": [
+        "sparse_finite_difference",
+        "native_dense",
+        "balanced_reduced",
+        "log_mesh"
+      ],
+      "title": "Numerical Jacobian Policy",
+      "type": "string"
+    },
+    "initial_profile": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "object"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Initial Profile"
+    },
+    "initial_estimate_source_evidence_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Initial Estimate Source Evidence Id"
+    }
+  },
+  "required": [
+    "property_card_id",
+    "purpose",
+    "feeds",
+    "pressure_pa",
+    "distillate_flow_mol_s",
+    "reflux_ratio",
+    "equilibrium_stages"
+  ],
+  "title": "MultiFeedColumnRequest",
+  "type": "object"
+}

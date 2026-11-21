@@ -1,0 +1,11 @@
+{
+  "case_id": "case-1b",
+  "source_file": "case-1b-连续操作苯-甲苯精馏塔工艺设计.docx",
+  "source_sha256": "e758f86c295970637fa48188534b6896d691e3c71cca46f30281f213ec19380e",
+  "source_pages": null,
+  "source_type": "user_supplied_course_design_report",
+  "extraction": "pdfplumber text or DOCX XML paragraph text including OMML tokens",
+  "locator_convention": "PDF physical page number, one based; DOCX P#### is the one-based w:p index under w:body including empty and table paragraphs.",
+  "rights": "Source redistribution permission and license not provided; original files are not part of the curated English release set.",
+  "transformation": "English structured adaptation of task facts and reported decisions/results, not a verbatim translation. Names and student identifiers omitted."
+}

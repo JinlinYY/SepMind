@@ -1,0 +1,6 @@
+# Active separation-design runtime and tests. DeepSeek uses requests directly.
+-r requirements-engineering.txt
+fastapi>=0.109,<1
+uvicorn[standard]>=0.27,<1
+requests>=2.31,<3
+jinja2>=3,<4

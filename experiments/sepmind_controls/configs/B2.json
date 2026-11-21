@@ -1,0 +1,9 @@
+{
+  "id": "B2",
+  "label": "w/o Independent Review",
+  "topology": "expert",
+  "expert": true,
+  "review": false,
+  "classified_revision": true,
+  "dependency_reuse": true
+}

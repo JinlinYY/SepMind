@@ -1,0 +1,24 @@
+{
+  "model_id": "acid_li2014_dimer_candidate",
+  "status": "unqualified_diagnostic_only",
+  "component_order": ["7732-18-5", "64-19-7", "141-78-6"],
+  "native_names": ["Water", "Acetic acid", "Ethyl acetate"],
+  "A": [[0,3.3293,9.4632],[-1.9763,0,0],[-3.7198,0,0]],
+  "B_K": [[0,-723.8881,-1705.68],[609.8886,0,-235.279],[1286.138,515.8212,0]],
+  "alpha": [[0,0.3,0.2],[0.3,0,0.3],[0.2,0.3,0]],
+  "tau_convention": "tau_ij = A_ij + B_ij/T",
+  "liquid_parameter_source": "https://skoge.folk.ntnu.no/prost/proceedings/adconip-2014/pdf/SUBS21TO40/0032/0032_FI.pdf",
+  "liquid_parameter_locator": "Table III, p.2; parameters originally used with HOC, NOT automatically transferable to this simplified vapor model",
+  "vapor_model": "ideal_physical_gas_acid_dimerization",
+  "association": {
+    "reaction": "2 acid monomer <=> acid dimer",
+    "ln_K_dimensionless": "-19.1001 + 7928.7/T_K",
+    "K_definition": "p_dimer * p_standard / p_monomer^2",
+    "standard_pressure_Pa": 100000,
+    "temperature_range_K": [318.15,393.15],
+    "source": "https://doi.org/10.1002/bbpc.19830871010",
+    "pressure_convention_source": "https://www.aspire2050.eu/sites/default/files/users/user354/05_NadiaGaleotti_Poster%20Jahrestagung_Aachen_final.pdf"
+  },
+  "admitted_phases": [],
+  "limitations": ["Not HOC: cross-solvation and physical virial terms absent.", "No design admission before independent VLE and caloric qualification.", "Parameter transfer is an explicit hypothesis being tested, not an accepted equivalence."]
+}

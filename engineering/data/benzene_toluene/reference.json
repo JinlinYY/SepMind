@@ -1,0 +1,120 @@
+{
+  "source_url": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2009.03.012.xml",
+  "source_sha256": "c343b21482c9693b87a00823b5af2ad5e73eb724d5254f6133ca4c58aaef0dd8",
+  "dataset": 1,
+  "selection": "measured P-x-T only; no predicted vapor compositions used",
+  "used_for_fitting": false,
+  "points": [
+    {
+      "temperature_K": 333.15,
+      "x_light": 0.0,
+      "pressure_Pa": 18300.0
+    },
+    {
+      "temperature_K": 333.15,
+      "x_light": 0.104,
+      "pressure_Pa": 21700.0
+    },
+    {
+      "temperature_K": 333.15,
+      "x_light": 0.202,
+      "pressure_Pa": 24800.0
+    },
+    {
+      "temperature_K": 333.15,
+      "x_light": 0.303,
+      "pressure_Pa": 28300.0
+    },
+    {
+      "temperature_K": 333.15,
+      "x_light": 0.398,
+      "pressure_Pa": 31700.0
+    },
+    {
+      "temperature_K": 333.15,
+      "x_light": 0.505,
+      "pressure_Pa": 35100.0
+    },
+    {
+      "temperature_K": 333.15,
+      "x_light": 0.601,
+      "pressure_Pa": 38100.0
+    },
+    {
+      "temperature_K": 333.15,
+      "x_light": 0.696,
+      "pressure_Pa": 42000.0
+    },
+    {
+      "temperature_K": 333.15,
+      "x_light": 0.803,
+      "pressure_Pa": 45500.0
+    },
+    {
+      "temperature_K": 333.15,
+      "x_light": 0.845,
+      "pressure_Pa": 47200.0
+    },
+    {
+      "temperature_K": 333.15,
+      "x_light": 1.0,
+      "pressure_Pa": 52000.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 0.0,
+      "pressure_Pa": 38500.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 0.096,
+      "pressure_Pa": 44800.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 0.207,
+      "pressure_Pa": 50500.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 0.301,
+      "pressure_Pa": 56800.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 0.401,
+      "pressure_Pa": 63200.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 0.5,
+      "pressure_Pa": 69500.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 0.591,
+      "pressure_Pa": 75800.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 0.702,
+      "pressure_Pa": 82700.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 0.802,
+      "pressure_Pa": 88400.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 0.894,
+      "pressure_Pa": 94700.0
+    },
+    {
+      "temperature_K": 353.15,
+      "x_light": 1.0,
+      "pressure_Pa": 100500.0
+    }
+  ],
+  "operating_domain_caveat": "Reference T=333.15/353.15 K; column up to 386 K is not experimentally covered."
+}

@@ -1,0 +1,99 @@
+{
+  "model_id": "mch_toluene_phenol_source_pure_v2",
+  "status": "source_reconstruction_candidate",
+  "model": "UNIFAC",
+  "component_order": [
+    "108-95-2",
+    "108-88-3",
+    "108-87-2"
+  ],
+  "native_names": [
+    "Phenol",
+    "Toluene",
+    "Methylcyclohexane"
+  ],
+  "molecular_weights_g_mol": [
+    94.11124,
+    92.13842,
+    98.18606
+  ],
+  "molecular_weight_source": "Formula-derived standard identity constants; native library values retained separately",
+  "group_collection": "UNIFACGroups",
+  "vapor_model": "ideal_physical_gas",
+  "native_options": {
+    "vapor_fugacity": "Ideal",
+    "enthalpy": "Excess",
+    "poynting": true
+  },
+  "source_url": "https://dwsim.fossee.in/flowsheeting-project/full-download/project/43",
+  "source_native_sha256": "6bdf3c677f9861158d851abfc5fda76ad4a957f60c95ef68b8b5ba30a9090899",
+  "source_locator": "Root UNIFAC PP Parameters; ChemSep persisted plain-text configuration (no binary deserialization); original scalar vapor-pressure and gas-Cp correlations",
+  "admitted_phases": [],
+  "temperature_guard_K": [
+    330.0,
+    500.0
+  ],
+  "pressure_guard_Pa": [
+    95000.0,
+    110000.0
+  ],
+  "limitations": [
+    "Rebuilt with native DWSIM columns, not replay of the source ChemSep/COCO CAPE-OPEN objects.",
+    "Source uses ideal vapor fugacity, excess caloric model and Poynting correction; pure-property/library versions can differ.",
+    "UNIFAC is an explicit predictive model hypothesis; source reproduction is not independent experimental validation.",
+    "Original source Pvap and gas Cp restored; other transport/enthalpy correlations still use current native library."
+  ],
+  "pure_property_overrides": {
+    "108-95-2": {
+      "Vapor_Pressure_Constant_C": -40.743,
+      "Vapor_Pressure_Constant_E": 2.0,
+      "Ideal_Gas_Heat_Capacity_Const_D": 6.8347e-05,
+      "IdealgasCpEquation": "16",
+      "Ideal_Gas_Heat_Capacity_Const_A": 39758.0,
+      "Vapor_Pressure_TMIN": 310.45,
+      "Vapor_Pressure_Constant_B": -20269.0,
+      "Ideal_Gas_Heat_Capacity_Const_C": 12.627,
+      "Ideal_Gas_Heat_Capacity_Const_E": -4.9708e-08,
+      "Vapor_Pressure_Constant_A": 300.97,
+      "Vapor_Pressure_Constant_D": 2.1631e-05,
+      "VaporPressureEquation": "101",
+      "Vapor_Pressure_TMAX": 694.25,
+      "Ideal_Gas_Heat_Capacity_Const_B": -470.56,
+      "Normal_Boiling_Point": 455.04
+    },
+    "108-88-3": {
+      "Vapor_Pressure_Constant_C": -1.348918,
+      "Vapor_Pressure_Constant_E": 2.0,
+      "Ideal_Gas_Heat_Capacity_Const_D": 5.535e-06,
+      "IdealgasCpEquation": "16",
+      "Ideal_Gas_Heat_Capacity_Const_A": 47225.0,
+      "Vapor_Pressure_TMIN": 178.18,
+      "Vapor_Pressure_Constant_B": -5013.81,
+      "Ideal_Gas_Heat_Capacity_Const_C": 12.856,
+      "Ideal_Gas_Heat_Capacity_Const_E": -1.998e-08,
+      "Vapor_Pressure_Constant_A": 32.89891,
+      "Vapor_Pressure_Constant_D": -1.869928e-06,
+      "VaporPressureEquation": "101",
+      "Vapor_Pressure_TMAX": 592.15,
+      "Ideal_Gas_Heat_Capacity_Const_B": -565.85,
+      "Normal_Boiling_Point": 383.79
+    },
+    "108-87-2": {
+      "Vapor_Pressure_Constant_C": -9.367446,
+      "Vapor_Pressure_Constant_E": 2.0,
+      "Ideal_Gas_Heat_Capacity_Const_D": -0.00042977,
+      "IdealgasCpEquation": "16",
+      "Ideal_Gas_Heat_Capacity_Const_A": 82902.0,
+      "Vapor_Pressure_TMIN": 146.58,
+      "Vapor_Pressure_Constant_B": -6720.084,
+      "Ideal_Gas_Heat_Capacity_Const_C": 13.697,
+      "Ideal_Gas_Heat_Capacity_Const_E": 1.1051e-07,
+      "Vapor_Pressure_Constant_A": 84.02524,
+      "Vapor_Pressure_Constant_D": 6.892527e-06,
+      "VaporPressureEquation": "101",
+      "Vapor_Pressure_TMAX": 572.1,
+      "Ideal_Gas_Heat_Capacity_Const_B": -804.58,
+      "Normal_Boiling_Point": 374.09
+    }
+  }
+}

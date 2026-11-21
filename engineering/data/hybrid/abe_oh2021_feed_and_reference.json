@@ -1,0 +1,40 @@
+{
+  "case_id": "case-7-abe-heptanol",
+  "source_doi": "10.1002/ceat.202100154",
+  "source_url": "https://d-nb.info/1243778911/34",
+  "source_pdf_sha256": "3515da2a57c8801d8bf1d67112628495228860c9d310f937d16d5994b5f068a5",
+  "feed_locator": "Figure 4, PDF p.5, visually inspected 2026-11-09",
+  "feed_component_mass_flows_kg_h": {"7732-18-5":7600,"67-64-1":450,"71-36-3":1860,"64-17-5":90,"111-70-6":0},
+  "feed_total_mass_flow_kg_h": 10000,
+  "extractor_temperature_K": 298.15,
+  "temperature_locator": "Table 1, PDF p.6",
+  "extractor_pressure_Pa": 100000,
+  "targets_source": "Section 3.2: acetone 99%, butanol 99.9%, ethanol 92%; Figure 4 reports component mass flows, Table 1 uses mass fraction",
+  "product_mass_fraction_targets": {"67-64-1":0.99,"71-36-3":0.999,"64-17-5":0.92},
+  "recovery_target_note": "Source states 100% butanol recovery with rounded flows. This is a reported design target, not an exact finite-stage mathematical guarantee.",
+  "reference_only_not_agent_inputs": {
+    "extractor_stages": 12,
+    "solvent_stream_mass_flow_kg_h":927.3,
+    "fresh_heptanol_makeup_kg_h":0.3,
+    "secondary_recycle_mass_flow_kg_h":1317,
+    "column_order":["I","II","III","IV","V"],
+    "source_tray_counts":[23,28,13,36,30],
+    "source_feed_trays_from_top":[11,14,6,16,13],
+    "reflux_mass_flows_kg_h":[4063,140,1095,2174,2217],
+    "reboiler_duties_MW":[0.39,0.35,0.32,0.24,0.60],
+    "condenser_duties_signed_MW":[-0.98,-0.53,-0.28,-0.32,-0.59],
+    "reported_product_component_flows_kg_h": {
+      "butanol_product":{"71-36-3":1860,"111-70-6":0.3},
+      "acetone_product":{"67-64-1":449,"64-17-5":0.5,"7732-18-5":3.7},
+      "ethanol_product":{"67-64-1":0.2,"64-17-5":67,"7732-18-5":5.5},
+      "wastewater":{"67-64-1":0.8,"64-17-5":22.5,"7732-18-5":7591}
+    }
+  },
+  "source_conflicts": [
+    "Figure 4 extractor overhead is 4310 kg/h in Table 1 but column-I feed is 4312 kg/h; do not silently force equality.",
+    "Rounded wastewater component labels total 7614.3 kg/h whereas Table 1 reports 7617 kg/h; missing minor species or rounding unresolved.",
+    "Source stages/trays require an explicit mapping to DWSIM condenser/reboiler stage convention.",
+    "Table 7 feed g/L labels cannot replace the explicit kg/h feed in Figure 4."
+  ],
+  "simulation_status": "pending_model_and_complete_flowsheet_qualification"
+}

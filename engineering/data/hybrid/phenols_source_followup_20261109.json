@@ -1,0 +1,85 @@
+{
+  "audited_on": "2026-11-09",
+  "publisher_xml": {
+    "url": "https://mdpi-res.com/d_attachment/energies/energies-15-09258/article_deploy/energies-15-09258.xml",
+    "sha256": "3a1d240f6da47eb6f8c17f8d24a5e3b0bf18bf2e14a13119d46201ece92daa91",
+    "doi": "10.3390/en15239258",
+    "supplementary_material_elements": 0,
+    "appendix_groups": 0,
+    "tables": [
+      "Table 1",
+      "Table 2",
+      "Table 3",
+      "Table 4",
+      "Table 5",
+      "Table 6",
+      "Table 7"
+    ],
+    "findings": [
+      "Section 2 places extraction after deacidification and deamination; Table 1 is the wastewater feed before that boundary.",
+      "Table 1 listed mass percentages alone sum to 100.230%; no silent normalization is permitted.",
+      "Table 3 gives an extraction-column operating temperature near 38 degC, but it is not a complete inlet stream specification.",
+      "Neither Table 1 nor Tables 2-7 specify the full post-pretreatment extraction inlet flow/composition/state needed by this scoped task.",
+      "No supplementary-material link or appendix group found in the retrieved publisher XML. This does not prove no author-held supplement exists.",
+      "Do not invert a heat duty to infer a unique inlet flow without qualified enthalpy, phase and composition evidence."
+    ]
+  },
+  "quaternary_lle_archive": {
+    "url": "https://trc.nist.gov/ThermoML/10.1016/j.fluid.2007.05.026.html",
+    "sha256": "377df07d26c9323602e27641e54b7a85a3b468f02404f9e94f2cbd94fb804890",
+    "datasets": [
+      {
+        "dataset_number": 1,
+        "component_count": 1,
+        "number_of_points": 1
+      },
+      {
+        "dataset_number": 2,
+        "component_count": 1,
+        "number_of_points": 1
+      },
+      {
+        "dataset_number": 3,
+        "component_count": 1,
+        "number_of_points": 1
+      },
+      {
+        "dataset_number": 4,
+        "component_count": 1,
+        "number_of_points": 1
+      },
+      {
+        "dataset_number": 5,
+        "component_count": 1,
+        "number_of_points": 1
+      },
+      {
+        "dataset_number": 6,
+        "component_count": 1,
+        "number_of_points": 1
+      },
+      {
+        "dataset_number": 7,
+        "component_count": 1,
+        "number_of_points": 1
+      },
+      {
+        "dataset_number": 8,
+        "component_count": 1,
+        "number_of_points": 1
+      }
+    ],
+    "findings": [
+      "The indexed paper title concerns quaternary LLE, but this retrieved NIST archive contains only pure-compound property datasets.",
+      "The archive omits water and does not supply the required quaternary tie-lines or the NRTL interaction matrix.",
+      "The related 2006 DOI 10.1021/je060245c concerns MIBK/water/hydroquinone only; it is not a replacement for the full phenol/hydroquinone system."
+    ]
+  },
+  "missing_required_evidence": [
+    "Post-pretreatment extraction feed mass flow, closed composition with declared basis, temperature and pressure.",
+    "Source-qualified quaternary LLE parameters and independent phase-split checks over the extraction operating domain.",
+    "Qualified downstream VLE/enthalpy and treated-water density for the mg/L specifications."
+  ],
+  "status": "needs_input_and_property_qualification",
+  "fabricated_or_imputed_inlet_values": false
+}

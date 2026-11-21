@@ -1,0 +1,26 @@
+{
+  "title": "Benzene/toluene distillation: 42 wt% benzene feed",
+  "components": [
+    [
+      "benzene",
+      "71-43-2"
+    ],
+    [
+      "toluene",
+      "108-88-3"
+    ]
+  ],
+  "mw": [
+    78.11,
+    92.13
+  ],
+  "throughput_t_y": 86500,
+  "throughput_basis": "feed",
+  "hours_y": 8000,
+  "wf": 0.42,
+  "wd": 0.997,
+  "wb": 0.003,
+  "pressure": 106.325,
+  "source_locator": "PDF pp. 7-13; equipment summary p. 36",
+  "raw_locator": "PDF p. 7 (task); p. 8 (molar masses)"
+}

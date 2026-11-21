@@ -1,0 +1,70 @@
+version: 1
+scope: Isolated research diagnostics; not production process model admission
+production_registry: tool_registry.yaml
+tools:
+- action: multifeed_candidate_column
+  backend: separation.tools.multifeed.MultiFeedDwsimBackend.column
+  input_schema: research_multifeed_column.schema.json
+  implemented: true
+  requires:
+  - allowlisted versioned model card
+  - native DWSIM
+  - independent port/specification/fugacity/finite-TPD review
+  success_means: numerically executed unit only
+- action: mixture_probe
+  backend: separation.tools.mixture.MixtureDwsimBackend.mixture_probe
+  input_schema: research_mixture_probe.schema.json
+  implemented: true
+  success_means: property diagnostic only
+  phase_property_note: Explicit fixed-composition native enthalpy derivative distinguishes complete Cp from the native phase departure slot. Only allowlisted source models and unchanged stencil/domain guards.
+completion_followup_20261111:
+  report: docs/engineering/CASE35_ENGINEERING_FOLLOWUP_20261111.md
+  approved_utilities: output/engineering/case35_completion_20261111/approved_utility_and_sizing_basis.json
+  external_vle_dataset: engineering/data/hybrid/mch_toluene_independent_vle_hartanto2025.json
+  external_vle_result: output/engineering/case35_completion_20261111/external_validation.json
+  external_lle_result: output/engineering/case35_completion_20261111/binary_lle_validation.json
+  near_pure_solvent_screen: pha.engineering.validation.phase_admission.near_pure_freezing_screen
+  warning: Historical case03 293.15K liquid-only result fails a necessary near-pure sulfolane freezing screen. Numerical closure alone is not engineering phase admission.
+  warm_case03_evidence: output/engineering/case3_warm_20261111/flowsheet_result.json
+  pressure_case03_evidence: output/engineering/case3_warm_pressure_20261111/flowsheet_result.json
+  pressure_case03_scope: Declared low-pressure-drop sensitivity from a generic packing range, not vendor/system-specific hydraulic qualification
+  preliminary_equipment_runner: scripts/size_case35_equipment.py
+  equipment_evidence: output/engineering/case35_completion_20261111/equipment_summary.json
+  pressure_model_card_case05: mch_toluene_phenol_hydraulic_sensitivity_v2
+  production_admitted: false
+full_flowsheet_runner:
+  entrypoint: scripts/complete_case5_flowsheet.py
+  case: candidate05
+  numerical_evidence: output/engineering/case5_final_closed_20261110/flowsheet_result.json
+  production_admitted: false
+  remaining:
+  - experimental property qualification
+  - hydraulics and equipment
+blocked_complete_cases:
+  candidate01: Missing source UNIQUAC pairs; recovery not accepted under predictive
+    alternative
+additional_full_flowsheet_runners:
+  candidate03:
+    entrypoint: scripts/complete_case3_flowsheet.py
+    numerical_evidence: output/engineering/case3_verified_restart_20261110/flowsheet_result.json
+    report: docs/engineering/CASE3_REPAIR_20261110.md
+    native_units: DWSIM columns/properties and independently Gibbs-seeded SimpleLLE decanter
+    independent_units: NRTL simultaneous extraction with stable stage re-flashes
+    recycles: [sulfolane, water, hydrocarbon, organic_reflux]
+    production_admitted: false
+    completion_scope: Source-informed controlled numerical correction, not blind LLM autonomous design
+    numerical_thresholds:
+      external_component_relative: 1.0e-6
+      external_energy_relative: 1.0e-6
+      component_recycle_relative: 1.0e-8
+    remaining:
+    - independent experimental property qualification
+    - energy model qualification and heat integration
+    - hydraulics and equipment
+numerical_policies:
+  balanced_reduced: Native DWSIM MESH, balances/reflux eliminated numerically; verified
+    case05 and case03; strict trace/specification scaling and feasible initialization
+    retained for case03. Initialization is never accepted as a process result
+  log_mesh: Experimental diagnostic; not the accepted full-case03 solver policy
+external_data_policy: Provider calls do not authorize transmission of every unpublished
+  artifact; observe user-specific approvals and keep secrets outside logs

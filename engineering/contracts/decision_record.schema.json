@@ -1,0 +1,129 @@
+{
+  "$defs": {
+    "Reason": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "explanation"
+      ],
+      "title": "Reason",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "decision_id": {
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "gate": {
+      "pattern": "^G[0-9]$",
+      "title": "Gate",
+      "type": "string"
+    },
+    "question": {
+      "title": "Question",
+      "type": "string"
+    },
+    "candidate_options": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Candidate Options",
+      "type": "array"
+    },
+    "selected_option": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Selected Option"
+    },
+    "evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Evidence Ids",
+      "type": "array"
+    },
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Assumptions",
+      "type": "array"
+    },
+    "reasons": {
+      "items": {
+        "$ref": "#/$defs/Reason"
+      },
+      "title": "Reasons",
+      "type": "array"
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "accepted",
+        "rejected",
+        "needs_input",
+        "blocked"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "risks": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Risks",
+      "type": "array"
+    },
+    "downstream_invalidate": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Downstream Invalidate",
+      "type": "array"
+    },
+    "skill_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Skill Ids",
+      "type": "array"
+    },
+    "expert_record_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Expert Record Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "gate",
+    "question",
+    "candidate_options",
+    "evidence_ids",
+    "assumptions",
+    "reasons",
+    "status"
+  ],
+  "title": "DecisionRecord",
+  "type": "object"
+}

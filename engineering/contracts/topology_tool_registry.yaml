@@ -1,0 +1,21 @@
+version: 1
+scope: Bounded acyclic three-to-five-component ideal distillation graph synthesis
+implementation: pha.engineering.topology.tools.TopologyToolRegistry
+input_contract: pha.engineering.topology.schemas.TopologyDesignBasis
+output_contract: pha.engineering.schemas.ToolResult
+tools:
+  admit_topology_task: {gate: G0, requires: []}
+  validate_topology_graph: {gate: G1, requires: [admit_topology_task]}
+  execute_topology: {gate: G4, requires: [validate_topology_graph]}
+  review_topology: {gate: G8, requires: [execute_topology]}
+native_backend: separation.tools.multicomponent.MultiComponentDwsimBackend
+independent_review: pha.engineering.topology.review
+physical_scope:
+  property_package: Raoult's Law
+  components: [Benzene, Toluene, Ethylbenzene, n-Heptane, n-Nonane]
+  required_feed_state: saturated_liquid
+  pressure_Pa: [95000, 110000]
+  maximum_columns: 4
+  maximum_equilibrium_stages_per_column: 100
+  graph_cycles: unsupported
+  numerical_verification_implies_experimental_qualification: false

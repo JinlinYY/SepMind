@@ -1,0 +1,22 @@
+{
+  "status": "source_reported_unverified",
+  "F_kmol_h": 126.2087,
+  "zF": 0.4607,
+  "xD": 0.9975,
+  "xB": 0.0035,
+  "D_kmol_h": 58.0509,
+  "B_kmol_h": 68.1578,
+  "minimum_reflux_ratio": 1.99,
+  "reflux_ratio": 3.98,
+  "equilibrium_stages": 17,
+  "feed_stage": 9,
+  "actual_trays_reported": 32,
+  "overall_efficiency": 0.55,
+  "diameter_m": 1.8,
+  "tray_spacing_m": 0.45,
+  "bottom_pressure_kPa": 128.0,
+  "top_temperature_C": 81.67,
+  "bottom_temperature_C": 119.06,
+  "stage_convention": "Reported theoretical stages interpreted as including partial reboiler and excluding total condenser; counting ambiguities retained.",
+  "source_locator": "PDF pp. 7-13; equipment summary p. 36"
+}

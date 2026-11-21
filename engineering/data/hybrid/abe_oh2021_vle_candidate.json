@@ -1,0 +1,157 @@
+{
+  "model_id": "abe_oh2021_vle_candidate",
+  "status": "unqualified_diagnostic_only",
+  "model": "NRTL",
+  "component_order": [
+    "7732-18-5",
+    "67-64-1",
+    "71-36-3",
+    "64-17-5",
+    "111-70-6"
+  ],
+  "native_names": [
+    "Water",
+    "Acetone",
+    "1-butanol",
+    "Ethanol",
+    "1-heptanol"
+  ],
+  "A": [
+    [
+      0.0,
+      0.0544,
+      13.1102,
+      3.4578,
+      0
+    ],
+    [
+      6.3981,
+      0.0,
+      -8.8875,
+      -0.3471,
+      0
+    ],
+    [
+      -2.0405,
+      10.2979,
+      0.0,
+      0,
+      0
+    ],
+    [
+      -0.8009,
+      -1.0787,
+      0,
+      0.0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0.0
+    ]
+  ],
+  "B_K": [
+    [
+      0.0,
+      419.9716,
+      -3338.95,
+      -586.081,
+      2591.728
+    ],
+    [
+      -1808.99,
+      0.0,
+      3077.281,
+      206.5973,
+      133.7122
+    ],
+    [
+      763.8692,
+      -3326.54,
+      0.0,
+      128.5015,
+      -74.1997
+    ],
+    [
+      246.18,
+      479.05,
+      -85.2188,
+      0.0,
+      137.8006
+    ],
+    [
+      392.128,
+      -73.2178,
+      124.4634,
+      -73.2178,
+      0.0
+    ]
+  ],
+  "alpha": [
+    [
+      0.0,
+      0.3,
+      0.3,
+      0.3,
+      0.3
+    ],
+    [
+      0.3,
+      0.0,
+      0.3,
+      0.3,
+      0.3
+    ],
+    [
+      0.3,
+      0.3,
+      0.0,
+      0.3,
+      0.3
+    ],
+    [
+      0.3,
+      0.3,
+      0.3,
+      0.0,
+      0.3
+    ],
+    [
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.0
+    ]
+  ],
+  "molecular_weights_g_mol": [
+    18.01528,
+    58.07914,
+    74.1216,
+    46.06844,
+    116.20134
+  ],
+  "molecular_weight_source": "thermo ChemicalConstantsPackage identity constants",
+  "tau_convention": "tau_ij=A_ij+B_ij/T; source S3, dimensionless a, b in K",
+  "source_url": "https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1002/ceat.202100154&file=ceat202100154-sup-0001-misc_information.pdf",
+  "source_locator": "SI Table S3, p.3, VLE rows",
+  "vapor_model": "ideal_physical_gas",
+  "admitted_phases": [],
+  "temperature_guard_K": [
+    298.15,
+    460.0
+  ],
+  "pressure_guard_Pa": [
+    100000.0,
+    102000.0
+  ],
+  "guard_origin": "Project diagnostic envelope; not a published parameter-fit range",
+  "limitations": [
+    "Separate LLE and VLE parameter sets, not interchangeable.",
+    "Ternary experimental source data cannot qualify all five-component interactions.",
+    "No enthalpy or complete-process qualification from parameter transcription alone."
+  ]
+}

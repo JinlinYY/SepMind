@@ -1,0 +1,93 @@
+{
+  "source_url": "https://trc.nist.gov/ThermoML/10.1021/je2005209.xml",
+  "publication_url": "https://doi.org/10.1021/je2005209",
+  "source_sha256": "c672d099be09393b91fd1bbab925253d4a1566e92d05298f2534e2ded1bac066",
+  "components": [
+    "64-17-5",
+    "7732-18-5"
+  ],
+  "datasets": [
+    2,
+    3
+  ],
+  "selection": "binary ethanol/water ONLY; all ionic-liquid-containing datasets excluded",
+  "pressure_Pa": 101320.0,
+  "used_for_fitting_in_this_project": false,
+  "points": [
+    {
+      "x_ethanol": 0.0,
+      "y_ethanol": 0.0,
+      "temperature_K": 373.15
+    },
+    {
+      "x_ethanol": 0.079,
+      "y_ethanol": 0.407,
+      "temperature_K": 360.51
+    },
+    {
+      "x_ethanol": 0.143,
+      "y_ethanol": 0.493,
+      "temperature_K": 357.49
+    },
+    {
+      "x_ethanol": 0.195,
+      "y_ethanol": 0.53,
+      "temperature_K": 356.59
+    },
+    {
+      "x_ethanol": 0.292,
+      "y_ethanol": 0.57,
+      "temperature_K": 354.79
+    },
+    {
+      "x_ethanol": 0.378,
+      "y_ethanol": 0.602,
+      "temperature_K": 354.23
+    },
+    {
+      "x_ethanol": 0.45,
+      "y_ethanol": 0.626,
+      "temperature_K": 353.44
+    },
+    {
+      "x_ethanol": 0.495,
+      "y_ethanol": 0.657,
+      "temperature_K": 353.09
+    },
+    {
+      "x_ethanol": 0.581,
+      "y_ethanol": 0.691,
+      "temperature_K": 352.32
+    },
+    {
+      "x_ethanol": 0.648,
+      "y_ethanol": 0.721,
+      "temperature_K": 351.96
+    },
+    {
+      "x_ethanol": 0.696,
+      "y_ethanol": 0.742,
+      "temperature_K": 351.77
+    },
+    {
+      "x_ethanol": 0.794,
+      "y_ethanol": 0.807,
+      "temperature_K": 351.46
+    },
+    {
+      "x_ethanol": 0.84,
+      "y_ethanol": 0.844,
+      "temperature_K": 351.4
+    },
+    {
+      "x_ethanol": 0.89,
+      "y_ethanol": 0.893,
+      "temperature_K": 351.21
+    },
+    {
+      "x_ethanol": 1.0,
+      "y_ethanol": 1.0,
+      "temperature_K": 351.55
+    }
+  ]
+}

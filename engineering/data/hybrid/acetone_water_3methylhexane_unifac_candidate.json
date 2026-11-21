@@ -1,0 +1,25 @@
+{
+  "model_id": "acetone_water_3methylhexane_unifac_candidate",
+  "status": "unqualified_predictive_alternative",
+  "model": "UNIFAC",
+  "component_order": ["7732-18-5", "67-64-1", "589-34-4"],
+  "native_names": ["Water", "Acetone", "3-methylhexane"],
+  "molecular_weights_g_mol": [18.01528, 58.07914, 100.202],
+  "molecular_weight_source": "Installed DWSIM 9.0.5 CAS-matched constants; selected_property_coverage.json",
+  "group_collection": "UNIFACGroups",
+  "native_UNIFAC_groups": [{"17": 1}, {"1": 1, "19": 1}, {"1": 3, "2": 3, "3": 1}],
+  "standard_UNIFAC_groups": [{"16": 1}, {"1": 1, "18": 1}, {"1": 3, "2": 3, "3": 1}],
+  "group_mapping_source": "Chemical subgroup names: H2O, CH3, CH3CO, CH2 and CH; DWSIM and standard UFSG numeric IDs differ.",
+  "vapor_model": "ideal_physical_gas",
+  "native_options": {"vapor_fugacity": "Ideal", "enthalpy": "Excess", "poynting": true},
+  "source_url": "https://lms.nchu.edu.tw/sysdata/doc/e/e622a11263dc8679/pdf.pdf",
+  "admitted_phases": [],
+  "temperature_guard_K": [293.15, 450.0],
+  "pressure_guard_Pa": [95000.0, 110000.0],
+  "limitations": [
+    "Original UNIFAC predictive alternative; not the tutorial UNIQUAC-RK or the 2025 paper UNIF-LL model.",
+    "Two solvent-related UNIQUAC pairs are absent from installed native data; no zero replacement is allowed.",
+    "Independent equilibrium residual and TPD checks verify model equations, not measured-data accuracy.",
+    "Original tutorial full-file retrieval remains unsuccessful; secondary snippets are not a frozen numerical reference."
+  ]
+}

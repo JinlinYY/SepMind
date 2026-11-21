@@ -1,0 +1,50 @@
+{
+  "source": "用户提供的2025-03-03课程设计说明书，仅作为专家工作流/待审计数值参考",
+  "system": {
+    "components": [
+      {
+        "name": "ethanol",
+        "cas": "64-17-5"
+      },
+      {
+        "name": "water",
+        "cas": "7732-18-5"
+      }
+    ],
+    "process": "continuous_distillation",
+    "pressure": "atmospheric",
+    "feed_state_claimed": "saturated_liquid"
+  },
+  "reported_in_source": {
+    "x_ethanol_feed_mole": 0.2652,
+    "x_ethanol_distillate_mole": 0.8512,
+    "x_ethanol_bottoms_mole": 0.0087,
+    "feed_kmol_h": 81.8411,
+    "distillate_kmol_h": 24.9186,
+    "bottoms_kmol_h": 56.9226,
+    "reflux_ratio": 3.92,
+    "theoretical_stages": 20,
+    "actual_trays": 27,
+    "diameter_m": 1.0,
+    "height_m": 16.9,
+    "overall_efficiency_fraction": 0.7224
+  },
+  "validation_status": "unverified_source_reported",
+  "review_flags": [
+    "Product xD and recovery eta both labeled 0.8512: definitions conflict",
+    "Molar mass unit label kg/mol vs expected kg/kmol",
+    "Stage iteration includes a suspicious nonmonotonic step",
+    "Claimed saturated liquid vs pump case using feed 20 C demands reconciling preheat",
+    "Vapor nozzle φ32×3mm contradicts volume near 0.99 m3/s at stated 20 m/s, if same basis",
+    "High-order VLE polynomial may produce nonphysical roots"
+  ],
+  "required_recompute": [
+    "material_balance_and_recovery",
+    "thermo_model_and_parameters",
+    "azeotropic_feasibility",
+    "vle_and_stages",
+    "energy_loads",
+    "hydraulic_design",
+    "auxiliary_equipment"
+  ]
+}

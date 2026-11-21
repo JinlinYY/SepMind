@@ -1,0 +1,9 @@
+{
+  "id": "B4",
+  "label": "w/o Dependency-aware Recalculation",
+  "topology": "expert",
+  "expert": true,
+  "review": true,
+  "classified_revision": true,
+  "dependency_reuse": false
+}

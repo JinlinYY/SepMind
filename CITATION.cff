@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use SepMind for research, please cite this software and the associated manuscript."
+title: "SepMind: Expert-guided chemical separation process design"
+type: software
+license: Apache-2.0
+authors:
+  - given-names: Jinlin
+    family-names: Ye
+  - given-names: Shuohan
+    family-names: Wang
+  - given-names: Kai
+    family-names: Li
+  - given-names: Minghao
+    family-names: Sun
+  - given-names: Yu
+    family-names: Wang
+  - given-names: Lang
+    family-names: Jiang
+  - given-names: Xinchen
+    family-names: Kang
+  - given-names: Wei
+    family-names: Zhang

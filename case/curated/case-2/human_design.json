@@ -1,0 +1,22 @@
+{
+  "status": "source_reported_unverified",
+  "F_kmol_h": 81.8411,
+  "zF": 0.2652,
+  "xD": 0.8512,
+  "xB": 0.0087,
+  "D_kmol_h": 24.918,
+  "B_kmol_h": 56.923,
+  "minimum_reflux_ratio": 1.96,
+  "reflux_ratio": 3.92,
+  "equilibrium_stages": 20,
+  "feed_stage": 16,
+  "actual_trays_reported": 27,
+  "actual_feed_tray_reported": 22,
+  "overall_efficiency": 0.7224,
+  "diameter_m": 1.0,
+  "height_reported_m": 16.9,
+  "condenser_duty_kW": 478.378,
+  "reboiler_duty_kW": 120.568,
+  "stage_convention": "Reported theoretical stages interpreted as including partial reboiler and excluding total condenser; counting ambiguities retained.",
+  "source_locator": "DOCX P0071-P0103; chapters 4-10; see existing water/ethanol source audit"
+}

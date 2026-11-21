@@ -1,0 +1,4 @@
+# Python dependencies for SepMind design, benchmark reporting, and native replay.
+-r requirements.txt
+matplotlib==3.10.0
+pythonnet==3.2.1; sys_platform == "win32"

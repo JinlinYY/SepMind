@@ -1,0 +1,122 @@
+{
+  "model_id": "mch_toluene_sulfolane_vle_brouwer2021",
+  "status": "unqualified_source_transcription",
+  "model": "NRTL",
+  "component_order": [
+    "108-87-2",
+    "108-88-3",
+    "126-33-0",
+    "7732-18-5"
+  ],
+  "native_names": [
+    "Methylcyclohexane",
+    "Toluene",
+    "Sulfolane",
+    "Water"
+  ],
+  "molecular_weights_g_mol": [
+    98.18606,
+    92.13842,
+    120.17012,
+    18.01528
+  ],
+  "molecular_weight_source": "chemicals identity metadata (CAS-mapped)",
+  "A": [
+    [
+      0.0,
+      0.0,
+      -3.473,
+      -9.473
+    ],
+    [
+      0.0,
+      0.0,
+      1.398,
+      -7.236
+    ],
+    [
+      -1.702,
+      -0.331,
+      0.0,
+      0.0
+    ],
+    [
+      9.765,
+      3.988,
+      0.0,
+      0.0
+    ]
+  ],
+  "B_K": [
+    [
+      0.0,
+      -43.24,
+      2487.0,
+      4601.0
+    ],
+    [
+      134.1,
+      0.0,
+      71.41,
+      4292.0
+    ],
+    [
+      1270.0,
+      223.1,
+      0.0,
+      333.4
+    ],
+    [
+      340.6,
+      996.7,
+      432.7,
+      0.0
+    ]
+  ],
+  "alpha": [
+    [
+      0.0,
+      0.3,
+      0.28,
+      0.2
+    ],
+    [
+      0.3,
+      0.0,
+      0.3,
+      0.2
+    ],
+    [
+      0.28,
+      0.3,
+      0.0,
+      0.6
+    ],
+    [
+      0.2,
+      0.2,
+      0.6,
+      0.0
+    ]
+  ],
+  "tau_convention": "tau_ij = A_ij + B_ij/T; published C_ij is alpha",
+  "source_url": "https://doi.org/10.1002/jctb.6808",
+  "source_locator": "Table 2",
+  "intended_phase": "VLE",
+  "admitted_phases": [],
+  "vapor_model": "ideal_physical_gas",
+  "temperature_guard_K": [
+    290.0,
+    570.0
+  ],
+  "pressure_guard_Pa": [
+    8000.0,
+    101325.0
+  ],
+  "limitations": [
+    "Phase-specific table; do not substitute the LLE parameter set in a VLE tower or conversely.",
+    "Engineering guard is a project calculation limit, not a published fit range.",
+    "Source pure-property correlations and caloric data differ from native DWSIM defaults.",
+    "Experimental tie-line holdout validation and complete solvent/water recycle remain required."
+  ]
+}

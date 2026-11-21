@@ -1,0 +1,23 @@
+{
+  "status": "source_reported_unverified",
+  "F_kmol_h": 138.13,
+  "zF": 0.3988,
+  "xD": 0.9975,
+  "xB": 0.002,
+  "D_kmol_h": 55.06,
+  "B_kmol_h": 83.07,
+  "minimum_reflux_ratio": 1.719,
+  "reflux_ratio": 2.75,
+  "equilibrium_stages": 23,
+  "feed_stage": 12,
+  "actual_trays_reported": 42,
+  "actual_feed_tray_reported": 22,
+  "overall_efficiency": 0.52,
+  "diameter_m": 1.6,
+  "active_height_m": 18.35,
+  "tray_spacing_m": 0.45,
+  "bottom_pressure_kPa": 135.7,
+  "reboiler_duty_kW": 1964.03,
+  "stage_convention": "Reported theoretical stages interpreted as including partial reboiler and excluding total condenser; counting ambiguities retained.",
+  "source_locator": "DOCX P0101-P0144, P0262-P0338, P0497-P0507, P0880-P0949, P1094-P1109"
+}

@@ -1,0 +1,41 @@
+{
+  "model_id": "acetone_dodecanol_nist_candidate",
+  "model": "Modified UNIFAC (NIST)",
+  "status": "unqualified_diagnostic_only",
+  "component_order": [
+    "7732-18-5",
+    "67-64-1",
+    "112-53-8"
+  ],
+  "native_names": [
+    "Water",
+    "Acetone",
+    "1-dodecanol"
+  ],
+  "vapor_model": "native_package_default",
+  "admitted_phases": [],
+  "source_url": "https://doi.org/10.1002/cite.202200144",
+  "adaptation": "DWSIM Modified UNIFAC (NIST) prediction; not source COSMO-RS reproduction",
+  "native_parameter_source": "DWSIM 9.0.5 bundled UNIFAC groups and interaction library; audit group membership and complete interaction coverage during execution.",
+  "reference_basis": {
+    "feed_volume_m3_h": 5,
+    "acetone_feed_mass_fraction": 0.05,
+    "extraction_recovery_target": 0.99,
+    "acetone_product_purity_target": 0.99
+  },
+  "temperature_policy": {
+    "diagnostic_temperature_K": 303.15,
+    "origin": "Explicit project adaptation to remain above the source-reported 23-24 degC melting point of pure 1-dodecanol; not attributed to Polte2023.",
+    "melting_source": "https://srdata.nist.gov/solubility/IUPAC/SDS-15/SDS-15.pdf"
+  },
+  "source_conflicts": [
+    "Kampwerth's later thesis describes an earlier 5.5 wt% / 293.15 K case. Do not replace Polte's 5 wt% feed with those values.",
+    "A reported distribution coefficient of 0.17 in the earlier thesis is not a complete ternary LLE dataset, nor an independent validation at 303.15 K."
+  ],
+  "limitations": [
+    "Predictive thermodynamic diagnostic only; no qualified acetone recovery or full process result.",
+    "Source 5 m3/h must be converted using computed mixture density at an explicitly stated temperature.",
+    "Rate-based extraction, equipment costs and full ternary experimental qualification remain distinct requirements."
+  ],
+  "group_collection": "NISTMODFACGroups"
+}

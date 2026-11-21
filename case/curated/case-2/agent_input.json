@@ -1,0 +1,43 @@
+{
+  "design_id": "case-2",
+  "design_mode": "autonomous",
+  "components": [
+    {
+      "canonical_id": "64-17-5",
+      "cas": "64-17-5",
+      "name": "ethanol"
+    },
+    {
+      "canonical_id": "7732-18-5",
+      "cas": "7732-18-5",
+      "name": "water"
+    }
+  ],
+  "feed": {
+    "flow": 81.84117203859995,
+    "flow_unit": "kmol/h",
+    "composition": [
+      0.2652222453962139,
+      0.7347777546037861
+    ],
+    "composition_basis": "mole_fraction",
+    "pressure_kPa": 101.325,
+    "quality_q": 1.0
+  },
+  "target": {
+    "distillate_mole_fraction": 0.8511659461740532,
+    "bottoms_mole_fraction": 0.008719596750826517
+  },
+  "column": {},
+  "assumptions": [],
+  "source_ids": [
+    "case-2:requirements_only"
+  ],
+  "origin_tags": {
+    "feed.flow": "calculated",
+    "feed.composition": "calculated",
+    "feed.pressure_kPa": "assumed",
+    "feed.quality_q": "source_reported",
+    "target.distillate_mole_fraction": "calculated"
+  }
+}

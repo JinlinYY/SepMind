@@ -1,0 +1,1446 @@
+{
+  "passed": true,
+  "protocol": {
+    "source_correlation_max_rmse": 0.02,
+    "source_correlation_max_error": 0.05,
+    "separate_source_transfer_max_rmse": 0.02,
+    "separate_source_transfer_max_error": 0.05,
+    "phase_acceptance": "all points must yield two distinct, lower-G liquids with activity equality, closure and finite multistart TPD screening",
+    "not_a_blinded_holdout": "The evaluate helper labels external points holdout for grouping only; they are separate-source development transfer checks.",
+    "no_in_project_parameter_fitting": true
+  },
+  "parameter_core_sha256": "62abc86cc3fa4494b55c7210deb35b0bc8a3ab95dcc5762e38bfc94ee9d2242c",
+  "reference_points": [
+    {
+      "id": "colombo1999-table2-1",
+      "temperature_K": 298.0,
+      "pressure_Pa": 101325.0,
+      "aqueous": [
+        0.87819,
+        0.07766,
+        0.04414999999999997
+      ],
+      "organic": [
+        0.55623,
+        0.14849,
+        0.29528
+      ],
+      "split": "calibration"
+    },
+    {
+      "id": "colombo1999-table2-2",
+      "temperature_K": 298.0,
+      "pressure_Pa": 101325.0,
+      "aqueous": [
+        0.90944,
+        0.05907,
+        0.031489999999999976
+      ],
+      "organic": [
+        0.45439,
+        0.1396,
+        0.4060099999999999
+      ],
+      "split": "calibration"
+    },
+    {
+      "id": "colombo1999-table2-3",
+      "temperature_K": 298.0,
+      "pressure_Pa": 101325.0,
+      "aqueous": [
+        0.93246,
+        0.0462,
+        0.021340000000000046
+      ],
+      "organic": [
+        0.39554,
+        0.12421,
+        0.48025
+      ],
+      "split": "calibration"
+    },
+    {
+      "id": "colombo1999-table2-4",
+      "temperature_K": 298.0,
+      "pressure_Pa": 101325.0,
+      "aqueous": [
+        0.94575,
+        0.03525,
+        0.019000000000000024
+      ],
+      "organic": [
+        0.33349,
+        0.10354,
+        0.56297
+      ],
+      "split": "calibration"
+    },
+    {
+      "id": "colombo1999-table2-5",
+      "temperature_K": 298.0,
+      "pressure_Pa": 101325.0,
+      "aqueous": [
+        0.958,
+        0.02431,
+        0.01769000000000004
+      ],
+      "organic": [
+        0.27339,
+        0.07539,
+        0.65122
+      ],
+      "split": "calibration"
+    },
+    {
+      "id": "colombo1999-table2-6",
+      "temperature_K": 298.0,
+      "pressure_Pa": 101325.0,
+      "aqueous": [
+        0.97284,
+        0.01373,
+        0.013429999999999963
+      ],
+      "organic": [
+        0.2203,
+        0.04425,
+        0.73545
+      ],
+      "split": "calibration"
+    },
+    {
+      "id": "nist-2018-d18-01",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9631,
+        0.0192,
+        0.017700000000000046
+      ],
+      "organic": [
+        0.2103,
+        0.0495,
+        0.7402000000000001
+      ],
+      "split": "holdout",
+      "property_uncertainties": [
+        0.016,
+        0.0147,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-02",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9542,
+        0.0248,
+        0.020999999999999953
+      ],
+      "organic": [
+        0.2653,
+        0.0779,
+        0.6568
+      ],
+      "split": "holdout",
+      "property_uncertainties": [
+        0.0157,
+        0.0142,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-03",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9433,
+        0.0315,
+        0.025199999999999972
+      ],
+      "organic": [
+        0.3336,
+        0.1064,
+        0.56
+      ],
+      "split": "holdout",
+      "property_uncertainties": [
+        0.0158,
+        0.0132,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-04",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.9216,
+        0.0444,
+        0.03400000000000002
+      ],
+      "organic": [
+        0.414,
+        0.1304,
+        0.4556000000000001
+      ],
+      "split": "holdout",
+      "property_uncertainties": [
+        0.0152,
+        0.0123,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-05",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.8831,
+        0.0653,
+        0.05160000000000001
+      ],
+      "organic": [
+        0.5332,
+        0.1471,
+        0.3197
+      ],
+      "split": "holdout",
+      "property_uncertainties": [
+        0.0151,
+        0.012,
+        null
+      ]
+    },
+    {
+      "id": "nist-2018-d18-06",
+      "temperature_K": 293.2,
+      "pressure_Pa": 95000.0,
+      "aqueous": [
+        0.8693,
+        0.0722,
+        0.05850000000000004
+      ],
+      "organic": [
+        0.5639,
+        0.1477,
+        0.28840000000000005
+      ],
+      "split": "holdout",
+      "property_uncertainties": [
+        0.015,
+        0.0118,
+        null
+      ]
+    }
+  ],
+  "validation": {
+    "metrics": {
+      "calibration": {
+        "count": 6,
+        "all_computed": true,
+        "rmse": 0.00488632579370245,
+        "maximum_error": 0.01580521852729122
+      },
+      "holdout": {
+        "count": 6,
+        "all_computed": true,
+        "rmse": 0.014389475952488236,
+        "maximum_error": 0.04355063220153499
+      }
+    },
+    "rows": [
+      {
+        "id": "colombo1999-table2-1",
+        "split": "calibration",
+        "temperature_K": 298.0,
+        "status": "computed",
+        "maximum_composition_error": 0.01580521852729122,
+        "squared_errors": [
+          2.1035091773908026e-07,
+          1.8983906035144722e-07,
+          7.998539397767239e-07,
+          0.00024980493269542963,
+          8.349062414912413e-06,
+          0.00016681644588490896
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.4773129868949363,
+              "composition": [
+                0.5404247814727088,
+                0.15137947441845614,
+                0.3081957441088351
+              ]
+            },
+            {
+              "fraction": 0.5226870131050637,
+              "composition": [
+                0.8786486402923197,
+                0.078095705244806,
+                0.04325565446287423
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 2.7755575615628914e-17,
+            "maximum_log_activity_residual": 8.881784197001252e-16,
+            "gibbs_change_RT_per_mol": -0.005993353012060165,
+            "stability_screen": {
+              "minimum_tpd": -4.7933083701092605e-17,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -4.7933083701092605e-17,
+                  "composition": [
+                    0.5404247860253044,
+                    0.15137947281067468,
+                    0.3081957411640208
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 2.097949120491519e-15,
+                  "composition": [
+                    0.5404248012809436,
+                    0.1513794874921035,
+                    0.3081957112269529
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.1448098888657836e-14,
+                  "composition": [
+                    0.8786486430531595,
+                    0.07809568361111023,
+                    0.04325567333573023
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.2143563733860672e-15,
+                  "composition": [
+                    0.8786486468821768,
+                    0.07809569627260775,
+                    0.04325565684521558
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.0468096720801363e-14,
+                  "composition": [
+                    0.8786486881269557,
+                    0.07809570163550611,
+                    0.04325561023753824
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "colombo1999-table2-2",
+        "split": "calibration",
+        "temperature_K": 298.0,
+        "status": "computed",
+        "maximum_composition_error": 0.006212139981639997,
+        "squared_errors": [
+          3.037243948883806e-06,
+          4.774933947067601e-07,
+          1.1061992610973216e-06,
+          3.859068315149018e-05,
+          5.329622147438561e-07,
+          3.005339157465628e-05
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.49117260206625674,
+              "composition": [
+                0.9111827690463409,
+                0.05837899103138471,
+                0.030438239922274395
+              ]
+            },
+            {
+              "fraction": 0.5088273979337432,
+              "composition": [
+                0.46060213998164,
+                0.1388699573884054,
+                0.40052790262995475
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 1.1102230246251565e-16,
+            "maximum_log_activity_residual": 8.881784197001252e-16,
+            "gibbs_change_RT_per_mol": -0.01622725440155459,
+            "stability_screen": {
+              "minimum_tpd": -1.3182009421247998e-16,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -1.3182009421247998e-16,
+                  "composition": [
+                    0.9111827689084729,
+                    0.05837899124246058,
+                    0.030438239849066403
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 6.6875878046654684e-15,
+                  "composition": [
+                    0.46060227028388856,
+                    0.13886996470624732,
+                    0.40052776500986403
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": -6.617591807701011e-17,
+                  "composition": [
+                    0.911182763464966,
+                    0.05837899513055016,
+                    0.030438241404483816
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 7.712639842510954e-15,
+                  "composition": [
+                    0.9111828243450107,
+                    0.05837895597281356,
+                    0.030438219682175617
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 3.868481741494114e-16,
+                  "composition": [
+                    0.46060210202868296,
+                    0.13886995522074752,
+                    0.4005279427505694
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "colombo1999-table2-3",
+        "split": "calibration",
+        "temperature_K": 298.0,
+        "status": "computed",
+        "maximum_composition_error": 0.0067844754004597885,
+        "squared_errors": [
+          5.936628220517157e-06,
+          1.1820530590419989e-07,
+          7.7302331263331e-06,
+          4.6029106459444005e-05,
+          8.959067556475191e-08,
+          4.205727928241473e-05
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.49588026918206873,
+              "composition": [
+                0.9300234803057399,
+                0.045856190014827665,
+                0.024120329679432524
+              ]
+            },
+            {
+              "fraction": 0.5041197308179313,
+              "composition": [
+                0.4023244754004598,
+                0.12391068298483923,
+                0.47376484161470095
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 5.551115123125783e-17,
+            "maximum_log_activity_residual": 8.881784197001252e-16,
+            "gibbs_change_RT_per_mol": -0.02837258198563619,
+            "stability_screen": {
+              "minimum_tpd": -1.0231672933780989e-16,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -1.0231672933780989e-16,
+                  "composition": [
+                    0.9300234805148289,
+                    0.045856190050526144,
+                    0.024120329434645104
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.6888891914400907e-16,
+                  "composition": [
+                    0.4023244756068497,
+                    0.12391068844297025,
+                    0.47376483595018
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.7958763990102208e-14,
+                  "composition": [
+                    0.9300235355394924,
+                    0.045856177028930425,
+                    0.02412028743157716
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 8.57456903625765e-16,
+                  "composition": [
+                    0.9300234968033483,
+                    0.0458561841632057,
+                    0.024120319033445973
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.180671302028272e-15,
+                  "composition": [
+                    0.9300234676890303,
+                    0.04585620098222654,
+                    0.02412033132874305
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "colombo1999-table2-4",
+        "split": "calibration",
+        "temperature_K": 298.0,
+        "status": "computed",
+        "maximum_composition_error": 0.007914291506607163,
+        "squared_errors": [
+          3.5042740369409887e-07,
+          7.824006107339892e-07,
+          8.559429711724212e-08,
+          6.263601005155428e-05,
+          7.557367823958571e-09,
+          6.126753926998054e-05
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.49296930831723307,
+              "composition": [
+                0.9463419690901509,
+                0.034365465879270904,
+                0.019292565030578256
+              ]
+            },
+            {
+              "fraction": 0.5070306916827669,
+              "composition": [
+                0.34140429150660717,
+                0.10345306687729088,
+                0.5551426416161018
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 1.1102230246251565e-16,
+            "maximum_log_activity_residual": 8.881784197001252e-16,
+            "gibbs_change_RT_per_mol": -0.04502648120152719,
+            "stability_screen": {
+              "minimum_tpd": -1.6143359202673995e-16,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -1.6143359202673995e-16,
+                  "composition": [
+                    0.9463419692400661,
+                    0.03436546577938096,
+                    0.019292564980552738
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.2790591175337061e-15,
+                  "composition": [
+                    0.34140424245397893,
+                    0.10345306140971913,
+                    0.555142696136302
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 3.459579997499947e-14,
+                  "composition": [
+                    0.9463419060991125,
+                    0.034365480180807366,
+                    0.019292613720079926
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.742141744372182e-14,
+                  "composition": [
+                    0.9463420305826233,
+                    0.03436543793215949,
+                    0.019292531485217288
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 2.736219113141664e-15,
+                  "composition": [
+                    0.9463419889721626,
+                    0.03436545996419969,
+                    0.01929255106363772
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "colombo1999-table2-5",
+        "split": "calibration",
+        "temperature_K": 298.0,
+        "status": "computed",
+        "maximum_composition_error": 0.0032738338831430625,
+        "squared_errors": [
+          1.0717988294415583e-05,
+          9.357352183780714e-07,
+          5.319941351321069e-06,
+          3.655325820843961e-06,
+          3.244070638336622e-07,
+          6.157634183538924e-06
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.49622016281086684,
+              "composition": [
+                0.961273833883143,
+                0.023342665922042403,
+                0.01538350019481447
+              ]
+            },
+            {
+              "fraction": 0.5037798371891331,
+              "composition": [
+                0.27530189064039867,
+                0.07595956743572088,
+                0.6487385419238805
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 1.1102230246251565e-16,
+            "maximum_log_activity_residual": 8.881784197001252e-16,
+            "gibbs_change_RT_per_mol": -0.06951468468422722,
+            "stability_screen": {
+              "minimum_tpd": -4.7495617027575346e-17,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -4.7495617027575346e-17,
+                  "composition": [
+                    0.9612738338825931,
+                    0.023342665922628392,
+                    0.015383500194778483
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.7816122884087143e-15,
+                  "composition": [
+                    0.2753019203128605,
+                    0.07595957846797602,
+                    0.6487385012191634
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.5705150202931646e-15,
+                  "composition": [
+                    0.9612738467892047,
+                    0.02334265745494288,
+                    0.015383495755852421
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 8.503394291700181e-14,
+                  "composition": [
+                    0.9612737662984756,
+                    0.023342672129192017,
+                    0.015383561572332316
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.985033173966765e-14,
+                  "composition": [
+                    0.9612737838036389,
+                    0.02334268621930692,
+                    0.015383529977054236
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "colombo1999-table2-6",
+        "split": "calibration",
+        "temperature_K": 298.0,
+        "status": "computed",
+        "maximum_composition_error": 0.007402563656103839,
+        "squared_errors": [
+          1.6976108382581407e-06,
+          6.892179863160598e-08,
+          1.082420387768855e-06,
+          5.479794868266943e-05,
+          2.634707187724088e-07,
+          4.7462036551057185e-05
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.4959936447583926,
+              "composition": [
+                0.21289743634389616,
+                0.044763293988638486,
+                0.7423392696674653
+              ]
+            },
+            {
+              "fraction": 0.5040063552416074,
+              "composition": [
+                0.9741429239572048,
+                0.013467470385229387,
+                0.012389605657565876
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 5.551115123125783e-17,
+            "maximum_log_activity_residual": 3.642919299551295e-16,
+            "gibbs_change_RT_per_mol": -0.10154678877594042,
+            "stability_screen": {
+              "minimum_tpd": -5.757031707055932e-17,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -5.757031707055932e-17,
+                  "composition": [
+                    0.21289743368192957,
+                    0.04476329375634855,
+                    0.7423392725617218
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 2.587662343912226e-16,
+                  "composition": [
+                    0.21289742374675233,
+                    0.04476329240999373,
+                    0.7423392838432539
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 4.129128701702513e-15,
+                  "composition": [
+                    0.9741429101100065,
+                    0.013467472519967138,
+                    0.012389617370026218
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 6.796539910628419e-15,
+                  "composition": [
+                    0.9741429218983917,
+                    0.013467462834888049,
+                    0.012389615266720128
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 6.22694617143646e-15,
+                  "composition": [
+                    0.21289737904011408,
+                    0.044763273256663634,
+                    0.7423393477032223
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "nist-2018-d18-01",
+        "split": "holdout",
+        "temperature_K": 293.2,
+        "status": "computed",
+        "maximum_composition_error": 0.010169641530324625,
+        "squared_errors": [
+          4.7202606365487165e-05,
+          8.443166775097723e-06,
+          1.5718866034569535e-05,
+          6.340477100720871e-05,
+          4.87054110802168e-06,
+          0.00010342160885530337
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.49013371387333277,
+              "composition": [
+                0.9699704152978904,
+                0.016294287217377166,
+                0.013735297484732407
+              ]
+            },
+            {
+              "fraction": 0.5098662861266672,
+              "composition": [
+                0.21826271128493357,
+                0.051706930245391025,
+                0.7300303584696755
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 1.6653345369377348e-16,
+            "maximum_log_activity_residual": 1.7763568394002505e-15,
+            "gibbs_change_RT_per_mol": -0.09295698817106735,
+            "stability_screen": {
+              "minimum_tpd": -3.8529804761411674e-18,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -3.8529804761411674e-18,
+                  "composition": [
+                    0.9699704152801403,
+                    0.016294287236149233,
+                    0.013735297483710518
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 5.287939496600228e-16,
+                  "composition": [
+                    0.21826269437964105,
+                    0.051706926259361206,
+                    0.7300303793609978
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 7.587144831536367e-15,
+                  "composition": [
+                    0.9699704314432529,
+                    0.016294287624967613,
+                    0.013735280931779439
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.1348526365640359e-14,
+                  "composition": [
+                    0.9699704487113312,
+                    0.016294272672517655,
+                    0.013735278616151168
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 3.688180078262632e-15,
+                  "composition": [
+                    0.2182627691746221,
+                    0.0517069375042807,
+                    0.7300302933210973
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "nist-2018-d18-02",
+        "split": "holdout",
+        "temperature_K": 293.2,
+        "status": "computed",
+        "maximum_composition_error": 0.005651057592880648,
+        "squared_errors": [
+          2.6876242929670668e-05,
+          2.369650109107901e-07,
+          2.2065939689706957e-05,
+          3.193445191805403e-05,
+          1.2326357735093804e-07,
+          2.8089665705313097e-05
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.4921304723250566,
+              "composition": [
+                0.9593842302157284,
+                0.024313209479436184,
+                0.016302560304835473
+              ]
+            },
+            {
+              "fraction": 0.5078695276749434,
+              "composition": [
+                0.27095105759288063,
+                0.07754891086979096,
+                0.6515000315373285
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 1.6653345369377348e-16,
+            "maximum_log_activity_residual": 1.6653345369377348e-15,
+            "gibbs_change_RT_per_mol": -0.0684230091342154,
+            "stability_screen": {
+              "minimum_tpd": -1.5257184310480082e-16,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -1.5257184310480082e-16,
+                  "composition": [
+                    0.9593842304644258,
+                    0.0243132093110378,
+                    0.016302560224536237
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.9176530026788637e-15,
+                  "composition": [
+                    0.270951024543042,
+                    0.07754891005758821,
+                    0.6515000653993698
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 2.15045780958564e-15,
+                  "composition": [
+                    0.9593842426655423,
+                    0.024313207463139034,
+                    0.016302549871318663
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 2.3005797989214726e-15,
+                  "composition": [
+                    0.9593842126983639,
+                    0.024313219923765797,
+                    0.016302567377870364
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 3.908588897130393e-15,
+                  "composition": [
+                    0.9593842081887788,
+                    0.024313217307518765,
+                    0.016302574503702552
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "nist-2018-d18-03",
+        "split": "holdout",
+        "temperature_K": 293.2,
+        "status": "computed",
+        "maximum_composition_error": 0.0053063139229492726,
+        "squared_errors": [
+          6.736227710901663e-06,
+          7.348922115530838e-06,
+          2.8156967448885298e-05,
+          6.780699760565919e-07,
+          8.474560463409253e-06,
+          1.3946937484498344e-05
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.4985549504272471,
+              "composition": [
+                0.945895424379731,
+                0.034210889543218395,
+                0.0198936860770507
+              ]
+            },
+            {
+              "fraction": 0.5014450495727529,
+              "composition": [
+                0.33277654995533634,
+                0.10348889016637824,
+                0.5637345598782854
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 5.551115123125783e-17,
+            "maximum_log_activity_residual": 4.996003610813204e-16,
+            "gibbs_change_RT_per_mol": -0.04649750593012969,
+            "stability_screen": {
+              "minimum_tpd": -1.5754197499951823e-17,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": 0.0,
+                  "composition": [
+                    0.945895424379731,
+                    0.034210889543218395,
+                    0.0198936860770507
+                  ],
+                  "converged": false
+                },
+                {
+                  "tpd": 1.9390483303162908e-15,
+                  "composition": [
+                    0.33277658848058683,
+                    0.10348890316281915,
+                    0.563734508356594
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 2.489031122653332e-15,
+                  "composition": [
+                    0.9458954342360061,
+                    0.034210890785131065,
+                    0.019893674978862817
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": -1.5754197499951823e-17,
+                  "composition": [
+                    0.9458954284208948,
+                    0.0342108860403275,
+                    0.019893685538777562
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 2.785917116960585e-15,
+                  "composition": [
+                    0.9458954456997075,
+                    0.03421088283284695,
+                    0.019893671467445428
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "nist-2018-d18-04",
+        "split": "holdout",
+        "temperature_K": 293.2,
+        "status": "computed",
+        "maximum_composition_error": 0.011547914121134262,
+        "squared_errors": [
+          2.7312544181653812e-05,
+          9.99022655672067e-06,
+          7.03396291976866e-05,
+          8.031262438767223e-05,
+          6.688342596015927e-06,
+          0.0001333543205490921
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.5035796066187536,
+              "composition": [
+                0.9268261404670802,
+                0.04756073196533978,
+                0.02561312756758002
+              ]
+            },
+            {
+              "fraction": 0.49642039338124644,
+              "composition": [
+                0.4050382688955943,
+                0.1278138169832713,
+                0.4671479141211344
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 1.1102230246251565e-16,
+            "maximum_log_activity_residual": 1.7763568394002505e-15,
+            "gibbs_change_RT_per_mol": -0.026897203328463515,
+            "stability_screen": {
+              "minimum_tpd": -2.3846154307958996e-16,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -2.3846154307958996e-16,
+                  "composition": [
+                    0.9268261404682769,
+                    0.04756073201187134,
+                    0.025613127519851644
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 5.615071834733321e-16,
+                  "composition": [
+                    0.4050382299145594,
+                    0.12781381323608737,
+                    0.46714795684935323
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 7.992864884861353e-15,
+                  "composition": [
+                    0.9268261234864793,
+                    0.047560753628047264,
+                    0.02561312288547354
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 2.396995893365676e-16,
+                  "composition": [
+                    0.9268261354097174,
+                    0.04756073690559483,
+                    0.025613127684687768
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 3.817662252818139e-15,
+                  "composition": [
+                    0.9268261253576578,
+                    0.04756074850273157,
+                    0.02561312613961062
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "nist-2018-d18-05",
+        "split": "holdout",
+        "temperature_K": 293.2,
+        "status": "computed",
+        "maximum_composition_error": 0.034924679295104843,
+        "squared_errors": [
+          0.00012667050295655897,
+          1.0098977118361353e-05,
+          0.00020830247975841382,
+          0.001219733223865925,
+          2.615497546791415e-06,
+          0.0011093848465719227
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.47011978469224697,
+              "composition": [
+                0.49827532070489516,
+                0.14871724999514344,
+                0.3530074292999613
+              ]
+            },
+            {
+              "fraction": 0.5298802153077531,
+              "composition": [
+                0.8943547991077833,
+                0.06847788878319575,
+                0.03716731210902094
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 1.1102230246251565e-16,
+            "maximum_log_activity_residual": 8.881784197001252e-16,
+            "gibbs_change_RT_per_mol": -0.010422688406102387,
+            "stability_screen": {
+              "minimum_tpd": -1.861197202838716e-17,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -1.861197202838716e-17,
+                  "composition": [
+                    0.4982753204751651,
+                    0.14871725005919706,
+                    0.35300742946563773
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 6.918054865157911e-15,
+                  "composition": [
+                    0.49827517243805114,
+                    0.14871725370052588,
+                    0.35300757386142295
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 2.5006796418358316e-14,
+                  "composition": [
+                    0.8943546975705073,
+                    0.06847791564325591,
+                    0.03716738678623688
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 9.153000336718178e-15,
+                  "composition": [
+                    0.8943548866077767,
+                    0.06847784960811824,
+                    0.03716726378410502
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 5.5489862629771754e-15,
+                  "composition": [
+                    0.8943548178468451,
+                    0.06847786745553855,
+                    0.03716731469761633
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      },
+      {
+        "id": "nist-2018-d18-06",
+        "split": "holdout",
+        "temperature_K": 293.2,
+        "status": "computed",
+        "maximum_composition_error": 0.04355063220153499,
+        "squared_errors": [
+          0.00024715150547104055,
+          3.4565494102430376e-06,
+          0.00030906458199251815,
+          0.0018966575651533763,
+          1.657590815295519e-05,
+          0.001558613555097615
+        ],
+        "flash": {
+          "phase_count": 2,
+          "phases": [
+            {
+              "fraction": 0.4618429667041845,
+              "composition": [
+                0.520349367798465,
+                0.15177135212834203,
+                0.32787928007319306
+              ]
+            },
+            {
+              "fraction": 0.5381570332958154,
+              "composition": [
+                0.8850210529377341,
+                0.07405917976813514,
+                0.040919767294130695
+              ]
+            }
+          ],
+          "validation": {
+            "passed": true,
+            "mass_residual": 2.220446049250313e-16,
+            "maximum_log_activity_residual": 4.440892098500626e-16,
+            "gibbs_change_RT_per_mol": -0.00775025037321031,
+            "stability_screen": {
+              "minimum_tpd": -3.1879337321363e-17,
+              "starts": 5,
+              "minima": [
+                {
+                  "tpd": -3.1879337321363e-17,
+                  "composition": [
+                    0.5203493690378027,
+                    0.15177135372943484,
+                    0.3278792772327625
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 5.424904563698209e-15,
+                  "composition": [
+                    0.5203492291063114,
+                    0.15177135487054802,
+                    0.3278794160231406
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 1.257428504657611e-14,
+                  "composition": [
+                    0.8850211631469281,
+                    0.07405913714495868,
+                    0.0409196997081131
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 6.429259206720929e-15,
+                  "composition": [
+                    0.8850211374474004,
+                    0.07405914391198794,
+                    0.04091971864061157
+                  ],
+                  "converged": true
+                },
+                {
+                  "tpd": 9.157565208201987e-16,
+                  "composition": [
+                    0.8850210775709213,
+                    0.07405916415659204,
+                    0.04091975827248666
+                  ],
+                  "converged": true
+                }
+              ],
+              "scope": "finite multistart local optimization; not a global stability certificate"
+            }
+          },
+          "model_id": "acid_lle_colombo1999_v1",
+          "parameter_sha256": "50d18b0ba98c891c0ad4a0f03e5da03775375ae7b2df95f65e5af2442f92ba77",
+          "limits": [
+            "isothermal LLE only; no vapour, duty, transport or global stability claim"
+          ]
+        }
+      }
+    ]
+  },
+  "source_data_sha256": "34e593831c504836b4dd4dfa701eed5d249be238c725bba27d409f8d5b969770",
+  "source_correlation_is_not_independent": true,
+  "external_transfer_is_not_blind": true
+}

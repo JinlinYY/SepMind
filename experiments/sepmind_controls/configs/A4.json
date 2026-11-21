@@ -1,0 +1,9 @@
+{
+  "id": "A4",
+  "label": "SepMind Full (matched scope)",
+  "topology": "expert",
+  "expert": true,
+  "review": true,
+  "classified_revision": true,
+  "dependency_reuse": true
+}

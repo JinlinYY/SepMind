@@ -1,0 +1,45 @@
+{
+  "design_id": "case-1a",
+  "design_mode": "autonomous",
+  "components": [
+    {
+      "canonical_id": "71-43-2",
+      "cas": "71-43-2",
+      "name": "benzene"
+    },
+    {
+      "canonical_id": "108-88-3",
+      "cas": "108-88-3",
+      "name": "toluene"
+    }
+  ],
+  "feed": {
+    "flow": 126.20873831893817,
+    "flow_unit": "kmol/h",
+    "composition": [
+      0.4606587744528467,
+      0.5393412255471532
+    ],
+    "composition_basis": "mole_fraction",
+    "pressure_kPa": 106.325,
+    "quality_q": 1.0
+  },
+  "target": {
+    "distillate_mole_fraction": 0.9974553671197337,
+    "bottoms_mole_fraction": 0.0035365670463452913
+  },
+  "column": {},
+  "assumptions": [
+    "research_scope_low_pressure_vle"
+  ],
+  "source_ids": [
+    "case-1a:requirements_only"
+  ],
+  "origin_tags": {
+    "feed.flow": "calculated",
+    "feed.composition": "calculated",
+    "feed.pressure_kPa": "calculated",
+    "feed.quality_q": "source_reported",
+    "target.distillate_mole_fraction": "calculated"
+  }
+}

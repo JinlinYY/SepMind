@@ -1,0 +1,154 @@
+{
+  "model_id": "acid_lle_colombo1999_v1",
+  "model": "NRTL",
+  "component_order": [
+    "7732-18-5",
+    "64-19-7",
+    "141-78-6"
+  ],
+  "molecular_weights_g_mol": [
+    18.01528,
+    60.051959999999994,
+    88.10512
+  ],
+  "molecular_weight_source": "thermo 0.6.1 ChemicalConstantsPackage identity metadata",
+  "tau_convention": "tau_ij=a_ij(K)/T; published Table 4 energy parameters linearly interpolated between reported temperatures; alpha_ij=0.2",
+  "A": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "B_K": [
+    [
+      0,
+      -79.001,
+      1287.5
+    ],
+    [
+      -153.38,
+      0,
+      -758.51
+    ],
+    [
+      150.63,
+      960.85,
+      0
+    ]
+  ],
+  "alpha": [
+    [
+      0,
+      0.2,
+      0.2
+    ],
+    [
+      0.2,
+      0,
+      0.2
+    ],
+    [
+      0.2,
+      0.2,
+      0
+    ]
+  ],
+  "source_url": "https://doi.org/10.1021/je9702910",
+  "source_sha256": "f4d20f4c717e3821c9c0d1d77d1e58c88f8498e3dab6e78a49ea47643519dfbb",
+  "source_locator": "Table 4 (parameters), Table 2 experimental rows at 298 K",
+  "admitted_phases": [
+    "LLE"
+  ],
+  "qualification_status": "conditionally_qualified_lle",
+  "temperature_guard_K": [
+    293.2,
+    298.15
+  ],
+  "pressure_guard_Pa": [
+    95000.0,
+    101325.0
+  ],
+  "limitations": [
+    "LLE-only preliminary screening; no VLE, HOC, enthalpy or transport qualification.",
+    "Linear interpolation of published energy parameters is an explicit project approximation, not a published temperature correlation.",
+    "Temperature guard covers 293.2 K external transfer check and 298 K source correlation; 298.15 K uses a 0.15 K interpolation.",
+    "Separate-source transfer data were inspected during model development; no blinded external-validation claim."
+  ],
+  "temperature_parameter_knots": [
+    {
+      "temperature_K": 283.0,
+      "B_K": [
+        [
+          0,
+          70.583,
+          1146.8
+        ],
+        [
+          -142.66,
+          0,
+          -732.22
+        ],
+        [
+          201.02,
+          1223.1,
+          0
+        ]
+      ]
+    },
+    {
+      "temperature_K": 298.0,
+      "B_K": [
+        [
+          0,
+          -79.001,
+          1287.5
+        ],
+        [
+          -153.38,
+          0,
+          -758.51
+        ],
+        [
+          150.63,
+          960.85,
+          0
+        ]
+      ]
+    },
+    {
+      "temperature_K": 313.0,
+      "B_K": [
+        [
+          0,
+          -185.65,
+          1369.2
+        ],
+        [
+          -162.74,
+          0,
+          -804.59
+        ],
+        [
+          137.27,
+          979.74,
+          0
+        ]
+      ]
+    }
+  ],
+  "public_copy_url": "https://pdfcoffee.com/liquid-liquid-equilibria-of-the-ternary-systems-water-acetic-acid-ethyl-acetate-and-water-acetic-acid-isophorone-355-trimethyl-2-cyclohexen-1-one-pdf-free.html",
+  "parameter_origin": "published LLE-specific parameters, not fitted in SepMind",
+  "qualification_report": "engineering/data/hybrid/acid_lle_colombo1999_v1_qualification.json",
+  "qualification_sha256": "19a06a3cc461d5178f71c1a3a98516c8fe80384084c816640e85260bceba3855"
+}

@@ -1,0 +1,26 @@
+{
+  "title": "Benzene/toluene distillation: 36 wt% benzene feed",
+  "components": [
+    [
+      "benzene",
+      "71-43-2"
+    ],
+    [
+      "toluene",
+      "108-88-3"
+    ]
+  ],
+  "mw": [
+    78.0,
+    92.0
+  ],
+  "throughput_t_y": 95500,
+  "throughput_basis": "feed",
+  "hours_y": 8000,
+  "wf": 0.36,
+  "wd": 0.997,
+  "recovery": 0.997,
+  "pressure": 106.325,
+  "source_locator": "DOCX P0101-P0144, P0262-P0338, P0497-P0507, P0880-P0949, P1094-P1109",
+  "raw_locator": "DOCX P0108, P0122-P0134; recovery P0128; later gauge pressure P0311"
+}

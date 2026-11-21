@@ -1,0 +1,115 @@
+{
+  "model_id": "acid_lle_nist2018_regressed_v1",
+  "model": "NRTL",
+  "component_order": [
+    "7732-18-5",
+    "64-19-7",
+    "141-78-6"
+  ],
+  "molecular_weights_g_mol": [
+    18.01528,
+    60.051959999999994,
+    88.10512
+  ],
+  "molecular_weight_source": "thermo 0.6.1 ChemicalConstantsPackage identity metadata",
+  "tau_convention": "tau_ij = A_ij + B_ij/T; B in K; indices are thermodynamic NRTL i,j, not transposed",
+  "A": [
+    [
+      0.0,
+      25.77438538759879,
+      7.912265683696929
+    ],
+    [
+      -2.5256000523363444,
+      0.0,
+      4.762204880146197
+    ],
+    [
+      -4.101577363125413,
+      2.1075275788120784,
+      0.0
+    ]
+  ],
+  "B_K": [
+    [
+      0.0,
+      -6114.191719056135,
+      -1151.9496368144128
+    ],
+    [
+      90.27872193031672,
+      0.0,
+      -1982.0101079279189
+    ],
+    [
+      1369.766983963292,
+      700.2344137822527,
+      0.0
+    ]
+  ],
+  "alpha": [
+    [
+      0,
+      0.3,
+      0.2
+    ],
+    [
+      0.3,
+      0,
+      0.3
+    ],
+    [
+      0.2,
+      0.3,
+      0
+    ]
+  ],
+  "source_url": "https://skoge.folk.ntnu.no/prost/proceedings/adconip-2014/pdf/SUBS21TO40/0032/0032_FI.pdf",
+  "source_sha256": "8813911ea00476f2ef62b533f97607771d8b4d44092fdf90252ac622389514db",
+  "source_locator": "Table III, PDF p.2",
+  "admitted_phases": [],
+  "qualification_status": "failed_qualification",
+  "temperature_guard_K": [
+    293.2,
+    313.2
+  ],
+  "pressure_guard_Pa": [
+    95000.0,
+    101325.0
+  ],
+  "limitations": [
+    "Candidate transcribed from a different process study, not identical to Ramdin parameter provenance.",
+    "Not admitted for VLE, enthalpy or HOC vapour association without separate qualification.",
+    "Project T/P guards are not claimed published parameter-fitting limits."
+  ],
+  "regression": {
+    "algorithm": "bounded least_squares, log activity equality at measured endpoints",
+    "calibration_ids": [
+      "nist-2018-d18-01",
+      "nist-2018-d18-03",
+      "nist-2018-d18-04",
+      "nist-2018-d18-06",
+      "nist-2018-d18-07",
+      "nist-2018-d18-09",
+      "nist-2018-d18-10",
+      "nist-2018-d18-12"
+    ],
+    "withheld_ids": [
+      "nist-2018-d18-02",
+      "nist-2018-d18-05",
+      "nist-2018-d18-08",
+      "nist-2018-d18-11"
+    ],
+    "fit_converged": true,
+    "sum_squared_log_activity_residual": 0.02074639091820605,
+    "parameter_bounds_tau_at_guard_endpoints": [
+      -10,
+      20
+    ],
+    "nonrandomness": "fixed at separately published Table III alpha; not optimized",
+    "source_reference_sha256": "9de81d4faa3cd32e7723359cf3eb9023d4f321669b24c8a988ffc99e5a7c955a"
+  },
+  "parameter_origin": "project regression to measured calibration data; not original Li/Chien/Chen coefficients",
+  "qualification_report": "output/engineering/hybrid_lle_qualification_v1/qualification.json",
+  "qualification_sha256": "eca97d096ff48628df8cc66748b04aef42d5fdf62fcd0655290a03a6560fc556"
+}

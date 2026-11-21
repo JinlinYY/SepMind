@@ -1,0 +1,76 @@
+version: 1
+scope: offline property qualification; not production Agent tool admission
+backend: DWSIM
+tools:
+  - name: multifeed_candidate_column
+    input_python_contract: separation.tools.multifeed.MultiFeedColumnRequest
+    implementation: separation.tools.multifeed.MultiFeedDwsimBackend.column
+    purpose: source reconstruction or conditional candidate investigation
+    admitted_cards_for_diagnostics:
+      - mch_toluene_phenol_unifac_v1
+      - mch_toluene_phenol_source_pure_v2
+      - acetone_water_3methylhexane_unifac_candidate
+    design_admitted: false
+    checks:
+      - independent physical feed streams with separate temperature and stage
+      - no imported CAPE-OPEN objects or binary deserialization
+      - source reconstruction remains distinct from autonomous design
+      - actual component and energy closure across all feed streams
+      - parameter hash, stage convention and initial-estimate provenance
+      - optional sparse solver retains native MESH equations and native acceptance
+      - condenser ratio and product draw independently rechecked
+  - name: mixture_probe
+    input_python_contract: separation.tools.mixture.MixtureProbeRequest
+    implementation: separation.tools.mixture.MixtureDwsimBackend.mixture_probe
+    purpose: property_qualification
+    design_admitted: false
+    checks:
+      - model card allowlist and finite input contracts
+      - native compound CAS identity and explicit parameter ordering
+      - component phase closure and fugacity residual
+      - experimental screening is separate from solver convergence
+      - source sulfolane direct LLE uses native SimpleLLE.Flash_PT with independent stability review
+      - obsolete FlashAlgorithm assignment is not accepted as proof of algorithm selection
+  - name: candidate_mixture_column
+    input_python_contract: separation.tools.mixture.CandidateColumnRequest
+    implementation: separation.tools.mixture.MixtureDwsimBackend.candidate_column
+    purpose: property_qualification
+    admitted_card_for_diagnostics: abe_oh2021_vle_candidate
+    design_admitted: false
+    checks:
+      - native MESH convergence
+      - independent component and energy closure
+      - explicit feed temperature and stage convention
+      - acid column calls blocked pending caloric qualification
+      - numerical initial profiles are not product specifications
+  - name: bounded_candidate_column_revision
+    input_python_contract: separation.tools.column_revision.ColumnRevisionRequest
+    implementation: separation.tools.column_revision.run_column_revision
+    purpose: property_qualification
+    design_admitted: false
+    checks:
+      - immutable full-model target and bounded native calls
+      - coarse towers and relaxed cuts are initialization experiments only
+      - failed steps reduce continuation step before increasing stages
+      - every timeout and failed calculation retained in the decision ledger
+      - saved seed feed, model, conditions and parameter hash must match
+      - native MESH target reproduction is not product or property qualification
+  - name: review_candidate_column_goals
+    implementation: pha.engineering.validation.column_goals.review_column_goals
+    goal_contract: pha.engineering.validation.column_goals.ColumnProductGoal
+    purpose: property_qualification
+    design_admitted: false
+    checks:
+      - raw product vectors and unchanged feed
+      - independent component, molar-to-mass and energy closure
+      - product mass purity separate from component recovery
+      - explicit origin of every internal unit allocation
+  - name: review_candidate_stage_equilibrium
+    implementation: pha.engineering.validation.column_goals.review_candidate_stage_equilibrium
+    purpose: property_qualification
+    design_admitted: false
+    checks:
+      - native vapor pressure correlations and independent NRTL equation
+      - active-component fugacity residual at every equilibrium stage
+      - total condenser excluded from vapor-liquid equilibrium assumption
+      - finite multistart liquid TPD screening, not global phase proof

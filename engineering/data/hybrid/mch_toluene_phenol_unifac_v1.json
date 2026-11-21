@@ -1,0 +1,23 @@
+{
+  "model_id": "mch_toluene_phenol_unifac_v1",
+  "status": "source_reconstruction_candidate",
+  "model": "UNIFAC",
+  "component_order": ["108-95-2", "108-88-3", "108-87-2"],
+  "native_names": ["Phenol", "Toluene", "Methylcyclohexane"],
+  "molecular_weights_g_mol": [94.11124, 92.13842, 98.18606],
+  "molecular_weight_source": "Formula-derived standard identity constants; native library values retained separately",
+  "group_collection": "UNIFACGroups",
+  "vapor_model": "ideal_physical_gas",
+  "native_options": {"vapor_fugacity": "Ideal", "enthalpy": "Excess", "poynting": true},
+  "source_url": "https://dwsim.fossee.in/flowsheeting-project/full-download/project/43",
+  "source_native_sha256": "6bdf3c677f9861158d851abfc5fda76ad4a957f60c95ef68b8b5ba30a9090899",
+  "source_locator": "Root UNIFAC PP Parameters; ChemSep persisted plain-text configuration (no binary deserialization)",
+  "admitted_phases": [],
+  "temperature_guard_K": [330.0, 500.0],
+  "pressure_guard_Pa": [95000.0, 110000.0],
+  "limitations": [
+    "Rebuilt with native DWSIM columns, not replay of the source ChemSep/COCO CAPE-OPEN objects.",
+    "Source uses ideal vapor fugacity, excess caloric model and Poynting correction; pure-property/library versions can differ.",
+    "UNIFAC is an explicit predictive model hypothesis; source reproduction is not independent experimental validation."
+  ]
+}

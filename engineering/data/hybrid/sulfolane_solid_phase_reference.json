@@ -1,0 +1,12 @@
+{
+  "reference_id": "iupac_sulfolane_water_sle_2023",
+  "source_url": "https://doi.org/10.1515/pac-2021-1002",
+  "locator": "Section 2.2, Table 3, sulfolane crystal I/liquid",
+  "CAS": "126-33-0",
+  "pure_reference_temperature_K": 301.6,
+  "classification": "IUPAC evaluated phase-transition reference, not a multicomponent solid-equilibrium model",
+  "engineering_near_pure_mole_fraction_threshold": 0.999,
+  "engineering_temperature_margin_K": 5.0,
+  "policy_origin": "Explicit conservative project screen; threshold and margin are assumptions, not measured mixture liquidus",
+  "limits": ["Do not apply the sulfolane/water Wilson fit to MCH/toluene mixtures", "This screen is necessary for near-pure solvent handling; it does not prove global absence of all solid phases"]
+}

@@ -1,0 +1,24 @@
+{
+  "design_id": "topology-research-ternary",
+  "components": ["Benzene", "Toluene", "Ethylbenzene"],
+  "feed_mole_fractions": [0.3333333333333333, 0.3333333333333333, 0.3333333333333333],
+  "feed_flow_mol_s": 30.0,
+  "pressure_Pa": 101325.0,
+  "feed_state": "saturated_liquid",
+  "property_package": "Raoult's Law",
+  "ideality_assumption_source": "Explicit ideal-liquid and ideal-vapor research hypothesis for this newly constructed aromatic-mixture task. Native DWSIM pure properties are used. Experimental mixture qualification is outside this task.",
+  "products": [
+    {"product_id": "P_BZ", "component": "Benzene", "minimum_mole_fraction": 0.99, "minimum_recovery": 0.95},
+    {"product_id": "P_TOL", "component": "Toluene", "minimum_mole_fraction": 0.99, "minimum_recovery": 0.95},
+    {"product_id": "P_EB", "component": "Ethylbenzene", "minimum_mole_fraction": 0.99, "minimum_recovery": 0.95}
+  ],
+  "budget": {
+    "maximum_candidates": 6,
+    "maximum_columns": 4,
+    "maximum_llm_calls": 16,
+    "maximum_native_calls": 24,
+    "native_timeout_s": 100,
+    "run_timeout_s": 1200,
+    "desired_verified_topologies": 1
+  }
+}

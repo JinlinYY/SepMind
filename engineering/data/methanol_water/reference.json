@@ -1,0 +1,65 @@
+{
+  "source_url": "https://trc.nist.gov/ThermoML/10.1016/j.jct.2009.11.020.xml",
+  "source_sha256": "6a858b6788994573a11e01315b96cb3eeb42603a2e20fc7b234ddb4d04c7bbaf",
+  "dataset": 7,
+  "selection": "measured P-x-T only; no predicted vapor compositions used",
+  "used_for_fitting": false,
+  "points": [
+    {
+      "temperature_K": 371.45,
+      "x_light": 0.0,
+      "pressure_Pa": 95300.0
+    },
+    {
+      "temperature_K": 361.2,
+      "x_light": 0.1,
+      "pressure_Pa": 95300.0
+    },
+    {
+      "temperature_K": 354.85,
+      "x_light": 0.2,
+      "pressure_Pa": 95300.0
+    },
+    {
+      "temperature_K": 350.4,
+      "x_light": 0.3,
+      "pressure_Pa": 95300.0
+    },
+    {
+      "temperature_K": 347.1,
+      "x_light": 0.4,
+      "pressure_Pa": 95300.0
+    },
+    {
+      "temperature_K": 344.55,
+      "x_light": 0.5,
+      "pressure_Pa": 95300.0
+    },
+    {
+      "temperature_K": 342.45,
+      "x_light": 0.6,
+      "pressure_Pa": 95300.0
+    },
+    {
+      "temperature_K": 340.65,
+      "x_light": 0.7,
+      "pressure_Pa": 95300.0
+    },
+    {
+      "temperature_K": 339.05,
+      "x_light": 0.8,
+      "pressure_Pa": 95300.0
+    },
+    {
+      "temperature_K": 337.55,
+      "x_light": 0.9,
+      "pressure_Pa": 95300.0
+    },
+    {
+      "temperature_K": 336.1,
+      "x_light": 1.0,
+      "pressure_Pa": 95300.0
+    }
+  ],
+  "operating_domain_caveat": "Reference P=95.3 kPa; task P=106.325 kPa is an explicit near-atmospheric pressure extrapolation."
+}

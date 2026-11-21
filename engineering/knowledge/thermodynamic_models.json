@@ -1,0 +1,147 @@
+{
+  "version": "1.2",
+  "scope": "Expert constraints on implemented preliminary VLE adapters",
+  "cards": [
+    {
+      "model": "NRTL",
+      "implemented": true,
+      "priority": 10,
+      "component_pairs": [
+        [
+          "64-17-5",
+          "7732-18-5"
+        ]
+      ],
+      "mixture_class": "polar_alcohol_water",
+      "pressure_kPa": [
+        101.295,
+        101.345
+      ],
+      "required_assumptions": [],
+      "hypothesis": "Source-backed liquid nonideality and a low-pressure ideal-vapor approximation can describe this atmospheric binary VLE for conditional screening.",
+      "source_ids": [
+        "thermo_0.6.1_ChemSep_NRTL",
+        "NIST_je2005209_binary_datasets_2_3"
+      ],
+      "limitations": [
+        "published_fit_temperature_limits_unavailable",
+        "project_guard_350_374_K_is_not_a_fit_interval",
+        "LLE_and_other_pressures_not_qualified"
+      ]
+    },
+    {
+      "model": "Raoult",
+      "implemented": true,
+      "priority": 20,
+      "component_pairs": [
+        [
+          "142-82-5",
+          "111-84-2"
+        ]
+      ],
+      "mixture_class": "qualified_hydrocarbon_ideal_screen",
+      "pressure_kPa": null,
+      "required_assumptions": [
+        "ideal_liquid_and_vapor"
+      ],
+      "hypothesis": "Under the explicit ideality assumption, sourced pure saturation pressures support ideal-mixture VLE calculations.",
+      "source_ids": [
+        "thermo_0.6.1_WAGNER_MCGARRY"
+      ],
+      "limitations": [
+        "mixture_ideality_not_experimentally_proven",
+        "pure_correlation_temperature_limits_enforced"
+      ]
+    },
+    {
+      "model": "UNIQUAC",
+      "implemented": false,
+      "priority": 100,
+      "component_pairs": [],
+      "mixture_class": "unqualified",
+      "pressure_kPa": null,
+      "required_assumptions": [],
+      "hypothesis": "Eligible only after a qualified numerical adapter and source-backed parameters are available.",
+      "source_ids": [],
+      "limitations": [
+        "no_qualified_adapter_and_parameters_in_this_project"
+      ]
+    },
+    {
+      "model": "PR",
+      "implemented": false,
+      "priority": 110,
+      "component_pairs": [],
+      "mixture_class": "unqualified",
+      "pressure_kPa": null,
+      "required_assumptions": [],
+      "hypothesis": "Eligible only after a phase-appropriate EOS and mixing-rule parameterization is qualified.",
+      "source_ids": [],
+      "limitations": [
+        "no_qualified_adapter_and_parameters_in_this_project"
+      ]
+    },
+    {
+      "model": "Raoult",
+      "implemented": true,
+      "priority": 21,
+      "component_pairs": [
+        [
+          "71-43-2",
+          "108-88-3"
+        ]
+      ],
+      "mixture_class": "research_near_ideal_aromatic",
+      "pressure_kPa": [
+        106.3,
+        106.35
+      ],
+      "required_assumptions": [
+        "research_scope_low_pressure_vle"
+      ],
+      "hypothesis": "Near-ideal aromatic pair, measured P-x-T screening; explicit extrapolation beyond reference temperatures.",
+      "source_ids": [
+        "thermo_0.6.1_WAGNER_MCGARRY",
+        "NIST_fluid_2009_03_012_dataset_1"
+      ],
+      "limitations": [
+        "research_scope_only",
+        "reference_333_353_K_not_full_column_T_range",
+        "no_experimental_y_validation"
+      ]
+    },
+    {
+      "model": "NRTL",
+      "implemented": true,
+      "priority": 11,
+      "component_pairs": [
+        [
+          "67-56-1",
+          "7732-18-5"
+        ]
+      ],
+      "mixture_class": "research_polar_alcohol_water",
+      "pressure_kPa": [
+        106.3,
+        106.35
+      ],
+      "required_assumptions": [
+        "research_scope_low_pressure_vle"
+      ],
+      "hypothesis": "Unchanged ChemSep NRTL screened against measured 101.3 kPa T-x-y; task at 106.325 kPa is explicitly extrapolated. Separate 95.3 kPa screen fails and remains an unresolved source conflict.",
+      "source_ids": [
+        "thermo_0.6.1_ChemSep_NRTL",
+        "Alvarez_2011_DOI_10_1080_00319100903012403_Table_2",
+        "NIST_jct_2009_11_020_dataset_7_conflict"
+      ],
+      "limitations": [
+        "research_scope_only",
+        "published_fit_T_interval_unavailable",
+        "101_3_to_106_325_kPa_pressure_extrapolation",
+        "95_3_kPa_reference_screen_failed_source_conflict",
+        "reference_temperature_header_requires_explicit_C_to_K_conversion",
+        "no_experimental_VLE_at_task_pressure"
+      ]
+    }
+  ]
+}

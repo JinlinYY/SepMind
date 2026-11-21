@@ -1,0 +1,53 @@
+version: 1
+base_registry: tool_registry.yaml
+scope: conditionally qualified isothermal extraction section; full hybrid flowsheet
+  not implemented
+tools:
+- name: check_process_basis
+  gate: G0
+  input_schema: process_basis_input.schema.json
+  implemented: true
+  prerequisite_tools: []
+- name: qualify_lle_model
+  gate: G2
+  input_schema: process_basis_input.schema.json
+  implemented: true
+  prerequisite_tools:
+  - check_process_basis
+- name: calculate_process_feed_inventory
+  gate: G3
+  input_schema: process_basis_input.schema.json
+  implemented: true
+  prerequisite_tools:
+  - qualify_lle_model
+- name: screen_extraction_phase_split
+  gate: G1
+  input_schema: process_basis_input.schema.json
+  implemented: true
+  prerequisite_tools:
+  - calculate_process_feed_inventory
+- name: explore_extraction_candidates
+  gate: G4
+  input_schema: process_basis_input.schema.json
+  implemented: true
+  prerequisite_tools:
+  - screen_extraction_phase_split
+- name: select_extraction_candidate
+  gate: G4
+  input_schema: process_basis_input.schema.json
+  implemented: true
+  prerequisite_tools:
+  - explore_extraction_candidates
+  - review_extraction_candidates
+- name: review_extraction_candidates
+  gate: G8
+  input_schema: process_basis_input.schema.json
+  implemented: true
+  prerequisite_tools:
+  - explore_extraction_candidates
+not_implemented:
+- qualified acid vapour association/VLE
+- qualified general nonideal multicomponent MESH (offline ABE candidate diagnostics
+  are separate in research_property_tool_registry.yaml and are not design admission)
+- solvent regeneration and full recycle
+- hybrid energy and equipment

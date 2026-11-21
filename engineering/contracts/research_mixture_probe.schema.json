@@ -1,0 +1,111 @@
+{
+  "$defs": {
+    "MixtureProbePoint": {
+      "additionalProperties": false,
+      "properties": {
+        "point_id": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Point Id",
+          "type": "string"
+        },
+        "mole_fractions": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 8,
+          "minItems": 2,
+          "title": "Mole Fractions",
+          "type": "array"
+        },
+        "pressure_Pa": {
+          "exclusiveMinimum": 0.0,
+          "maximum": 2000000.0,
+          "title": "Pressure Pa",
+          "type": "number"
+        },
+        "temperature_K": {
+          "default": 350.0,
+          "maximum": 600.0,
+          "minimum": 273.15,
+          "title": "Temperature K",
+          "type": "number"
+        },
+        "specification": {
+          "default": "bubble",
+          "enum": [
+            "TP",
+            "bubble",
+            "pure_properties",
+            "phase_properties"
+          ],
+          "title": "Specification",
+          "type": "string"
+        },
+        "phase": {
+          "default": "liquid",
+          "enum": [
+            "liquid",
+            "vapor"
+          ],
+          "title": "Phase",
+          "type": "string"
+        }
+      },
+      "required": [
+        "point_id",
+        "mole_fractions",
+        "pressure_Pa"
+      ],
+      "title": "MixtureProbePoint",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "property_card_id": {
+      "title": "Property Card Id",
+      "type": "string"
+    },
+    "points": {
+      "items": {
+        "$ref": "#/$defs/MixtureProbePoint"
+      },
+      "maxItems": 200,
+      "minItems": 1,
+      "title": "Points",
+      "type": "array"
+    },
+    "purpose": {
+      "const": "property_qualification",
+      "default": "property_qualification",
+      "title": "Purpose",
+      "type": "string"
+    },
+    "phase_policy": {
+      "default": "default",
+      "enum": [
+        "default",
+        "liquid_liquid",
+        "direct_lle"
+      ],
+      "title": "Phase Policy",
+      "type": "string"
+    },
+    "lle_initialization": {
+      "default": "native_default",
+      "enum": [
+        "native_default",
+        "independent_gibbs"
+      ],
+      "title": "Lle Initialization",
+      "type": "string"
+    }
+  },
+  "required": [
+    "property_card_id",
+    "points"
+  ],
+  "title": "MixtureProbeRequest",
+  "type": "object"
+}

@@ -1,0 +1,166 @@
+{
+  "source_url": "https://jupiter.chem.uoa.gr/thanost/papers/papers2/PhysChemLiq_49%282011%2952.pdf",
+  "publication_doi": "10.1080/00319100903012403",
+  "source_sha256": "d51e006dfe7f3ea01d50958fd0a272563ba089c2a98f8cd1b7ecede0016a3015",
+  "table": "Table 2, printed pp.55-56 (PDF pp.6-7)",
+  "temperature_header_issue": "Table header says T(K), but numerical values 64-100 describe degrees Celsius; explicitly normalize by +273.15. Check source unit issue before use.",
+  "used_for_fitting": false,
+  "points": [
+    {
+      "x_light": 0.0001,
+      "y_light": 0.001,
+      "temperature_K": 372.79999999999995,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.001,
+      "y_light": 0.009,
+      "temperature_K": 372.60999999999996,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.01,
+      "y_light": 0.075,
+      "temperature_K": 370.94,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.064,
+      "y_light": 0.321,
+      "temperature_K": 363.96,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.103,
+      "y_light": 0.425,
+      "temperature_K": 360.53,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.217,
+      "y_light": 0.596,
+      "temperature_K": 354.19,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.306,
+      "y_light": 0.672,
+      "temperature_K": 351.08,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.316,
+      "y_light": 0.679,
+      "temperature_K": 350.77,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.383,
+      "y_light": 0.722,
+      "temperature_K": 348.95,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.443,
+      "y_light": 0.757,
+      "temperature_K": 347.5,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.444,
+      "y_light": 0.757,
+      "temperature_K": 347.46999999999997,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.532,
+      "y_light": 0.802,
+      "temperature_K": 345.59,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.632,
+      "y_light": 0.847,
+      "temperature_K": 343.66999999999996,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.676,
+      "y_light": 0.867,
+      "temperature_K": 342.88,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.689,
+      "y_light": 0.872,
+      "temperature_K": 342.64,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.696,
+      "y_light": 0.875,
+      "temperature_K": 342.52,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.768,
+      "y_light": 0.906,
+      "temperature_K": 341.27,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.77,
+      "y_light": 0.906,
+      "temperature_K": 341.26,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.827,
+      "y_light": 0.93,
+      "temperature_K": 340.30999999999995,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.896,
+      "y_light": 0.958,
+      "temperature_K": 339.2,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.914,
+      "y_light": 0.966,
+      "temperature_K": 338.9,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.933,
+      "y_light": 0.973,
+      "temperature_K": 338.60999999999996,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.937,
+      "y_light": 0.975,
+      "temperature_K": 338.54999999999995,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.972,
+      "y_light": 0.989,
+      "temperature_K": 338.01,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.977,
+      "y_light": 0.991,
+      "temperature_K": 337.92999999999995,
+      "pressure_Pa": 101300.0
+    },
+    {
+      "x_light": 0.977,
+      "y_light": 0.991,
+      "temperature_K": 337.91999999999996,
+      "pressure_Pa": 101300.0
+    }
+  ]
+}

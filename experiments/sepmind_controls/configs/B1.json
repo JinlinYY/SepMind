@@ -1,0 +1,9 @@
+{
+  "id": "B1",
+  "label": "w/o Expert Guidance",
+  "topology": "expert",
+  "expert": false,
+  "review": true,
+  "classified_revision": true,
+  "dependency_reuse": true
+}

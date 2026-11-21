@@ -1,0 +1,25 @@
+{
+  "process_goal": "preliminary_binary_distillation",
+  "design_mode": "specified",
+  "components": [
+    {"canonical_id": "142-82-5", "name": "n-heptane", "cas": "142-82-5"},
+    {"canonical_id": "111-84-2", "name": "n-nonane", "cas": "111-84-2"}
+  ],
+  "feed": {
+    "flow": 100,
+    "flow_unit": "kmol/h",
+    "composition": [0.5, 0.5],
+    "composition_basis": "mole_fraction",
+    "pressure_kPa": 101.325,
+    "quality_q": 1
+  },
+  "target": {"distillate_mole_fraction": 0.95, "bottoms_mole_fraction": 0.05},
+  "thermodynamic_model": "Raoult",
+  "column": {"reflux_ratio": 2.5, "max_stages": 200},
+  "assumptions": ["ideal_liquid_and_vapor", "constant_molar_overflow"],
+  "source_ids": ["explicit_demonstration_specs_not_experimental_data"],
+  "origin_tags": {
+    "components": "provided", "feed": "provided", "target": "provided",
+    "thermodynamic_model": "provided", "column": "provided", "assumptions": "provided"
+  }
+}

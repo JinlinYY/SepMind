@@ -1,0 +1,20 @@
+{
+  "dataset_id": "mch_toluene_hartanto2025_table2",
+  "source_url": "https://doi.org/10.1021/acs.jced.4c00509",
+  "open_copy": "https://pure.tudelft.nl/ws/portalfiles/portal/240345087/hartanto-et-al-2025-isobaric-vapor-liquid-equilibrium-of-methylcyclohexane-toluene-with-gamma-valerolactone-as-a.pdf",
+  "locator": "Table 2 (binary MCH/toluene only)",
+  "component_order": ["108-87-2", "108-88-3"],
+  "pressure_Pa": 101300,
+  "T_unit": "K",
+  "composition_basis": "mole fraction",
+  "expanded_uncertainty": {"coverage_factor": 2, "temperature_K": 0.4, "pressure_Pa": 230, "x": 0.006, "y": 0.006},
+  "use": "Independent external check of the hydrocarbon binary subsystem; no fitting or solvent-ternary qualification",
+  "rows_T_x_y": [
+    [383.87, 0.000, 0.000], [382.50, 0.046, 0.078],
+    [381.50, 0.095, 0.146], [379.87, 0.188, 0.273],
+    [378.43, 0.297, 0.386], [377.45, 0.396, 0.476],
+    [376.42, 0.498, 0.571], [375.60, 0.595, 0.655],
+    [375.03, 0.705, 0.743], [374.62, 0.800, 0.823],
+    [374.16, 0.906, 0.915], [373.92, 1.000, 1.000]
+  ]
+}

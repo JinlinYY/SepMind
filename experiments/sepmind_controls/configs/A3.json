@@ -1,0 +1,9 @@
+{
+  "id": "A3",
+  "label": "Multi-Agent roles",
+  "topology": "multi_agent",
+  "expert": false,
+  "review": false,
+  "classified_revision": false,
+  "dependency_reuse": true
+}

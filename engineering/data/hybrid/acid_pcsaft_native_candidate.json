@@ -1,0 +1,13 @@
+{
+  "model_id":"acid_pcsaft_native_candidate",
+  "model":"PC-SAFT (with Association Support) (.NET Code)",
+  "status":"unqualified_diagnostic_only",
+  "component_order":["7732-18-5","64-19-7","141-78-6"],
+  "native_names":["Water","Acetic acid","Ethyl acetate"],
+  "vapor_model":"native_associating_EOS",
+  "admitted_phases":[],
+  "parameter_source":"Installed DWSIM 9.0.5 AdvancedEOS compound and interaction library; exact native values captured with every diagnostic batch.",
+  "source_url":"https://github.com/DanWBR/dwsim/tree/windows/DWSIM.Thermodynamics.AdvancedEOS",
+  "missing_binary_policy":"Explicit native-zero-kij hypothesis for diagnostic screening only; missing entries are reported and never counted as fitted binary parameters.",
+  "limitations":["Associating PC-SAFT is a separate model, not an HOC implementation or exact literature reproduction.","Native association topology and missing binary coefficients require empirical checks before design admission.","A VLE test alone cannot qualify all ternary phases, caloric properties or complete-process design."]
+}

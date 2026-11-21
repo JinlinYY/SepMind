@@ -1,0 +1,26 @@
+{
+  "title": "Ethanol/water distillation: 48 wt% ethanol feed",
+  "components": [
+    [
+      "ethanol",
+      "64-17-5"
+    ],
+    [
+      "water",
+      "7732-18-5"
+    ]
+  ],
+  "mw": [
+    46.07,
+    18.015
+  ],
+  "throughput_t_y": 16500,
+  "throughput_basis": "feed",
+  "hours_y": 7920,
+  "wf": 0.48,
+  "wd": 0.936,
+  "wb": 0.022,
+  "pressure": 101.325,
+  "source_locator": "DOCX P0071-P0103; chapters 4-10; see existing water/ethanol source audit",
+  "raw_locator": "DOCX P0072 (atmospheric, bubble-point feed), P0078-P0095 (mass specifications and throughput)"
+}

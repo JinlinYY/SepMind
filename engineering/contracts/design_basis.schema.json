@@ -1,0 +1,955 @@
+{
+  "$defs": {
+    "Column": {
+      "additionalProperties": false,
+      "properties": {
+        "reflux_ratio": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reflux Ratio"
+        },
+        "reflux_multiplier": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reflux Multiplier"
+        },
+        "max_stages": {
+          "default": 200,
+          "maximum": 1000,
+          "minimum": 1,
+          "title": "Max Stages",
+          "type": "integer"
+        }
+      },
+      "title": "Column",
+      "type": "object"
+    },
+    "Component": {
+      "additionalProperties": false,
+      "properties": {
+        "canonical_id": {
+          "title": "Canonical Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "cas": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cas"
+        }
+      },
+      "required": [
+        "canonical_id",
+        "name"
+      ],
+      "title": "Component",
+      "type": "object"
+    },
+    "EquipmentBasis": {
+      "additionalProperties": false,
+      "description": "Explicit preliminary design assumptions, not measured/vendor properties.\n\nValues below are a transparent teaching policy when the Agent proposes them.\nNative transport and water/steam properties are calculated, not supplied here.",
+      "properties": {
+        "tray_spacing_m": {
+          "default": 0.45,
+          "maximum": 1.0,
+          "minimum": 0.3,
+          "title": "Tray Spacing M",
+          "type": "number"
+        },
+        "tray_type": {
+          "default": "F1_valve",
+          "enum": [
+            "sieve",
+            "F1_valve"
+          ],
+          "title": "Tray Type",
+          "type": "string"
+        },
+        "f1": {
+          "$ref": "#/$defs/F1ValveBasis"
+        },
+        "pump": {
+          "$ref": "#/$defs/PumpBasis"
+        },
+        "weir_height_m": {
+          "default": 0.05,
+          "exclusiveMinimum": 0.0,
+          "maximum": 0.1,
+          "title": "Weir Height M",
+          "type": "number"
+        },
+        "downcomer_area_fraction": {
+          "default": 0.12,
+          "maximum": 0.2,
+          "minimum": 0.08,
+          "title": "Downcomer Area Fraction",
+          "type": "number"
+        },
+        "hole_area_fraction": {
+          "default": 0.1,
+          "maximum": 0.15,
+          "minimum": 0.05,
+          "title": "Hole Area Fraction",
+          "type": "number"
+        },
+        "hole_diameter_mm": {
+          "default": 5.0,
+          "maximum": 20.0,
+          "minimum": 3.0,
+          "title": "Hole Diameter Mm",
+          "type": "number"
+        },
+        "weeping_coefficient": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/WeepingCoefficient"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "minimum_load_fraction": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum Load Fraction"
+        },
+        "weir_length_diameter_ratio": {
+          "default": 0.7,
+          "maximum": 0.8,
+          "minimum": 0.5,
+          "title": "Weir Length Diameter Ratio",
+          "type": "number"
+        },
+        "downcomer_clearance_m": {
+          "default": 0.04,
+          "exclusiveMinimum": 0.0,
+          "maximum": 0.1,
+          "title": "Downcomer Clearance M",
+          "type": "number"
+        },
+        "orifice_coefficient": {
+          "default": 0.65,
+          "exclusiveMaximum": 1.0,
+          "exclusiveMinimum": 0.3,
+          "title": "Orifice Coefficient",
+          "type": "number"
+        },
+        "max_flood_fraction": {
+          "default": 0.7,
+          "maximum": 0.8,
+          "minimum": 0.4,
+          "title": "Max Flood Fraction",
+          "type": "number"
+        },
+        "top_disengagement_m": {
+          "default": 1.5,
+          "exclusiveMinimum": 0.0,
+          "title": "Top Disengagement M",
+          "type": "number"
+        },
+        "bottom_sump_m": {
+          "default": 3.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Bottom Sump M",
+          "type": "number"
+        },
+        "cooling_inlet_K": {
+          "default": 298.15,
+          "exclusiveMaximum": 370.0,
+          "minimum": 273.16,
+          "title": "Cooling Inlet K",
+          "type": "number"
+        },
+        "cooling_outlet_K": {
+          "default": 308.15,
+          "exclusiveMaximum": 370.0,
+          "exclusiveMinimum": 273.16,
+          "title": "Cooling Outlet K",
+          "type": "number"
+        },
+        "steam_pressure_Pa": {
+          "default": 400000.0,
+          "maximum": 10000000.0,
+          "minimum": 100000.0,
+          "title": "Steam Pressure Pa",
+          "type": "number"
+        },
+        "condenser_U_W_m2_K": {
+          "default": 500.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Condenser U W M2 K",
+          "type": "number"
+        },
+        "reboiler_U_W_m2_K": {
+          "default": 1000.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Reboiler U W M2 K",
+          "type": "number"
+        },
+        "minimum_approach_K": {
+          "default": 10.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Minimum Approach K",
+          "type": "number"
+        },
+        "area_margin": {
+          "default": 1.15,
+          "maximum": 2.0,
+          "minimum": 1.0,
+          "title": "Area Margin",
+          "type": "number"
+        },
+        "liquid_nozzle_velocity_m_s": {
+          "default": 1.0,
+          "exclusiveMinimum": 0.0,
+          "maximum": 5.0,
+          "title": "Liquid Nozzle Velocity M S",
+          "type": "number"
+        },
+        "vapor_nozzle_velocity_m_s": {
+          "default": 20.0,
+          "exclusiveMinimum": 0.0,
+          "maximum": 50.0,
+          "title": "Vapor Nozzle Velocity M S",
+          "type": "number"
+        },
+        "pump_total_head_m": {
+          "default": 30.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Pump Total Head M",
+          "type": "number"
+        },
+        "pump_efficiency": {
+          "default": 0.65,
+          "exclusiveMinimum": 0.0,
+          "maximum": 1.0,
+          "title": "Pump Efficiency",
+          "type": "number"
+        },
+        "motor_margin": {
+          "default": 1.2,
+          "maximum": 2.0,
+          "minimum": 1.0,
+          "title": "Motor Margin",
+          "type": "number"
+        },
+        "assumption_origin": {
+          "default": "agent_proposed_estimate",
+          "enum": [
+            "agent_proposed_estimate",
+            "user_provided"
+          ],
+          "title": "Assumption Origin",
+          "type": "string"
+        }
+      },
+      "title": "EquipmentBasis",
+      "type": "object"
+    },
+    "F1ValveBasis": {
+      "additionalProperties": false,
+      "properties": {
+        "hole_diameter_m": {
+          "default": 0.039,
+          "exclusiveMinimum": 0.0,
+          "title": "Hole Diameter M",
+          "type": "number"
+        },
+        "valve_mass_g": {
+          "default": 34.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Valve Mass G",
+          "type": "number"
+        },
+        "minimum_hole_factor": {
+          "default": 5.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Minimum Hole Factor",
+          "type": "number"
+        },
+        "minimum_design_hole_factor": {
+          "default": 8.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Minimum Design Hole Factor",
+          "type": "number"
+        },
+        "maximum_hole_factor": {
+          "default": 12.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Maximum Hole Factor",
+          "type": "number"
+        },
+        "aeration_factor": {
+          "default": 0.5,
+          "exclusiveMinimum": 0.0,
+          "maximum": 1.0,
+          "title": "Aeration Factor",
+          "type": "number"
+        },
+        "edge_clearance_m": {
+          "default": 0.05,
+          "exclusiveMinimum": 0.0,
+          "title": "Edge Clearance M",
+          "type": "number"
+        },
+        "disengagement_strip_m": {
+          "default": 0.075,
+          "minimum": 0.0,
+          "title": "Disengagement Strip M",
+          "type": "number"
+        },
+        "minimum_pitch_m": {
+          "default": 0.075,
+          "exclusiveMinimum": 0.0,
+          "title": "Minimum Pitch M",
+          "type": "number"
+        },
+        "maximum_pitch_m": {
+          "default": 0.15,
+          "exclusiveMinimum": 0.0,
+          "title": "Maximum Pitch M",
+          "type": "number"
+        },
+        "minimum_weir_crest_m": {
+          "default": 0.006,
+          "exclusiveMinimum": 0.0,
+          "title": "Minimum Weir Crest M",
+          "type": "number"
+        },
+        "minimum_downcomer_residence_s": {
+          "default": 5.0,
+          "minimum": 3.0,
+          "title": "Minimum Downcomer Residence S",
+          "type": "number"
+        },
+        "francis_E": {
+          "default": 1.0,
+          "exclusiveMinimum": 0.0,
+          "maximum": 1.2,
+          "title": "Francis E",
+          "type": "number"
+        },
+        "entrainment_capacity_m_s": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entrainment Capacity M S"
+        },
+        "entrainment_source_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Entrainment Source Id"
+        },
+        "entrainment_max_index": {
+          "default": 0.8,
+          "exclusiveMinimum": 0.0,
+          "maximum": 0.8,
+          "title": "Entrainment Max Index",
+          "type": "number"
+        },
+        "property_factor": {
+          "default": 1.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Property Factor",
+          "type": "number"
+        }
+      },
+      "title": "F1ValveBasis",
+      "type": "object"
+    },
+    "Feed": {
+      "additionalProperties": false,
+      "properties": {
+        "flow": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Flow"
+        },
+        "flow_unit": {
+          "anyOf": [
+            {
+              "enum": [
+                "kmol/h",
+                "mol/s"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Flow Unit"
+        },
+        "composition": {
+          "items": {
+            "type": "number"
+          },
+          "title": "Composition",
+          "type": "array"
+        },
+        "composition_basis": {
+          "anyOf": [
+            {
+              "enum": [
+                "mole_fraction",
+                "mass_fraction"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Composition Basis"
+        },
+        "temperature_K": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Temperature K"
+        },
+        "pressure_kPa": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pressure Kpa"
+        },
+        "quality_q": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quality Q"
+        }
+      },
+      "title": "Feed",
+      "type": "object"
+    },
+    "PumpBasis": {
+      "additionalProperties": false,
+      "properties": {
+        "storage_temperature_K": {
+          "default": 293.15,
+          "maximum": 350.0,
+          "minimum": 273.16,
+          "title": "Storage Temperature K",
+          "type": "number"
+        },
+        "storage_pressure_Pa": {
+          "default": 101325.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Storage Pressure Pa",
+          "type": "number"
+        },
+        "storage_liquid_level_above_pump_m": {
+          "default": 2.0,
+          "title": "Storage Liquid Level Above Pump M",
+          "type": "number"
+        },
+        "suction_length_m": {
+          "default": 5.0,
+          "minimum": 0.0,
+          "title": "Suction Length M",
+          "type": "number"
+        },
+        "discharge_cold_length_m": {
+          "default": 20.0,
+          "minimum": 0.0,
+          "title": "Discharge Cold Length M",
+          "type": "number"
+        },
+        "heated_riser_extra_length_m": {
+          "default": 0.0,
+          "minimum": 0.0,
+          "title": "Heated Riser Extra Length M",
+          "type": "number"
+        },
+        "suction_inner_diameter_m": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Suction Inner Diameter M"
+        },
+        "discharge_inner_diameter_m": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Discharge Inner Diameter M"
+        },
+        "hot_feed_inner_diameter_m": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hot Feed Inner Diameter M"
+        },
+        "suction_velocity_limit_m_s": {
+          "default": 0.8,
+          "exclusiveMinimum": 0.0,
+          "title": "Suction Velocity Limit M S",
+          "type": "number"
+        },
+        "discharge_velocity_limit_m_s": {
+          "default": 1.5,
+          "exclusiveMinimum": 0.0,
+          "title": "Discharge Velocity Limit M S",
+          "type": "number"
+        },
+        "roughness_m": {
+          "default": 4.5e-05,
+          "minimum": 0.0,
+          "title": "Roughness M",
+          "type": "number"
+        },
+        "suction_minor_K": {
+          "default": 2.0,
+          "minimum": 0.0,
+          "title": "Suction Minor K",
+          "type": "number"
+        },
+        "discharge_minor_K": {
+          "default": 8.0,
+          "minimum": 0.0,
+          "title": "Discharge Minor K",
+          "type": "number"
+        },
+        "hot_riser_minor_K": {
+          "default": 2.0,
+          "minimum": 0.0,
+          "title": "Hot Riser Minor K",
+          "type": "number"
+        },
+        "heater_pressure_drop_Pa": {
+          "default": 20000.0,
+          "minimum": 0.0,
+          "title": "Heater Pressure Drop Pa",
+          "type": "number"
+        },
+        "efficiency": {
+          "default": 0.65,
+          "exclusiveMinimum": 0.0,
+          "maximum": 1.0,
+          "title": "Efficiency",
+          "type": "number"
+        },
+        "motor_margin": {
+          "default": 1.2,
+          "maximum": 2.0,
+          "minimum": 1.0,
+          "title": "Motor Margin",
+          "type": "number"
+        },
+        "npsh_margin_m": {
+          "default": 1.0,
+          "minimum": 0.0,
+          "title": "Npsh Margin M",
+          "type": "number"
+        },
+        "npsh_required_m": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Npsh Required M"
+        },
+        "curves": {
+          "items": {
+            "$ref": "#/$defs/PumpCurve"
+          },
+          "maxItems": 100,
+          "title": "Curves",
+          "type": "array"
+        }
+      },
+      "title": "PumpBasis",
+      "type": "object"
+    },
+    "PumpCurve": {
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "source_id": {
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "flow_m3_h": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 500,
+          "minItems": 2,
+          "title": "Flow M3 H",
+          "type": "array"
+        },
+        "head_m": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 500,
+          "minItems": 2,
+          "title": "Head M",
+          "type": "array"
+        },
+        "npsh_required_m": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Npsh Required M"
+        },
+        "efficiency": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Efficiency"
+        },
+        "motor_power_kW": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Motor Power Kw"
+        }
+      },
+      "required": [
+        "model",
+        "source_id",
+        "flow_m3_h",
+        "head_m"
+      ],
+      "title": "PumpCurve",
+      "type": "object"
+    },
+    "Target": {
+      "additionalProperties": false,
+      "properties": {
+        "distillate_mole_fraction": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 1.0,
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Distillate Mole Fraction"
+        },
+        "bottoms_mole_fraction": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 1.0,
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bottoms Mole Fraction"
+        },
+        "key_component_recovery": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 1.0,
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Key Component Recovery"
+        },
+        "production_rate": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Production Rate"
+        }
+      },
+      "title": "Target",
+      "type": "object"
+    },
+    "WeepingCoefficient": {
+      "additionalProperties": false,
+      "properties": {
+        "K2": {
+          "exclusiveMinimum": 0.0,
+          "title": "K2",
+          "type": "number"
+        },
+        "clear_liquid_depth_min_mm": {
+          "exclusiveMinimum": 0.0,
+          "title": "Clear Liquid Depth Min Mm",
+          "type": "number"
+        },
+        "clear_liquid_depth_max_mm": {
+          "exclusiveMinimum": 0.0,
+          "title": "Clear Liquid Depth Max Mm",
+          "type": "number"
+        },
+        "source_id": {
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "K2",
+        "clear_liquid_depth_min_mm",
+        "clear_liquid_depth_max_mm",
+        "source_id"
+      ],
+      "title": "WeepingCoefficient",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "design_id": {
+      "title": "Design Id",
+      "type": "string"
+    },
+    "process_goal": {
+      "default": "preliminary_binary_distillation",
+      "title": "Process Goal",
+      "type": "string"
+    },
+    "components": {
+      "items": {
+        "$ref": "#/$defs/Component"
+      },
+      "title": "Components",
+      "type": "array"
+    },
+    "feed": {
+      "$ref": "#/$defs/Feed"
+    },
+    "target": {
+      "$ref": "#/$defs/Target"
+    },
+    "design_level": {
+      "default": "preliminary_process",
+      "enum": [
+        "feasibility",
+        "preliminary_process",
+        "preliminary_equipment"
+      ],
+      "title": "Design Level",
+      "type": "string"
+    },
+    "design_mode": {
+      "default": "autonomous",
+      "enum": [
+        "autonomous",
+        "specified"
+      ],
+      "title": "Design Mode",
+      "type": "string"
+    },
+    "origin_tags": {
+      "additionalProperties": {
+        "enum": [
+          "provided",
+          "source_reported",
+          "retrieved_verified",
+          "calculated",
+          "estimated",
+          "assumed",
+          "unresolved"
+        ],
+        "type": "string"
+      },
+      "title": "Origin Tags",
+      "type": "object"
+    },
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Assumptions",
+      "type": "array"
+    },
+    "source_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Ids",
+      "type": "array"
+    },
+    "thermodynamic_model": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Thermodynamic Model"
+    },
+    "column": {
+      "$ref": "#/$defs/Column"
+    },
+    "equipment": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/EquipmentBasis"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "title": "DesignBasis",
+  "type": "object"
+}

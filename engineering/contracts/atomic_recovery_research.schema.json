@@ -1,0 +1,116 @@
+{
+  "scope": "Research-only base action schema; task-specific required fields and tool enums are applied equally by MechanismTeam before each query; production Portal remains the original 17-tool registry",
+  "action": {
+    "additionalProperties": false,
+    "properties": {
+      "tool": {
+        "enum": [
+          "audit_model",
+          "audit_phase",
+          "sample_native_vle",
+          "screen_native",
+          "simulate_column",
+          "submit_revision_plan",
+          "finish",
+          "stop"
+        ],
+        "title": "Tool",
+        "type": "string"
+      },
+      "rationale": {
+        "maxLength": 1800,
+        "minLength": 1,
+        "title": "Rationale",
+        "type": "string"
+      },
+      "equilibrium_stages": {
+        "anyOf": [
+          {
+            "maximum": 200,
+            "minimum": 3,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Equilibrium Stages"
+      },
+      "feed_stage": {
+        "anyOf": [
+          {
+            "maximum": 199,
+            "minimum": 1,
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Feed Stage"
+      },
+      "reflux_factor": {
+        "default": 1.0,
+        "maximum": 2.0,
+        "minimum": 1.0,
+        "title": "Reflux Factor",
+        "type": "number"
+      },
+      "profile": {
+        "default": "default",
+        "enum": [
+          "default",
+          "native_cmo",
+          "native_enthalpy"
+        ],
+        "title": "Profile",
+        "type": "string"
+      },
+      "recompute_tools": {
+        "anyOf": [
+          {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 17,
+            "type": "array"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Recompute Tools"
+      },
+      "classification": {
+        "default": "unknown",
+        "enum": [
+          "admissible",
+          "unsupported_model",
+          "infeasible_under_model",
+          "unknown"
+        ],
+        "title": "Classification",
+        "type": "string"
+      }
+    },
+    "required": [
+      "tool",
+      "rationale"
+    ],
+    "title": "RecoveryAction",
+    "type": "object"
+  },
+  "tools": {
+    "audit_model": "Check the requested property method, pair, assumptions and pressure against source-qualified adapters. No column calculation.",
+    "audit_phase": "Run the qualified binary equilibrium/operating-envelope test at the frozen targets. Requires an admissible model. A conditional finite-domain test, not global phase stability.",
+    "sample_native_vle": "One native DWSIM equilibrium dataset, including enthalpies for NRTL. Consumes one native invocation; provides no accepted column or recommended design.",
+    "screen_native": "Compute Rmin and CMO equilibrium stages/feed using sampled native equilibrium at original reflux times reflux_factor. Supplies no design margin or automatic retry.",
+    "simulate_column": "One fixed-design native MESH attempt. Supply equilibrium_stages and feed_stage explicitly. profile=default needs no sampled data; native_cmo or native_enthalpy require a sample. No automatic parameter changes or fallback.",
+    "submit_revision_plan": "Submit a set of existing production tool names to recompute after the explicit patch. This endpoint scores a dependency plan only, not a new physical design.",
+    "finish": "For an admissibility task, report the evidence-supported classification; an accepted repair is detected directly from native results.",
+    "stop": "Stop without fabricating results. For a repair this does not count as strict recovery."
+  }
+}

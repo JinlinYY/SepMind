@@ -1,0 +1,27 @@
+{
+  "title": "Methanol/water distillation: methanol product throughput specified",
+  "components": [
+    [
+      "methanol",
+      "67-56-1"
+    ],
+    [
+      "water",
+      "7732-18-5"
+    ]
+  ],
+  "mw": [
+    32.0,
+    18.0
+  ],
+  "throughput_t_y": 32580,
+  "throughput_basis": "distillate_product",
+  "hours_y": 8000,
+  "wf": 0.4,
+  "wd": 0.995,
+  "wb": 0.0005,
+  "multiplier": 1.6,
+  "pressure": 106.325,
+  "source_locator": "PDF pp. 2, 9-22, 26, 45-47, 54-55",
+  "raw_locator": "PDF p. 2 (product throughput and requirements), p. 9 (molar masses); p. 19 (gauge pressure)"
+}
