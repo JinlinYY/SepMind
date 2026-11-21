@@ -9,7 +9,7 @@ from ..schemas import Contract, DesignBasis
 from ..design.binary import material_balance, minimum_reflux, stages
 from ..design.enthalpy_seed import coupled_initial_profile
 from ..tools.atomic_recovery import save
-from separation.tools.dwsim import BinaryVLERequest
+from sepmind.simulation.dwsim import BinaryVLERequest
 from .binary_contracts import (BinaryTopologyBasis, BinaryTopologyState, BinaryGraph,
     BinaryProposal, BinaryGraphColumnRequest, BinarySparseColumnRequest, BinaryStageProbeRequest,
     BinaryTopologyBackend, BINARY_IDENTITIES)

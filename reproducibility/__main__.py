@@ -9,7 +9,7 @@ from .tables import CASES, binary_residuals, export_tables, load_evidence, manus
 
 
 def replay_column(args, evidence):
-    from separation.tools.dwsim import DwsimBackend, RigorousColumnRequest
+    from sepmind.simulation.dwsim import DwsimBackend, RigorousColumnRequest
 
     archived = evidence["binary"][args.case][args.design]
     args.output.mkdir(parents=True, exist_ok=False)

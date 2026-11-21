@@ -6,7 +6,7 @@ from .. import prompts
 from ..llm import AgentContractError
 from ..utils.data_schemas import Review, ReviewRecommendation, VerificationAssessment
 from ..prompts.hypothesis_prompts import ACTIVE_REVIEW
-from ..tools.phase_screening import review_binary_vle
+from sepmind.simulation.phase_screening import review_binary_vle
 from .base import SpecialistAgent
 
 

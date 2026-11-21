@@ -6,7 +6,7 @@ import math
 from uuid import uuid4
 
 from .. import prompts
-from ..tools.dwsim import BinaryVLERequest, ShortcutDistillationRequest
+from sepmind.simulation.dwsim import BinaryVLERequest, ShortcutDistillationRequest
 from ..llm import AgentContractError
 from ..utils.data_schemas import Evidence, ExecutionPlan
 from .base import SpecialistAgent

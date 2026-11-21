@@ -10,8 +10,8 @@ from pathlib import Path
 import sys
 import numpy as np
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from separation.tools.multifeed import MultiFeedColumnRequest,MultiFeedDwsimBackend
-from separation.tools.mixture import MixtureProbeRequest
+from sepmind.simulation.multifeed import MultiFeedColumnRequest,MultiFeedDwsimBackend
+from sepmind.simulation.mixture import MixtureProbeRequest
 from sepmind.engineering.validation.multifeed import review_multifeed_column
 from sepmind.engineering.design.recycle import converge_component_recycle
 from sepmind.engineering.validation.initialization import material_consistent_profile
@@ -121,7 +121,7 @@ def main():
         def heat(stream):return stream['mass_flow_kg_s']*stream['specific_enthalpy_kJ_kg']
         fresh=c1['outputs']['feeds'][1];solv=c1['outputs']['feeds'][0]
         products=[c1['outputs']['distillate'],c2['outputs']['distillate']];bottom=c2['outputs']['bottoms']
-        from separation.tools.mixture import mixture_card
+        from sepmind.simulation.mixture import mixture_card
         card,_=mixture_card(c1['property_card_id']);mw=np.asarray(card['molecular_weights_g_mol'])
         makeup_heat=float(makeup*mw[0]/1000*hm)
         conditioner=heat(bottom)+makeup_heat-heat(solv) # positive heat removed, including mixing

@@ -1,11 +1,11 @@
-"""Run: python -m separation doctor | python -m separation screen --output FILE"""
+"""Run: python -m sepmind.shortcut doctor | python -m sepmind.shortcut screen --output FILE"""
 
 import argparse
 import json
 from pathlib import Path
 import sys
 
-from .tools import BinaryVLERequest, DwsimBackend, review_binary_vle
+from sepmind.simulation import BinaryVLERequest, DwsimBackend, review_binary_vle
 from .utils.data_schemas import DesignTask, RunLimits
 from .agents import SeparationOrchestrator
 from .utils.reporting import render_report, report_data

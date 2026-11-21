@@ -3,7 +3,7 @@
 from .engineering_review_agent import EngineeringReviewAgent
 from .process_simulation_agent import ProcessSimulationAgent
 from .separation_design_agent import SeparationDesignAgent
-from ..tools.dwsim import DwsimBackend
+from sepmind.simulation.dwsim import DwsimBackend
 from ..llm import AgentContractError, LLMBudgetExceeded
 from ..utils.data_schemas import Candidate, DesignProposal, DesignState, DesignTask, RunLimits, VerificationDecision
 from ..utils.few_shots import FewShotLibrary

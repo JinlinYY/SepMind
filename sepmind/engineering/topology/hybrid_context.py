@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def load_native_phase_evidence(paths,root,allowed_cards):
-    from separation.tools.mixture import mixture_card
+    from sepmind.simulation.mixture import mixture_card
     results=[]
     for value in paths:
         path=Path(value).resolve()

@@ -4,7 +4,7 @@ import json
 import threading
 from pathlib import Path
 
-from sepmind.agents.orchestrator import MultiAgentOrchestrator
+from sepmind.agent_runtime.orchestrator import MultiAgentOrchestrator
 from sepmind.prompts.engineering_prompts import load_engineering_prompt, planning_prompt
 from sepmind.streaming import emit_step
 from sepmind.utils.request_stats import request_stats

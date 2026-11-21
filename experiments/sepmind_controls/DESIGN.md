@@ -17,7 +17,7 @@ receive the input requirements and computed screening results.
   atomic tools and initialization. Its `simulate` includes `product_checks` and
   automatic acceptance, so this experiment overrides that boundary locally to
   return raw numerical outputs. Internal review is an explicit separate module.
-- `separation/tools/dwsim.py`: DWSIM child-process driver, typed requests, timeout.
+- `sepmind/simulation/dwsim.py`: DWSIM child-process driver, typed requests, timeout.
 - `sepmind/llm/backend_multimodel.py`: real DeepSeek HTTP provider and usage metadata.
 - Old `evaluation/architectures.py` changes candidate-selection message graphs
   but shares production repair/review. It cannot stand in for A1–A4 here.

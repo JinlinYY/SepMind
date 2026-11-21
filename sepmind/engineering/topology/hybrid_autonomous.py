@@ -22,8 +22,8 @@ from ..design.extraction_simultaneous import extraction_simultaneous
 from ..thermo.lle import NRTLModel
 from ..validation.multifeed import review_multifeed_column
 from ..tools.atomic_recovery import save
-from separation.tools.mixture import mixture_card, MixtureProbeRequest
-from separation.tools.multifeed import MultiFeedColumnRequest, MultiFeedDwsimBackend
+from sepmind.simulation.mixture import mixture_card, MixtureProbeRequest
+from sepmind.simulation.multifeed import MultiFeedColumnRequest, MultiFeedDwsimBackend
 from .schemas import TopologyBudget, ExpertAssessment
 from .orchestrator import TopologySynthesisOrchestrator
 from .executor import TopologyRuntime, TopologyBudgetExceeded
@@ -834,7 +834,7 @@ class HybridTopologyOrchestrator(TopologySynthesisOrchestrator):
         self.policy+='\n'+method_prompt.read_text(encoding='utf8')
         files = [path for path in (ROOT/'sepmind/engineering/topology').glob('*.py')
                  if path.name not in {'binary.py', 'binary_contracts.py'}]
-        files += [ROOT/'separation/tools/multifeed.py', ROOT/'separation/tools/mixture.py',
+        files += [ROOT/'sepmind/simulation/multifeed.py', ROOT/'sepmind/simulation/mixture.py',
                   ROOT/'sepmind/engineering/validation/dwsim_mixture.py', ROOT/'sepmind/engineering/validation/dwsim_column.py']
         files += [ROOT/'engineering/data/hybrid'/(name+'.json') for name in basis.property_cards]
         files += list((ROOT/'engineering/runtime_process_skills').glob('*/SKILL.md'))
@@ -843,7 +843,7 @@ class HybridTopologyOrchestrator(TopologySynthesisOrchestrator):
                   ROOT/'sepmind/engineering/validation/phase_admission.py']
         files += [ROOT/name for name in ['sepmind/engineering/design/extraction.py', 'sepmind/engineering/thermo/lle.py',
             'sepmind/engineering/validation/multifeed.py', 'sepmind/engineering/validation/native_sparse.py',
-            'sepmind/engineering/validation/balanced_mesh.py', 'separation/tools/_dwsim_worker.py']]
+            'sepmind/engineering/validation/balanced_mesh.py', 'sepmind/simulation/_dwsim_worker.py']]
         files += [ROOT/'sepmind/engineering/validation/positive_balance_seed.py',
                   ROOT/'sepmind/engineering/validation/initialization.py',ROOT/'sepmind/engineering/validation/ph_precision.py']
         files.append(ROOT/'sepmind/engineering/validation/absent_species.py')

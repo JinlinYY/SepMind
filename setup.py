@@ -17,7 +17,7 @@ setup(
       license="Apache-2.0",
       url="https://github.com/JinlinYY/SepMind",
       download_url="https://github.com/JinlinYY/SepMind",
-      packages=find_packages(include=["sepmind", "sepmind.*", "api", "api.*", "separation", "separation.*"]),
+      packages=find_packages(include=["sepmind", "sepmind.*", "api", "api.*"]),
       classifiers=[
                    "Development Status :: 4 - Beta",
                    "Intended Audience :: Science/Research",

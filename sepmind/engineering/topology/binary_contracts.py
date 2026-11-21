@@ -3,8 +3,8 @@ from dataclasses import dataclass, asdict, replace
 import math
 from typing import Literal
 from pydantic import Field, model_validator
-from separation.tools.dwsim import RigorousColumnRequest, DwsimBackend
-from separation.tools.multicomponent import IdealStagePoint, IdealStageProbeRequest
+from sepmind.simulation.dwsim import RigorousColumnRequest, DwsimBackend
+from sepmind.simulation.multicomponent import IdealStagePoint, IdealStageProbeRequest
 from ..schemas import Contract
 from .schemas import ProductRequirement, TopologyDesignBasis, TopologyRunState, ColumnNode, FlowsheetGraph, TopologyProposal
 

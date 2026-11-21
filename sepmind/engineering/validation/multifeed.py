@@ -1,8 +1,8 @@
 """Independent port balances and stage residuals for conditional multifeed runs."""
 import math
 import numpy as np
-from separation.tools.multifeed import MultiFeedColumnRequest
-from separation.tools.mixture import mixture_card,MixtureProbeRequest
+from sepmind.simulation.multifeed import MultiFeedColumnRequest
+from sepmind.simulation.mixture import mixture_card,MixtureProbeRequest
 from ..thermo.unifac_candidate import UNIFACCandidateModel
 from ..thermo.lle import stability_screen,NRTLModel
 

@@ -8,7 +8,7 @@ tools:
   validate_topology_graph: {gate: G1, requires: [admit_topology_task]}
   execute_topology: {gate: G4, requires: [validate_topology_graph]}
   review_topology: {gate: G8, requires: [execute_topology]}
-native_backend: separation.tools.multicomponent.MultiComponentDwsimBackend
+native_backend: sepmind.simulation.multicomponent.MultiComponentDwsimBackend
 independent_review: sepmind.engineering.topology.review
 physical_scope:
   property_package: Raoult's Law

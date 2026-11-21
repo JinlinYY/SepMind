@@ -3,7 +3,7 @@ import math
 import sys
 import time
 from pathlib import Path
-from separation.tools.dwsim import RigorousColumnRequest
+from sepmind.simulation.dwsim import RigorousColumnRequest
 
 
 def simulate_column(manager, payload, Array, Double, ObjectType, StreamSpec, validated_request=None, property_setup=None):
@@ -279,7 +279,7 @@ def simulate_column(manager, payload, Array, Double, ObjectType, StreamSpec, val
     if multifeed:
         temperature_guard=getattr(p,'temperature_guard_K',None)
         if temperature_guard is None:
-            from separation.tools.mixture import mixture_card
+            from sepmind.simulation.mixture import mixture_card
             card,_=mixture_card(p.property_card_id)
             temperature_guard=card['temperature_guard_K']
         tlo,thi=temperature_guard

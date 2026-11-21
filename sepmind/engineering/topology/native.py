@@ -1,6 +1,6 @@
 """Read-only native fugacity evaluation for independently reviewed stage arrays."""
 import math
-from separation.tools.multicomponent import IdealStageProbeRequest
+from sepmind.simulation.multicomponent import IdealStageProbeRequest
 
 
 def ideal_stage_probe(manager, payload, Array, Double, ObjectType):

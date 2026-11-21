@@ -1,6 +1,6 @@
 """PHA specialist adapters with deterministic engineering tools and sourced prompts."""
 
-from sepmind.agents import DataScienceAgent, DomainExpertAgent, HealthCoachAgent
+from sepmind.agent_runtime import DataScienceAgent, DomainExpertAgent, HealthCoachAgent
 from sepmind.prompts.engineering_prompts import load_engineering_prompt
 from sepmind.streaming import emit_step
 from ..tools import EngineeringToolRegistry

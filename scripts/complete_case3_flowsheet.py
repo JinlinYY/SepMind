@@ -11,8 +11,8 @@ from pathlib import Path
 import sys
 import numpy as np
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from separation.tools.mixture import mixture_card,MixtureProbeRequest
-from separation.tools.multifeed import MultiFeedColumnRequest,MultiFeedDwsimBackend
+from sepmind.simulation.mixture import mixture_card,MixtureProbeRequest
+from sepmind.simulation.multifeed import MultiFeedColumnRequest,MultiFeedDwsimBackend
 from sepmind.engineering.thermo.lle import NRTLModel,flash_lle,stability_screen
 from sepmind.engineering.design.extraction import contact
 from sepmind.engineering.design.extraction_simultaneous import extraction_simultaneous

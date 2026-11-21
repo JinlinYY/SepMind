@@ -16,7 +16,7 @@ from ..schemas import Contract,DesignBasis
 from ..thermo import package_for,selected_model
 from ..design.binary import material_balance,minimum_reflux,stages
 from ..design.rigorous import COMPOUNDS,product_checks
-from separation.tools.dwsim import DwsimBackend,BinaryVLERequest,RigorousColumnRequest
+from sepmind.simulation.dwsim import DwsimBackend,BinaryVLERequest,RigorousColumnRequest
 
 
 class RecoveryAction(Contract):

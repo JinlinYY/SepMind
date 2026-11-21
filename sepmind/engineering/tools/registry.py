@@ -335,7 +335,7 @@ class EngineeringToolRegistry:
     @staticmethod
     def estimate_auxiliary_equipment(state, out):
         from ..design.equipment import size_auxiliaries,equipment_policy_for,lmtd
-        from separation.tools.dwsim import DwsimBackend, UtilityWaterRequest, LiquidConditionRequest
+        from sepmind.simulation.dwsim import DwsimBackend, UtilityWaterRequest, LiquidConditionRequest
         from ..design.pump import feed_conditioning
         options,origin = equipment_policy_for(state.basis)
         native = state.artifacts['verify_and_refine_column'].data['selected_simulation']

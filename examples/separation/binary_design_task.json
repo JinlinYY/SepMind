@@ -1,0 +1,14 @@
+{
+  "components": ["Benzene", "Toluene"],
+  "property_package": "Raoult's Law",
+  "property_basis_note": "Explicit demonstration setting using the installed DWSIM database; independent property validation remains outstanding.",
+  "pressure_pa": 101325.0,
+  "feed_molar_flow_mol_s": 1.0,
+  "feed_light_fraction": 0.5,
+  "feed_state": "saturated_liquid",
+  "distillate_light_purity": 0.99,
+  "light_recovery": 0.99,
+  "max_stages": 15,
+  "initial_reflux_ratio": 2.5,
+  "reflux_ratio_limit": 10.0
+}

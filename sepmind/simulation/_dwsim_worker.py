@@ -15,7 +15,7 @@ def concrete(value):
 
 
 def shortcut(manager, payload, Array, Double, ObjectType, StreamSpec):
-    from separation.tools.dwsim import ShortcutDistillationRequest
+    from sepmind.simulation.dwsim import ShortcutDistillationRequest
     p = ShortcutDistillationRequest(**payload)
     for name in p.components:
         if not manager.AvailableCompounds.ContainsKey(name):
@@ -133,7 +133,7 @@ def main(request):
                           property_packages=sorted(str(k) for k in manager.AvailablePropertyPackages.Keys))
         elif request['action'] == 'liquid_condition':
             sys.path.insert(0,str(project_root))
-            from separation.tools.dwsim import LiquidConditionRequest
+            from sepmind.simulation.dwsim import LiquidConditionRequest
             p=LiquidConditionRequest(**request['payload'])
             flow=concrete(manager.CreateFlowsheet())
             for name in p.components:flow.AddCompound(name)
@@ -169,7 +169,7 @@ def main(request):
                              'Cold-state property adequacy is separate from the narrow experimental qualification of the column VLE.'])
         elif request['action'] == 'utility_water':
             sys.path.insert(0,str(project_root))
-            from separation.tools.dwsim import UtilityWaterRequest
+            from sepmind.simulation.dwsim import UtilityWaterRequest
             p=UtilityWaterRequest(**request['payload'])
             flow=concrete(manager.CreateFlowsheet())
             flow.AddCompound('Water')
@@ -213,7 +213,7 @@ def main(request):
             record.update(probe_mixture(manager,request['payload'],Array,Double,ObjectType,StreamSpec))
         elif request['action']=='candidate_mixture_column':
             sys.path.insert(0,str(project_root))
-            from separation.tools.mixture import CandidateColumnRequest,mixture_card
+            from sepmind.simulation.mixture import CandidateColumnRequest,mixture_card
             from sepmind.engineering.validation.dwsim_mixture import configure_candidate
             from sepmind.engineering.validation.dwsim_column import simulate_column
             p=CandidateColumnRequest.model_validate(request['payload'])
@@ -232,8 +232,8 @@ def main(request):
             record['limitations']+=card['limitations']+['Native MESH closure is not thermodynamic parameter qualification. Saved file requires SepMind trusted model initialization before replay.']
         elif request['action']=='multifeed_candidate_column':
             sys.path.insert(0,str(project_root))
-            from separation.tools.multifeed import MultiFeedColumnRequest
-            from separation.tools.mixture import mixture_card
+            from sepmind.simulation.multifeed import MultiFeedColumnRequest
+            from sepmind.simulation.mixture import mixture_card
             from sepmind.engineering.validation.dwsim_mixture import configure_candidate
             from sepmind.engineering.validation.dwsim_column import simulate_column
             p=MultiFeedColumnRequest.model_validate(request['payload'])
@@ -270,7 +270,7 @@ def main(request):
             record.update(ideal_stage_probe(manager,request['payload'],Array,Double,ObjectType))
         elif request['action']=='multicomponent_column':
             sys.path.insert(0,str(project_root))
-            from separation.tools.multicomponent import MultiColumnRequest
+            from sepmind.simulation.multicomponent import MultiColumnRequest
             from sepmind.engineering.validation.dwsim_column import simulate_column
             p=MultiColumnRequest(**request['payload'])
             record.update(simulate_column(manager,request['payload'],Array,Double,ObjectType,StreamSpec,validated_request=p))
@@ -279,7 +279,7 @@ def main(request):
             p = request["payload"]
             # Validate even when the worker is invoked directly.
             sys.path.insert(0, str(project_root))
-            from separation.tools.dwsim import BinaryVLERequest
+            from sepmind.simulation.dwsim import BinaryVLERequest
             from DWSIM.Thermodynamics.PropertyPackages import Phase
             BinaryVLERequest(**p)
             for name in p["components"]:

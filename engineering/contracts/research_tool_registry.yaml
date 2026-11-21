@@ -3,7 +3,7 @@ scope: Isolated research diagnostics; not production process model admission
 production_registry: tool_registry.yaml
 tools:
 - action: multifeed_candidate_column
-  backend: separation.tools.multifeed.MultiFeedDwsimBackend.column
+  backend: sepmind.simulation.multifeed.MultiFeedDwsimBackend.column
   input_schema: research_multifeed_column.schema.json
   implemented: true
   requires:
@@ -12,7 +12,7 @@ tools:
   - independent port/specification/fugacity/finite-TPD review
   success_means: numerically executed unit only
 - action: mixture_probe
-  backend: separation.tools.mixture.MixtureDwsimBackend.mixture_probe
+  backend: sepmind.simulation.mixture.MixtureDwsimBackend.mixture_probe
   input_schema: research_mixture_probe.schema.json
   implemented: true
   success_means: property diagnostic only

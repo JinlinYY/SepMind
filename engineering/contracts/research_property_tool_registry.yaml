@@ -3,8 +3,8 @@ scope: offline property qualification; not production Agent tool admission
 backend: DWSIM
 tools:
   - name: multifeed_candidate_column
-    input_python_contract: separation.tools.multifeed.MultiFeedColumnRequest
-    implementation: separation.tools.multifeed.MultiFeedDwsimBackend.column
+    input_python_contract: sepmind.simulation.multifeed.MultiFeedColumnRequest
+    implementation: sepmind.simulation.multifeed.MultiFeedDwsimBackend.column
     purpose: source reconstruction or conditional candidate investigation
     admitted_cards_for_diagnostics:
       - mch_toluene_phenol_unifac_v1
@@ -20,8 +20,8 @@ tools:
       - optional sparse solver retains native MESH equations and native acceptance
       - condenser ratio and product draw independently rechecked
   - name: mixture_probe
-    input_python_contract: separation.tools.mixture.MixtureProbeRequest
-    implementation: separation.tools.mixture.MixtureDwsimBackend.mixture_probe
+    input_python_contract: sepmind.simulation.mixture.MixtureProbeRequest
+    implementation: sepmind.simulation.mixture.MixtureDwsimBackend.mixture_probe
     purpose: property_qualification
     design_admitted: false
     checks:
@@ -32,8 +32,8 @@ tools:
       - source sulfolane direct LLE uses native SimpleLLE.Flash_PT with independent stability review
       - obsolete FlashAlgorithm assignment is not accepted as proof of algorithm selection
   - name: candidate_mixture_column
-    input_python_contract: separation.tools.mixture.CandidateColumnRequest
-    implementation: separation.tools.mixture.MixtureDwsimBackend.candidate_column
+    input_python_contract: sepmind.simulation.mixture.CandidateColumnRequest
+    implementation: sepmind.simulation.mixture.MixtureDwsimBackend.candidate_column
     purpose: property_qualification
     admitted_card_for_diagnostics: abe_oh2021_vle_candidate
     design_admitted: false
@@ -44,8 +44,8 @@ tools:
       - acid column calls blocked pending caloric qualification
       - numerical initial profiles are not product specifications
   - name: bounded_candidate_column_revision
-    input_python_contract: separation.tools.column_revision.ColumnRevisionRequest
-    implementation: separation.tools.column_revision.run_column_revision
+    input_python_contract: sepmind.simulation.column_revision.ColumnRevisionRequest
+    implementation: sepmind.simulation.column_revision.run_column_revision
     purpose: property_qualification
     design_admitted: false
     checks:

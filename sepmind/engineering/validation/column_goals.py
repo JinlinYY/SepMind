@@ -3,7 +3,7 @@ import math
 from typing import Literal
 from pydantic import Field
 from ..schemas import Contract
-from separation.tools.mixture import CandidateColumnRequest, mixture_card
+from sepmind.simulation.mixture import CandidateColumnRequest, mixture_card
 
 
 class ColumnProductGoal(Contract):
@@ -79,7 +79,7 @@ def review_candidate_stage_equilibrium(native, backend):
     every liquid phase in a finite multistart tangent-plane screen.
     """
     import numpy as np
-    from separation.tools.mixture import MixtureProbeRequest
+    from sepmind.simulation.mixture import MixtureProbeRequest
     from .extraction import independent_lngamma
     from ..thermo.lle import NRTLModel, stability_screen
     request=CandidateColumnRequest.model_validate(native['request'])

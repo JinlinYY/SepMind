@@ -56,7 +56,7 @@ def main():
     parser.add_argument('--jobs',type=int,choices=[1,2,3],default=3)
     args=parser.parse_args();folder=Path(args.output).resolve();folder.mkdir(parents=True,exist_ok=True)
     files=sorted([*ROOT.glob('sepmind/engineering/**/*.py'),*ROOT.glob('engineering/runtime_skills/**/SKILL.md'),
-                  *ROOT.glob('separation/tools/*dwsim*.py')])
+                  *ROOT.glob('sepmind/simulation/*dwsim*.py')])
     manifest={'files':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
               'provider':args.provider,'cases':args.case,'physical_results':'native DWSIM only',
               'protocol':'Frozen requirements; first CMO counterexample retained; same-backend VLE resynthesis and bounded native MESH verification; preliminary equipment estimates remain qualified separately.'}

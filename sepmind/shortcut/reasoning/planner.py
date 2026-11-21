@@ -10,7 +10,7 @@ from pydantic import Field
 from typing import Literal
 
 from ..utils.data_schemas import Contract, DesignHypothesis, HypothesisUpdate, VerificationAction
-from ..tools.phase_screening import review_binary_vle
+from sepmind.simulation.phase_screening import review_binary_vle
 from .evidence import basis_fingerprint, request_fingerprint
 
 

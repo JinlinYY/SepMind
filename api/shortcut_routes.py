@@ -6,10 +6,10 @@ from typing import Literal
 from fastapi import APIRouter, HTTPException
 from pydantic import Field, model_validator
 
-from separation.utils.data_schemas import Contract, DesignTask, RunLimits
-from separation.agents import SeparationOrchestrator
-from separation.utils.reporting import render_report, report_data
-from separation.reasoning import VerificationPolicy
+from sepmind.shortcut.utils.data_schemas import Contract, DesignTask, RunLimits
+from sepmind.shortcut.agents import SeparationOrchestrator
+from sepmind.shortcut.utils.reporting import render_report, report_data
+from sepmind.shortcut.reasoning import VerificationPolicy
 
 
 router = APIRouter(prefix="/separation", tags=["Chemical separation design"])
@@ -53,7 +53,7 @@ async def capabilities():
 async def design(request: DesignRunRequest):
     backend = None
     if request.mode == "llm":
-        from separation.llm import make_backend
+        from sepmind.shortcut.llm import make_backend
         try:
             backend = make_backend(request.provider, request.model_name)
         except (ImportError, ValueError) as exc:

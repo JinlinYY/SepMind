@@ -56,14 +56,14 @@ python -m reproducibility replay-column --case D01 --design sepmind --output rep
 
 | Path | Research material |
 | --- | --- |
-| [`sepmind/engineering/`](sepmind/engineering/) | Orchestrator, specialist roles, design state, thermodynamics, balances, equipment calculations, and independent review |
 | [`sepmind/engineering/agents/`](sepmind/engineering/agents/) | Expert-guided orchestrator, thermodynamics expert, engineering calculation expert, and process design advisor |
 | [`sepmind/engineering/workflow/`](sepmind/engineering/workflow/) | Stage dependencies, design revisions, and affected-result invalidation |
 | [`sepmind/engineering/validation/`](sepmind/engineering/validation/) | Independent numerical checks and design acceptance |
-| [`sepmind/llm/`](sepmind/llm/) | DeepSeek and Qwen configuration and provider interfaces |
 | [`sepmind/engineering/topology/`](sepmind/engineering/topology/) | Autonomous flowsheet proposals, graph validation, unit execution, and flowsheet review |
+| [`sepmind/simulation/`](sepmind/simulation/) | Shared DWSIM requests, calculation adapters, and isolated numerical worker |
+| [`sepmind/agent_runtime/`](sepmind/agent_runtime/), [`sepmind/llm/`](sepmind/llm/) | Shared agent infrastructure and model-provider interfaces |
+| [`sepmind/shortcut/`](sepmind/shortcut/) | Binary shortcut screening via `python -m sepmind.shortcut` |
 | [Runtime Skills](engineering/runtime_skills/), [model cards](engineering/knowledge/), [tool contracts](engineering/contracts/) | Rules, parameter evidence, and numerical interfaces |
-| [`separation/tools/`](separation/tools/) | DWSIM adapters and numerical worker |
 | [`case/curated/`](case/curated/) | Case inputs and English worked calculations from the human designs |
 | [`experiments/sepmind_controls/`](experiments/sepmind_controls/) | Prescribed flowsheet architecture comparison and mechanism ablations on D01–D04 |
 | [`reproducibility/`](reproducibility/) | Research entry point, archived evidence, CSV export, and rigorous-column replay |

@@ -8,7 +8,7 @@ import math
 from dataclasses import asdict
 from pathlib import Path
 
-from separation.tools.dwsim import DwsimBackend, RigorousColumnRequest, BinaryVLERequest
+from sepmind.simulation.dwsim import DwsimBackend, RigorousColumnRequest, BinaryVLERequest
 
 COMPOUNDS = {'71-43-2':'Benzene', '108-88-3':'Toluene', '67-56-1':'Methanol',
              '7732-18-5':'Water', '64-17-5':'Ethanol',

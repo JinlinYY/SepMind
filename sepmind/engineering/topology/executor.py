@@ -4,7 +4,7 @@ import json
 import time
 from dataclasses import asdict, is_dataclass
 from pathlib import Path
-from separation.tools.multicomponent import MultiColumnRequest, IdealStageProbeRequest
+from sepmind.simulation.multicomponent import MultiColumnRequest, IdealStageProbeRequest
 from ..tools.atomic_recovery import save
 from .graph import digest, validate_graph
 from .review import review_unit, review_process

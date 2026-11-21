@@ -7,7 +7,7 @@ from sepmind.engineering.tools.registry import EngineeringToolRegistry
 from sepmind.engineering.agents.orchestrator import EngineeringOrchestrator
 from sepmind.engineering.design.rigorous import COMPOUNDS, product_checks
 from sepmind.engineering.design.binary import material_balance
-from separation.tools.dwsim import DwsimBackend, RigorousColumnRequest
+from sepmind.simulation.dwsim import DwsimBackend, RigorousColumnRequest
 from .initialization import EVIDENCE_POLICY, LEGACY_POLICY, InitializationEvidenceMissing, profile_capabilities
 from .logging import save
 

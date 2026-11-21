@@ -391,5 +391,5 @@ app.include_router(engineering_router,prefix="/api",include_in_schema=False)
 from api.topology import router as topology_router
 app.include_router(topology_router)
 app.include_router(topology_router,prefix="/api",include_in_schema=False)
-from api.separation_routes import router as separation_router
-app.include_router(separation_router)
+from api.shortcut_routes import router as shortcut_router
+app.include_router(shortcut_router)

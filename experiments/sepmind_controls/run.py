@@ -12,9 +12,9 @@ def source_manifest():
     files|=set((ROOT/'sepmind/engineering').rglob('*.py'))
     files|=set((ROOT/'engineering/runtime_skills').rglob('SKILL.md'))
     files|=set((ROOT/'engineering/knowledge').rglob('*.json'))
-    files|=set((ROOT/'separation/tools').glob('*dwsim*.py'))
+    files|=set((ROOT/'sepmind/simulation').glob('*dwsim*.py'))
     files|=set(POLICY_DIRECTORY.glob('*.md'))
-    files|={ROOT/'sepmind/llm/backend_multimodel.py',ROOT/'sepmind/agents/orchestrator.py'}
+    files|={ROOT/'sepmind/llm/backend_multimodel.py',ROOT/'sepmind/agent_runtime/orchestrator.py'}
     files|={ROOT/'case/curated'/old/'agent_input.json' for old in TASKS.values()}
     return {str(p.relative_to(ROOT)).replace('\\','/'):digest(p) for p in sorted(files) if '__pycache__' not in str(p)}
 
@@ -55,7 +55,7 @@ def launch(spec):
         save(folder/'worker_failure.json',row);return row
 
 def preflight(out,model):
-    from separation.tools.dwsim import DwsimBackend
+    from sepmind.simulation.dwsim import DwsimBackend
     from sepmind.llm.backend_multimodel import DeepSeekBackend
     start=time.monotonic();doctor=DwsimBackend(timeout_s=60).doctor()
     save(out/'environment.json',{'doctor':doctor,'python':sys.version,'platform':sys.platform,'logical_cpus':os.cpu_count()})

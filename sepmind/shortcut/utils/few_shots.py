@@ -11,7 +11,7 @@ from pydantic import Field, model_validator
 from .data_schemas import Contract, DesignProposal, ExecutionPlan, ReviewRecommendation
 
 
-DEFAULT_DIRECTORY = Path(__file__).resolve().parents[2] / "few_shots/separation"
+DEFAULT_DIRECTORY = Path(__file__).resolve().parents[3] / "few_shots/separation"
 SCHEMAS = {"design": DesignProposal, "simulation": ExecutionPlan, "review": ReviewRecommendation}
 
 

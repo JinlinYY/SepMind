@@ -69,7 +69,7 @@ def register_sparse_solver(flow,column,request,Array,Double):
         max_v,max_l=float(field('_maxvc')),float(field('_maxlc'))
         flow_scale=sum(float(v) for v in field('_F'))/request.feed_molar_flow_mol_s
         order=[request.components.index(str(n)) for n in flow.SelectedCompounds.Keys]
-        from separation.tools.mixture import mixture_card
+        from sepmind.simulation.mixture import mixture_card
         temperature_guard=getattr(request,'temperature_guard_K',None)
         if temperature_guard is None:
             card,_=mixture_card(request.property_card_id)

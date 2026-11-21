@@ -14,7 +14,7 @@ from ..agents.orchestrator import EngineeringOrchestrator
 from ..agents.specialists import EngineeringCalculationAgent
 from ..schemas import ToolResult
 from ..tools.atomic_recovery import save
-from separation.tools.multicomponent import MultiComponentDwsimBackend
+from sepmind.simulation.multicomponent import MultiComponentDwsimBackend
 from .schemas import TopologyDesignBasis, TopologyRunState, TopologyProposal, ExpertAssessment, FlowsheetGraph
 from .skills import TopologySkillRegistry, ROOT
 from .tools import TopologyToolRegistry
@@ -75,11 +75,11 @@ class TopologySynthesisOrchestrator(EngineeringOrchestrator):
         files += list((ROOT/'engineering/topology_skills').glob('*/SKILL.md'))
         files += [ROOT/path for path in [
             'engineering/prompts/TOPOLOGY_SYNTHESIS.md', 'engineering/contracts/topology_tool_registry.yaml',
-            'separation/tools/multicomponent.py', 'separation/tools/_dwsim_worker.py',
+            'sepmind/simulation/multicomponent.py', 'sepmind/simulation/_dwsim_worker.py',
             'sepmind/engineering/validation/dwsim_column.py', 'sepmind/llm/backend_multimodel.py',
             'sepmind/engineering/validation/dwsim_mixture.py', 'sepmind/llm/local_credentials.py',
-            'sepmind/engineering/tools/atomic_recovery.py', 'separation/tools/dwsim.py',
-            'sepmind/agents/orchestrator.py', 'sepmind/engineering/agents/orchestrator.py',
+            'sepmind/engineering/tools/atomic_recovery.py', 'sepmind/simulation/dwsim.py',
+            'sepmind/agent_runtime/orchestrator.py', 'sepmind/engineering/agents/orchestrator.py',
             'sepmind/engineering/agents/specialists.py']]
         self.source_manifest = {str(path.relative_to(ROOT)).replace('\\', '/'): hashlib.sha256(path.read_bytes()).hexdigest()
                                 for path in files}

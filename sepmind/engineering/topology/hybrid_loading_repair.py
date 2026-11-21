@@ -3,7 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 import numpy as np
-from separation.tools.mixture import mixture_card
+from sepmind.simulation.mixture import mixture_card
 from .hybrid_repair_rules import propose_inventory_repair
 
 

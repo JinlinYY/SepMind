@@ -12,7 +12,7 @@ import re
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from separation.tools.multifeed import MultiFeedColumnRequest,ColumnFeed,MultiFeedDwsimBackend
+from sepmind.simulation.multifeed import MultiFeedColumnRequest,ColumnFeed,MultiFeedDwsimBackend
 
 
 def source_profile(path):

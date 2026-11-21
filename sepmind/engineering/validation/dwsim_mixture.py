@@ -5,8 +5,8 @@ dimensionless A+B/T to DWSIM's (a+b*T)/(1.98721*T), in cal/mol.
 The vapor hook is chemical-theory dimerization, explicitly NOT NRTL-HOC.
 """
 import math
-from separation.tools.mixture import MixtureProbeRequest, mixture_card
-from separation.tools.association import acid_dimer_state
+from sepmind.simulation.mixture import MixtureProbeRequest, mixture_card
+from sepmind.simulation.association import acid_dimer_state
 
 
 def tighten_candidate_flash(pp):

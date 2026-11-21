@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 import threading
 
-from sepmind.agents.orchestrator import MultiAgentOrchestrator
+from sepmind.agent_runtime.orchestrator import MultiAgentOrchestrator
 from sepmind.prompts.engineering_prompts import load_engineering_prompt
 from sepmind.prompts.data_science_prompts import render_prompt
 from sepmind.streaming import emit_step

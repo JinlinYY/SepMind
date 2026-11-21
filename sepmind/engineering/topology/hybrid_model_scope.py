@@ -3,7 +3,7 @@
 An expanded computational guard is not experimental property qualification.
 Only the already retained H02 hydraulic card may be used by this adapter.
 """
-from separation.tools.mixture import mixture_card
+from sepmind.simulation.mixture import mixture_card
 
 H02_HYDRAULIC_CARD='mch_toluene_phenol_hydraulic_sensitivity_v2'
 _METADATA={'model_id','status','temperature_guard_K','pressure_guard_Pa','limitations',
