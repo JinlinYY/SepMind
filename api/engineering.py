@@ -13,7 +13,7 @@ from sepmind.engineering.schemas import Contract,DesignBasis
 from sepmind.engineering.tools import EngineeringToolRegistry
 from sepmind.engineering.skills import ExpertSkillRegistry
 
-router = APIRouter(prefix="/engineering",tags=["PHA engineering extension"])
+router = APIRouter(prefix="/engineering",tags=["SepMind engineering design"])
 ROOT = Path(__file__).resolve().parents[1]
 
 

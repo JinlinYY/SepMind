@@ -7,6 +7,7 @@ import './App.css'
 // API base URL - use proxy in dev
 const API_BASE = '/api'
 const ACTIVE_SESSION_KEY = 'sepmind_active_session'
+const LEGACY_SESSION_KEY = 'pha_active_session'
 const INITIAL_TOPOLOGY_RUN = new URLSearchParams(window.location.search).get('topology_run')
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 
   const clearActiveSession = () => {
     localStorage.removeItem(ACTIVE_SESSION_KEY)
+    localStorage.removeItem(LEGACY_SESSION_KEY)
   }
 
   const saveActiveSession = (sessionData, activeUserId) => {
@@ -35,7 +37,7 @@ function App() {
   }
 
   const restoreSession = async (latestConfig) => {
-    const raw = (localStorage.getItem(ACTIVE_SESSION_KEY) || localStorage.getItem('pha_active_session'))
+    const raw = localStorage.getItem(ACTIVE_SESSION_KEY) || localStorage.getItem(LEGACY_SESSION_KEY)
     if (!raw) return false
 
     let storedSession
@@ -77,6 +79,8 @@ function App() {
         status: restoredState.status,
       })
       setUserId(restoredState.config?.user_id || storedSession.user_id || 'test')
+      saveActiveSession(restoredState, storedSession.user_id)
+      localStorage.removeItem(LEGACY_SESSION_KEY)
       setWorkspace(INITIAL_TOPOLOGY_RUN ? 'topology' : 'engineering')
       return true
     } catch {
@@ -214,8 +218,8 @@ function App() {
       <div className="app-error">
         <h2>⚠️ Connection Error</h2>
         <p>{error}</p>
-        <p className="hint">Make sure the API server is running:</p>
-        <code>cd personal_health_agent && uvicorn api.main:app --reload</code>
+        <p className="hint">请在 SepMind 仓库根目录启动后端。</p>
+        <code>python -m uvicorn api.main:app --host 127.0.0.1 --port 8000</code>
         <button onClick={() => { setError(null); fetchConfig(); }}>
           Retry
         </button>
@@ -240,7 +244,6 @@ function App() {
           onRefresh={handleRefresh}
           refreshing={loading}
           userId={userId}
-          userStudyMode={config?.user_study_mode || false}
         />
         {session.config?.workspace === 'engineering' && <EngineeringPanel session={session} onOpenTopology={() => setWorkspace('topology')} />}
         </div>

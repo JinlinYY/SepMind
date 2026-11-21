@@ -10,8 +10,6 @@ const TAG_LABELS = {
   Coach:    { label: 'Process Advisor', icon: '💬' },
   DE:       { label: 'Thermodynamics Expert', icon: '⚗️' },
   LLM:      { label: 'LLM Call',       icon: '🧠' },
-  Parallel: { label: 'Parallel',       icon: '⚡' },
-  PHIA:     { label: 'PHIA Agent',     icon: '🤖' },
 }
 
 /* ── Public execution progress indicator ──
@@ -92,7 +90,7 @@ function ThinkingIndicator({ steps, isActive, elapsed }) {
   )
 }
 
-function ChatInterface({ session, apiBase, onEndSession, onRefresh, refreshing, userId, userStudyMode }) {
+function ChatInterface({ session, apiBase, onEndSession, onRefresh, refreshing, userId }) {
   const engineering = session.config?.workspace === 'engineering'
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
@@ -181,7 +179,7 @@ function ChatInterface({ session, apiBase, onEndSession, onRefresh, refreshing, 
     return () => {
       isMounted = false
     }
-  }, [apiBase, session.session_id, userStudyMode])
+  }, [apiBase, session.session_id])
 
   // Elapsed timer
   useEffect(() => {
@@ -365,21 +363,9 @@ function ChatInterface({ session, apiBase, onEndSession, onRefresh, refreshing, 
         <div className="chat-header-info">
           <h1>SepMind · 分离设计对话</h1>
           <div className="session-info">
-            <span className="session-badge baseline">
-              {userStudyMode
-                ? { sepmind: 'AGENT A', parallel: 'AGENT B', phia: 'AGENT C' }[session.config.baseline]
-                : session.config.baseline === 'sepmind' ? 'SepMind' : session.config.baseline.toUpperCase()}
+            <span className="session-badge model">
+              {session.config.model_id.split('/').pop()}
             </span>
-            {!userStudyMode && (
-              <>
-                <span className="session-badge model">
-                  {session.config.model_id.split('/').pop()}
-                </span>
-                <span className="session-badge persona">
-                  {session.config.persona_id}
-                </span>
-              </>
-            )}
           </div>
         </div>
         <div className="chat-header-actions">

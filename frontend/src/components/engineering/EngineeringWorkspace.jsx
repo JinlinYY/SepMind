@@ -74,7 +74,7 @@ export function EngineeringStart({ onStart, loading, error }) {
     <button disabled={loading || exampleLoading || parsed.missing.length > 0} onClick={() => {
       try {
         setLocalError('')
-        onStart({ workspace: 'engineering', provider, baseline: 'sepmind', persona_id: 'engineering',
+        onStart({ workspace: 'engineering', provider, baseline: 'sepmind',
           ...(provider === 'deterministic' ? { model_id: 'deterministic' } : {}),
           engineering_basis: parsed.basis.process_family ? parsed.basis : { ...parsed.basis, design_level: designLevel }, user_id: 'engineering' })
       } catch (e) { setLocalError(e.message) }

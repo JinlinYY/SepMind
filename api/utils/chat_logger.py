@@ -1,4 +1,4 @@
-"""Chat session logger for PHA.
+"""Chat session logger for SepMind.
 
 Provides structured logging of chat sessions with per-user directories,
 per-conversation folders, summary statistics, and raw verbose logs.
@@ -204,7 +204,7 @@ class ChatSessionLogger:
         # Write initial header to raw log
         with open(self.raw_log_path, "w", encoding="utf-8") as f:
             f.write(f"{'=' * 80}\n")
-            f.write(f"PHA Chat Session — Raw Verbose Log\n")
+            f.write("SepMind Chat Session — Raw Verbose Log\n")
             f.write(f"{'=' * 80}\n")
             f.write(f"Session ID : {session_id}\n")
             f.write(f"User ID    : {self.user_id}\n")

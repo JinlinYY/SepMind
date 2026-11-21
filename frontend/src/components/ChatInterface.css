@@ -48,10 +48,6 @@
   font-weight: 500;
 }
 
-.session-badge.baseline {
-  background: rgba(255, 255, 255, 0.3);
-}
-
 .end-session-btn {
   padding: 0.5rem 1rem;
   background: rgba(255, 255, 255, 0.2);
