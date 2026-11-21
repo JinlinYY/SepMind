@@ -62,7 +62,3 @@ python -m reproducibility replay-column --case D01 --design sepmind --output rep
 | [Web interface](PORTAL_README.md) | Optional browser interface for both design settings |
 
 The cases are preliminary designs evaluated under the reported thermodynamic assumptions and numerical boundaries. H01 and H02 reconstruct source-defined flowsheets and evaluate controlled operating revisions. The reported balances and equipment estimates refer to those numerical boundaries.
-
-## Citation and license
-
-Use [CITATION.cff](CITATION.cff) to cite the software and associated study. SepMind retains components of Google Health's Personal Health Agent from commit [3e9d1e4877a54cf81ce8ef34085006952dd19601](https://github.com/Google-Health/consumer-health-research/commit/3e9d1e4877a54cf81ce8ef34085006952dd19601). The code is distributed under [Apache-2.0](LICENSE.txt). Third-party source documents retain their respective rights.
