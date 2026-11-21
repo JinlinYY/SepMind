@@ -2,6 +2,8 @@
 
 SepMind implements the framework described in *Expert-guided agent framework for chemical separation process design*. An orchestrator coordinates thermodynamics, engineering design, and process advice. Runtime Skills and property-model cards constrain the proposed decisions. Registered numerical tools calculate the process, and independent review checks convergence, closure, and the original product specifications before accepting a design.
 
+SepMind was developed on the basis of Google Health's Personal Health Agent (PHA), adapting its agent orchestration and web application framework to chemical separation process design. [Upstream project](https://github.com/Google-Health/consumer-health-research/tree/3e9d1e4877a54cf81ce8ef34085006952dd19601/personal_health_agent)
+
 The study covers four industrial distillation design cases (D01–D04) and two source-defined integrated processes (H01 and H02).
 
 | Design setting | Input | Decisions made by SepMind |
