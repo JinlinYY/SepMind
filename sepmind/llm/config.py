@@ -1,4 +1,4 @@
-"""Global configuration for PHA LLM backends.
+"""Global configuration for SepMind LLM backends.
 
 This module provides a singleton configuration object to manage
 the active LLM provider, API keys, and model settings globally.
@@ -40,7 +40,7 @@ class LLMConfig:
     def _load_from_env(self):
         """Load configuration from environment variables."""
         # Check for provider override
-        env_provider = os.environ.get("PHA_LLM_PROVIDER")
+        env_provider = os.environ.get("SEPMIND_LLM_PROVIDER") or os.environ.get("PHA_LLM_PROVIDER")
         if env_provider and env_provider.lower() in PROVIDERS:
             self._provider = env_provider.lower()
             

@@ -9,12 +9,12 @@ from .logging import save
 
 def source_manifest():
     files=set(HERE.rglob('*.py'))|set((HERE/'configs').glob('*.json'))|{HERE/'DESIGN.md'}
-    files|=set((ROOT/'pha/engineering').rglob('*.py'))
+    files|=set((ROOT/'sepmind/engineering').rglob('*.py'))
     files|=set((ROOT/'engineering/runtime_skills').rglob('SKILL.md'))
     files|=set((ROOT/'engineering/knowledge').rglob('*.json'))
     files|=set((ROOT/'separation/tools').glob('*dwsim*.py'))
     files|=set(POLICY_DIRECTORY.glob('*.md'))
-    files|={ROOT/'pha/llm/backend_multimodel.py',ROOT/'pha/agents/orchestrator.py'}
+    files|={ROOT/'sepmind/llm/backend_multimodel.py',ROOT/'sepmind/agents/orchestrator.py'}
     files|={ROOT/'case/curated'/old/'agent_input.json' for old in TASKS.values()}
     return {str(p.relative_to(ROOT)).replace('\\','/'):digest(p) for p in sorted(files) if '__pycache__' not in str(p)}
 
@@ -56,7 +56,7 @@ def launch(spec):
 
 def preflight(out,model):
     from separation.tools.dwsim import DwsimBackend
-    from pha.llm.backend_multimodel import DeepSeekBackend
+    from sepmind.llm.backend_multimodel import DeepSeekBackend
     start=time.monotonic();doctor=DwsimBackend(timeout_s=60).doctor()
     save(out/'environment.json',{'doctor':doctor,'python':sys.version,'platform':sys.platform,'logical_cpus':os.cpu_count()})
     backend=DeepSeekBackend(model_name=model,temperature=.2,max_tokens=128,json_mode=True,timeout_s=60,thinking=False)

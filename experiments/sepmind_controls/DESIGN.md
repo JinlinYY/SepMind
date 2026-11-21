@@ -5,20 +5,20 @@ receive the input requirements and computed screening results.
 
 ## Controller, tools, and evaluator
 
-- `pha/engineering/agents/orchestrator.py`: retained PHA coordinator, specialists,
+- `sepmind/engineering/agents/orchestrator.py`: retained PHA coordinator, specialists,
   stage DAG, per-step planner and snapshot persistence.
-- `pha/engineering/skills/__init__.py` and `engineering/runtime_skills/*/SKILL.md`:
+- `sepmind/engineering/skills/__init__.py` and `engineering/runtime_skills/*/SKILL.md`:
   actual runtime policies, applicability and numerical evidence records.
-- `pha/engineering/knowledge/__init__.py`: model cards and admissibility.
-- `pha/engineering/tools/registry.py`: typed stage tools, including bundled
+- `sepmind/engineering/knowledge/__init__.py`: model cards and admissibility.
+- `sepmind/engineering/tools/registry.py`: typed stage tools, including bundled
   `verify_and_refine_column`. The bundled repair is NOT exposed to experiment
   arms: otherwise all arms would inherit the very mechanisms being removed.
-- `pha/engineering/tools/atomic_recovery.py`: existing fixed-design, no-fallback
+- `sepmind/engineering/tools/atomic_recovery.py`: existing fixed-design, no-fallback
   atomic tools and initialization. Its `simulate` includes `product_checks` and
   automatic acceptance, so this experiment overrides that boundary locally to
   return raw numerical outputs. Internal review is an explicit separate module.
 - `separation/tools/dwsim.py`: DWSIM child-process driver, typed requests, timeout.
-- `pha/llm/backend_multimodel.py`: real DeepSeek HTTP provider and usage metadata.
+- `sepmind/llm/backend_multimodel.py`: real DeepSeek HTTP provider and usage metadata.
 - Old `evaluation/architectures.py` changes candidate-selection message graphs
   but shares production repair/review. It cannot stand in for A1–A4 here.
 

@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 from pydantic import Field, model_validator
 
-from pha.engineering.schemas import Contract
+from sepmind.engineering.schemas import Contract
 from .mixture import CandidateColumnRequest, MixtureDwsimBackend, mixture_card
 
 

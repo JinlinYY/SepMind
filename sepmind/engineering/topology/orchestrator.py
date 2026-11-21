@@ -8,8 +8,8 @@ import time
 import zipfile
 from pathlib import Path
 from uuid import uuid4
-from pha.llm.backend_multimodel import DeepSeekBackend, QwenBackend
-from pha.llm.local_credentials import deepseek_key
+from sepmind.llm.backend_multimodel import DeepSeekBackend, QwenBackend
+from sepmind.llm.local_credentials import deepseek_key
 from ..agents.orchestrator import EngineeringOrchestrator
 from ..agents.specialists import EngineeringCalculationAgent
 from ..schemas import ToolResult
@@ -68,19 +68,19 @@ class TopologySynthesisOrchestrator(EngineeringOrchestrator):
         self.folder = folder
         self.event_index = 0
         self.thermodynamic_advice = None
-        files = [path for path in (ROOT/'pha/engineering/topology').glob('*.py') if path.name not in self.excluded_source_files]
+        files = [path for path in (ROOT/'sepmind/engineering/topology').glob('*.py') if path.name not in self.excluded_source_files]
         files += [ROOT/name for name in self.extra_source_files]
-        files += list((ROOT/'pha/engineering/schemas').glob('*.py'))
-        files += list((ROOT/'pha/engineering/skills').glob('*.py'))
+        files += list((ROOT/'sepmind/engineering/schemas').glob('*.py'))
+        files += list((ROOT/'sepmind/engineering/skills').glob('*.py'))
         files += list((ROOT/'engineering/topology_skills').glob('*/SKILL.md'))
         files += [ROOT/path for path in [
             'engineering/prompts/TOPOLOGY_SYNTHESIS.md', 'engineering/contracts/topology_tool_registry.yaml',
             'separation/tools/multicomponent.py', 'separation/tools/_dwsim_worker.py',
-            'pha/engineering/validation/dwsim_column.py', 'pha/llm/backend_multimodel.py',
-            'pha/engineering/validation/dwsim_mixture.py', 'pha/llm/local_credentials.py',
-            'pha/engineering/tools/atomic_recovery.py', 'separation/tools/dwsim.py',
-            'pha/agents/orchestrator.py', 'pha/engineering/agents/orchestrator.py',
-            'pha/engineering/agents/specialists.py']]
+            'sepmind/engineering/validation/dwsim_column.py', 'sepmind/llm/backend_multimodel.py',
+            'sepmind/engineering/validation/dwsim_mixture.py', 'sepmind/llm/local_credentials.py',
+            'sepmind/engineering/tools/atomic_recovery.py', 'separation/tools/dwsim.py',
+            'sepmind/agents/orchestrator.py', 'sepmind/engineering/agents/orchestrator.py',
+            'sepmind/engineering/agents/specialists.py']]
         self.source_manifest = {str(path.relative_to(ROOT)).replace('\\', '/'): hashlib.sha256(path.read_bytes()).hexdigest()
                                 for path in files}
         self.state.implementation_sha256 = digest(self.source_manifest)

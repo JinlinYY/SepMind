@@ -9,9 +9,9 @@ from pathlib import Path
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import Response
 from pydantic import Field
-from pha.engineering.schemas import Contract,DesignBasis
-from pha.engineering.tools import EngineeringToolRegistry
-from pha.engineering.skills import ExpertSkillRegistry
+from sepmind.engineering.schemas import Contract,DesignBasis
+from sepmind.engineering.tools import EngineeringToolRegistry
+from sepmind.engineering.skills import ExpertSkillRegistry
 
 router = APIRouter(prefix="/engineering",tags=["PHA engineering extension"])
 ROOT = Path(__file__).resolve().parents[1]
@@ -71,7 +71,7 @@ async def expert_skills():
 
 @router.post('/equipment-policy')
 async def equipment_policy(basis: DesignBasis):
-    from pha.engineering.design.equipment import equipment_policy_for
+    from sepmind.engineering.design.equipment import equipment_policy_for
     options,origin=equipment_policy_for(basis)
     return {'equipment':options.model_dump(),'origin':origin,
             'scope':'teaching assumptions only; no process computation or LLM call is performed'}
@@ -93,11 +93,11 @@ async def example(case: str = 'water_ethanol'):
 async def state(identifier: str):
     session = session_for(identifier)
     agent = session.agent
-    from pha.engineering.schemas import DesignBasis
-    from pha.engineering.tools.registry import missing_specifications
-    from pha.engineering.workflow.intake import describe_missing
-    from pha.engineering.schemas.process import parse_process_basis, ProcessDesignBasis
-    from pha.engineering.tools.process import missing_process_inputs
+    from sepmind.engineering.schemas import DesignBasis
+    from sepmind.engineering.tools.registry import missing_specifications
+    from sepmind.engineering.workflow.intake import describe_missing
+    from sepmind.engineering.schemas.process import parse_process_basis, ProcessDesignBasis
+    from sepmind.engineering.tools.process import missing_process_inputs
     basis = agent.basis if agent is not None else parse_process_basis(session.config.engineering_basis or {})
     process=isinstance(basis,ProcessDesignBasis)
     missing=missing_process_inputs(basis) if process else missing_specifications(basis)

@@ -205,17 +205,17 @@ def main(request):
             record.update(shortcut(manager, request["payload"], Array, Double, ObjectType, StreamSpec))
         elif request["action"] == "rigorous_column":
             sys.path.insert(0, str(project_root))
-            from pha.engineering.validation.dwsim_column import simulate_column
+            from sepmind.engineering.validation.dwsim_column import simulate_column
             record.update(simulate_column(manager, request['payload'], Array, Double, ObjectType, StreamSpec))
         elif request['action']=='mixture_probe':
             sys.path.insert(0,str(project_root))
-            from pha.engineering.validation.dwsim_mixture import probe_mixture
+            from sepmind.engineering.validation.dwsim_mixture import probe_mixture
             record.update(probe_mixture(manager,request['payload'],Array,Double,ObjectType,StreamSpec))
         elif request['action']=='candidate_mixture_column':
             sys.path.insert(0,str(project_root))
             from separation.tools.mixture import CandidateColumnRequest,mixture_card
-            from pha.engineering.validation.dwsim_mixture import configure_candidate
-            from pha.engineering.validation.dwsim_column import simulate_column
+            from sepmind.engineering.validation.dwsim_mixture import configure_candidate
+            from sepmind.engineering.validation.dwsim_column import simulate_column
             p=CandidateColumnRequest.model_validate(request['payload'])
             card,digest=mixture_card(p.property_card_id)
             def setup(flow,pp,arr,number):
@@ -234,14 +234,14 @@ def main(request):
             sys.path.insert(0,str(project_root))
             from separation.tools.multifeed import MultiFeedColumnRequest
             from separation.tools.mixture import mixture_card
-            from pha.engineering.validation.dwsim_mixture import configure_candidate
-            from pha.engineering.validation.dwsim_column import simulate_column
+            from sepmind.engineering.validation.dwsim_mixture import configure_candidate
+            from sepmind.engineering.validation.dwsim_column import simulate_column
             p=MultiFeedColumnRequest.model_validate(request['payload'])
             card,digest=mixture_card(p.property_card_id)
             def setup(flow,pp,arr,number):
                 return configure_candidate(flow,pp,card,arr,number)
             if p.project_exact_absent_species:
-                from pha.engineering.validation.absent_species import project_absent_species,restore_absent_species
+                from sepmind.engineering.validation.absent_species import project_absent_species,restore_absent_species
                 native_request,projection=project_absent_species(p)
                 native_record=simulate_column(manager,request['payload'],Array,Double,ObjectType,StreamSpec,validated_request=native_request,property_setup=setup)
                 record.update(restore_absent_species(native_record,projection))
@@ -252,26 +252,26 @@ def main(request):
             record['limitations']+=card['limitations']+['Source settings are reconstructed with native DWSIM units; CAPE-OPEN binaries are never loaded.']
         elif request['action']=='topology_binary_column':
             sys.path.insert(0,str(project_root))
-            from pha.engineering.topology.binary_contracts import BinaryGraphColumnRequest, BinarySparseColumnRequest
-            from pha.engineering.validation.dwsim_column import simulate_column
+            from sepmind.engineering.topology.binary_contracts import BinaryGraphColumnRequest, BinarySparseColumnRequest
+            from sepmind.engineering.validation.dwsim_column import simulate_column
             contract=BinarySparseColumnRequest if request['payload'].get('numerical_solver')=='sparse_trust_region' else BinaryGraphColumnRequest
             p=contract(**request['payload'])
             record.update(simulate_column(manager,request['payload'],Array,Double,ObjectType,StreamSpec,validated_request=p))
             record['limitations'].append('Original-case native binary property model; full experimental qualification remains separate.')
         elif request['action']=='topology_binary_stage_probe':
             sys.path.insert(0,str(project_root))
-            from pha.engineering.topology.binary_contracts import BinaryStageProbeRequest
-            from pha.engineering.topology.native import stage_probe
+            from sepmind.engineering.topology.binary_contracts import BinaryStageProbeRequest
+            from sepmind.engineering.topology.native import stage_probe
             p=BinaryStageProbeRequest.model_validate(request['payload'])
             record.update(stage_probe(manager,p,p.property_package,Array,Double,ObjectType))
         elif request['action']=='ideal_stage_probe':
             sys.path.insert(0,str(project_root))
-            from pha.engineering.topology.native import ideal_stage_probe
+            from sepmind.engineering.topology.native import ideal_stage_probe
             record.update(ideal_stage_probe(manager,request['payload'],Array,Double,ObjectType))
         elif request['action']=='multicomponent_column':
             sys.path.insert(0,str(project_root))
             from separation.tools.multicomponent import MultiColumnRequest
-            from pha.engineering.validation.dwsim_column import simulate_column
+            from sepmind.engineering.validation.dwsim_column import simulate_column
             p=MultiColumnRequest(**request['payload'])
             record.update(simulate_column(manager,request['payload'],Array,Double,ObjectType,StreamSpec,validated_request=p))
             record['limitations'].append('Multicomponent ideal-assumption adapter only; this run does not qualify acid HOC/VLLE or phenols regeneration.')

@@ -11,12 +11,12 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, model_validator
 from api.utils.chat_logger import ChatSessionLogger
-from pha.utils.request_stats import request_stats
+from sepmind.utils.request_stats import request_stats
 sessions={}
 
 @asynccontextmanager
 async def lifespan(app):
-    snapshot=os.environ.get('PHA_RESTORE_SNAPSHOT')
+    snapshot=os.environ.get('SEPMIND_RESTORE_SNAPSHOT') or os.environ.get('PHA_RESTORE_SNAPSHOT')
     if snapshot:
         restore_engineering_sessions(json.loads(Path(snapshot).read_text(encoding='utf-8')))
     yield
@@ -31,7 +31,7 @@ app.add_middleware(CORSMiddleware,allow_origins=["http://localhost:3000","http:/
 class SessionConfig(BaseModel):
     provider: str="deepseek"
     model_id: str="deepseek-flash"
-    baseline: str="pha"
+    baseline: str="sepmind"
     persona_id: str="engineering"  # Legacy logger/session metadata; no persona data is loaded.
     user_id: str="engineering"
     workspace: Literal["engineering"]="engineering"
@@ -42,9 +42,11 @@ class SessionConfig(BaseModel):
     def defaults(cls,values):
         if isinstance(values,dict):
             values=dict(values)
+            if values.get('baseline') == 'pha':
+                values['baseline'] = 'sepmind'
             provider=values.get('provider','deepseek')
             if provider=='qwen':
-                from pha.llm.local_credentials import qwen_settings
+                from sepmind.llm.local_credentials import qwen_settings
                 default=os.environ.get('QWEN_MODEL') or qwen_settings().get('model') or 'qwen-plus'
             else:default='deterministic' if provider=='deterministic' else os.environ.get('DEEPSEEK_MODEL') or 'deepseek-flash'
             values.setdefault('model_id',default)
@@ -123,7 +125,7 @@ class ChatSession:
 
     def _initialize_agent(self):
         if self._initialized:return
-        from pha.engineering.agents.process import create_engineering_orchestrator
+        from sepmind.engineering.agents.process import create_engineering_orchestrator
         if self.agent is None:
             self.agent=create_engineering_orchestrator(basis=self.config.engineering_basis)
         if self.config.provider!="deterministic":
@@ -216,17 +218,17 @@ class ChatSession:
 @app.get("/config")
 async def get_config():
     model=os.environ.get("DEEPSEEK_MODEL") or "deepseek-flash"
-    from pha.llm.local_credentials import qwen_settings
+    from sepmind.llm.local_credentials import qwen_settings
     qwen=os.environ.get('QWEN_MODEL') or qwen_settings().get('model') or 'qwen-plus'
-    return {"providers":["deepseek","qwen","deterministic"],"models":{"deepseek":[{"id":model,"name":model,"provider":"deepseek"}],"qwen":[{"id":qwen,"name":qwen,"provider":"qwen"}],"deterministic":[{"id":"deterministic","name":"No-LLM numerical workflow","provider":"deterministic"}]},"baselines":[{"id":"pha","name":"SepMind expert-guided separation design","architecture":"PHA-derived three specialists and orchestrator"}],"defaults":{"provider":"deepseek","model_id":model,"workspace":"engineering"},"user_study_mode":False}
+    return {"providers":["deepseek","qwen","deterministic"],"models":{"deepseek":[{"id":model,"name":model,"provider":"deepseek"}],"qwen":[{"id":qwen,"name":qwen,"provider":"qwen"}],"deterministic":[{"id":"deterministic","name":"No-LLM numerical workflow","provider":"deterministic"}]},"baselines":[{"id":"sepmind","name":"SepMind expert-guided separation design","architecture":"Expert-guided orchestrator, three specialists, and independent numerical review"}],"defaults":{"provider":"deepseek","model_id":model,"workspace":"engineering"},"user_study_mode":False}
 
 @app.post("/sessions",response_model=SessionResponse)
 async def create_session(config:SessionConfig):
     if config.provider not in ("deepseek","qwen","deterministic"):
         raise HTTPException(400,"Engineering LLM provider must be DeepSeek or Qwen; deterministic is no-LLM mode")
-    if config.baseline!="pha":
+    if config.baseline!="sepmind":
         raise HTTPException(400,"Engineering baseline adapters are not yet qualified")
-    from pha.engineering.schemas.process import parse_process_basis
+    from sepmind.engineering.schemas.process import parse_process_basis
     try:parse_process_basis(config.engineering_basis or {})
     except ValueError as exc:raise HTTPException(422,str(exc)) from exc
     identifier=str(uuid.uuid4())[:8]
@@ -238,7 +240,7 @@ async def create_session(config:SessionConfig):
 @app.get('/')
 async def root():
     """Root endpoint with API info."""
-    return {'name': 'PHA Portal API', 'version': '1.0.0', 'docs': '/docs', 'status': 'running'}
+    return {'name': 'SepMind API', 'version': '1.0.0', 'docs': '/docs', 'status': 'running'}
 
 @app.get('/health')
 async def health_check():
@@ -301,7 +303,7 @@ async def stream_chat_message(session_id: str, request: ChatRequest):
     import json
     import threading
     from fastapi.responses import StreamingResponse
-    from pha.streaming import create_emitter, destroy_emitter, bind_thread, unbind_thread, emit_result, emit_error, get_queue
+    from sepmind.streaming import create_emitter, destroy_emitter, bind_thread, unbind_thread, emit_result, emit_error, get_queue
     if session_id not in sessions:
         raise HTTPException(status_code=404, detail='Session not found')
     session = sessions[session_id]
@@ -359,12 +361,12 @@ async def list_sessions():
 
 def restore_engineering_sessions(snapshot):
     """Restore explicitly supplied local engineering data without making LLM calls."""
-    from pha.engineering.agents.process import create_engineering_orchestrator
-    from pha.engineering.schemas import DesignState
-    from pha.engineering.schemas.process import ProcessDesignBasis, ProcessDesignState
+    from sepmind.engineering.agents.process import create_engineering_orchestrator
+    from sepmind.engineering.schemas import DesignState
+    from sepmind.engineering.schemas.process import ProcessDesignBasis, ProcessDesignState
     for item in snapshot.get('sessions',[]):
         config=SessionConfig.model_validate(item['config'])
-        if config.provider not in ('deepseek','qwen','deterministic') or config.baseline!='pha':
+        if config.provider not in ('deepseek','qwen','deterministic') or config.baseline!='sepmind':
             raise ValueError('Only engineering sessions can be restored')
         identifier=item['session_id']
         if identifier in sessions:continue

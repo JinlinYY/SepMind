@@ -37,7 +37,7 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def task_basis(case):
-    from pha.engineering.schemas import DesignBasis
+    from sepmind.engineering.schemas import DesignBasis
     source=ROOT/'case/curated'/TASKS[case]/'agent_input.json'
     raw=json.loads(source.read_text(encoding='utf8'))
     original=json.loads(json.dumps(raw))
@@ -50,8 +50,8 @@ def task_basis(case):
         'frozen_property_model':MODELS[case]}
 
 def knowledge():
-    from pha.engineering.skills import ExpertSkillRegistry
-    from pha.engineering.knowledge import MODEL_CARDS
+    from sepmind.engineering.skills import ExpertSkillRegistry
+    from sepmind.engineering.knowledge import MODEL_CARDS
     registry=ExpertSkillRegistry()
     result={'runtime_skills':[{'card':v.model_dump(),'procedure':registry.procedures[k],
         'sha256':registry.hashes[k]} for k,v in registry.cards.items()],

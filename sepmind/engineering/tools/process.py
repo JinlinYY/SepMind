@@ -10,7 +10,7 @@ from ..schemas.process import ProcessDesignBasis
 from ..thermo.lle import load_lle_model, flash_lle
 from ..design.extraction import stream_to_molar, extraction_cascade
 from ..validation.extraction import review_extraction
-from pha.streaming import emit_step
+from sepmind.streaming import emit_step
 
 
 class ProcessBasisInput(Contract):

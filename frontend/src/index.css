@@ -39,7 +39,7 @@ input, select, textarea {
 }
 
 /* Shared disclaimer banner (used on splash and chat) */
-.pha-disclaimer {
+.sepmind-disclaimer {
   background: rgba(245, 158, 11, 0.08);
   border: 1px solid rgba(245, 158, 11, 0.25);
   border-left: 3px solid var(--warning);
@@ -51,7 +51,7 @@ input, select, textarea {
   color: var(--text);
 }
 
-.pha-disclaimer-label {
+.sepmind-disclaimer-label {
   color: #b45309;
   font-weight: 700;
   letter-spacing: 0.02em;

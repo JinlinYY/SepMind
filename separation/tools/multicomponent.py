@@ -8,7 +8,7 @@ import math
 from pathlib import Path
 from .dwsim import DwsimBackend
 from pydantic import Field, model_validator
-from pha.engineering.schemas import Contract
+from sepmind.engineering.schemas import Contract
 
 
 @dataclass(frozen=True)

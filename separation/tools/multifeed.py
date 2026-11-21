@@ -2,7 +2,7 @@
 from pathlib import Path
 from typing import Literal
 from pydantic import Field, model_validator
-from pha.engineering.schemas import Contract
+from sepmind.engineering.schemas import Contract
 from .mixture import MixtureProbePoint, mixture_card, MixtureDwsimBackend
 
 

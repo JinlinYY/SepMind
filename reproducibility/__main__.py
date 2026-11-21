@@ -39,16 +39,16 @@ def replay_column(args, evidence):
 def design_case(args, evidence):
     root = Path(__file__).resolve().parents[1]
     if args.setting == "I":
-        from pha.engineering.agents import EngineeringOrchestrator
-        from pha.engineering.schemas import DesignBasis
+        from sepmind.engineering.agents import EngineeringOrchestrator
+        from sepmind.engineering.schemas import DesignBasis
 
         case_folder = evidence["binary"][args.case]["preliminary_design"]
         source = root / "case/curated" / case_folder / "agent_input.json"
         basis = DesignBasis.model_validate_json(source.read_text(encoding="utf-8"))
         initial_topology = "single_column"
     else:
-        from pha.engineering.topology.binary import BinaryTopologyOrchestrator, binary_case_basis
-        from pha.engineering.topology.orchestrator import create_topology_backend
+        from sepmind.engineering.topology.binary import BinaryTopologyOrchestrator, binary_case_basis
+        from sepmind.engineering.topology.orchestrator import create_topology_backend
 
         basis = binary_case_basis(args.case)
         initial_topology = None

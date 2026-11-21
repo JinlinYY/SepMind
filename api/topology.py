@@ -8,10 +8,10 @@ from uuid import UUID, uuid4
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import Response
 from pydantic import Field
-from pha.engineering.schemas import Contract
-from pha.engineering.topology.schemas import TopologyDesignBasis
-from pha.engineering.topology.binary_contracts import BinaryTopologyBasis
-from pha.engineering.tools.atomic_recovery import save
+from sepmind.engineering.schemas import Contract
+from sepmind.engineering.topology.schemas import TopologyDesignBasis
+from sepmind.engineering.topology.binary_contracts import BinaryTopologyBasis
+from sepmind.engineering.tools.atomic_recovery import save
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNS = ROOT/'output/engineering/topology_runs'
@@ -38,8 +38,8 @@ def run_folder(identifier):
 
 
 def worker(identifier, request, stop_event):
-    from pha.engineering.topology.orchestrator import TopologySynthesisOrchestrator, create_topology_backend
-    from pha.engineering.topology.binary import BinaryTopologyOrchestrator
+    from sepmind.engineering.topology.orchestrator import TopologySynthesisOrchestrator, create_topology_backend
+    from sepmind.engineering.topology.binary import BinaryTopologyOrchestrator
     try:
         controller = BinaryTopologyOrchestrator if isinstance(request.basis, BinaryTopologyBasis) else TopologySynthesisOrchestrator
         team = controller(request.basis, create_topology_backend(request.provider),
@@ -69,7 +69,7 @@ async def capabilities():
 @router.get('/example')
 async def example(case: Literal['ternary', 'D02', 'D03', 'D04'] = 'ternary'):
     if case != 'ternary':
-        from pha.engineering.topology.binary import binary_case_basis
+        from sepmind.engineering.topology.binary import binary_case_basis
         return binary_case_basis(case).model_dump()
     return json.loads((ROOT/'engineering/examples/topology_ideal_ternary.json').read_text(encoding='utf8'))
 

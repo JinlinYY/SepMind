@@ -2,11 +2,11 @@
 from dataclasses import asdict
 from pathlib import Path
 import json, time
-from pha.engineering.tools.atomic_recovery import AtomicRecoveryRegistry, RecoveryAction
-from pha.engineering.tools.registry import EngineeringToolRegistry
-from pha.engineering.agents.orchestrator import EngineeringOrchestrator
-from pha.engineering.design.rigorous import COMPOUNDS, product_checks
-from pha.engineering.design.binary import material_balance
+from sepmind.engineering.tools.atomic_recovery import AtomicRecoveryRegistry, RecoveryAction
+from sepmind.engineering.tools.registry import EngineeringToolRegistry
+from sepmind.engineering.agents.orchestrator import EngineeringOrchestrator
+from sepmind.engineering.design.rigorous import COMPOUNDS, product_checks
+from sepmind.engineering.design.binary import material_balance
 from separation.tools.dwsim import DwsimBackend, RigorousColumnRequest
 from .initialization import EVIDENCE_POLICY, LEGACY_POLICY, InitializationEvidenceMissing, profile_capabilities
 from .logging import save

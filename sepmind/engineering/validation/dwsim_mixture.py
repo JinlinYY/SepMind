@@ -228,7 +228,7 @@ def probe_mixture(manager,payload,Array,Double,ObjectType,StreamSpec):
                 pp.CurrentMaterialStream=s
                 algorithm=SimpleLLE();algorithm.FlashSettings=pp.FlashSettings
                 if request.lle_initialization=='independent_gibbs':
-                    from pha.engineering.thermo.lle import NRTLModel,flash_lle
+                    from sepmind.engineering.thermo.lle import NRTLModel,flash_lle
                     seed=flash_lle(NRTLModel(card),point.mole_fractions,point.temperature_K,point.pressure_Pa,require_qualified=False)
                     if seed['phase_count']!=2:raise ValueError('Independent seed has no stable nontrivial liquid split')
                     a,b=seed['phases']

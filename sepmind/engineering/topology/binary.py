@@ -179,9 +179,9 @@ class BinaryTopologyOrchestrator(TopologySynthesisOrchestrator):
     proposal_contract = BinaryProposal
     graph_contract = BinaryGraph
     excluded_source_files = ('hybrid_autonomous.py',)
-    extra_source_files = ('pha/engineering/design/binary.py', 'pha/engineering/design/enthalpy_seed.py',
-        'pha/engineering/validation/native_sparse.py', 'pha/engineering/validation/balanced_mesh.py',
-        'pha/engineering/validation/initialization.py')
+    extra_source_files = ('sepmind/engineering/design/binary.py', 'sepmind/engineering/design/enthalpy_seed.py',
+        'sepmind/engineering/validation/native_sparse.py', 'sepmind/engineering/validation/balanced_mesh.py',
+        'sepmind/engineering/validation/initialization.py')
     thermodynamic_gate_reason = 'Frozen original binary property method and native phase evidence admitted for conditional numerical evaluation'
 
     def __init__(self, basis, backend, prior_evidence=None, **kwargs):

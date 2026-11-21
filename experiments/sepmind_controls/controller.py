@@ -2,9 +2,9 @@ import json, time, random
 from pathlib import Path
 from typing import Literal
 from pydantic import Field
-from pha.engineering.schemas import Contract
-from pha.engineering.agents.orchestrator import EngineeringOrchestrator
-from pha.llm.backend_multimodel import DeepSeekBackend
+from sepmind.engineering.schemas import Contract
+from sepmind.engineering.agents.orchestrator import EngineeringOrchestrator
+from sepmind.llm.backend_multimodel import DeepSeekBackend
 from .config import task_basis, knowledge, digest
 from .initialization import EVIDENCE_POLICY, LEGACY_POLICY, POLICY_DIRECTORY, POLICIES, profile_capabilities
 from .tools import Meter, Tools, prepare, BudgetExceeded

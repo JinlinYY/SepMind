@@ -9,10 +9,10 @@ import json
 from pathlib import Path
 import threading
 
-from pha.agents.orchestrator import MultiAgentOrchestrator
-from pha.prompts.engineering_prompts import load_engineering_prompt
-from pha.prompts.data_science_prompts import render_prompt
-from pha.streaming import emit_step
+from sepmind.agents.orchestrator import MultiAgentOrchestrator
+from sepmind.prompts.engineering_prompts import load_engineering_prompt
+from sepmind.prompts.data_science_prompts import render_prompt
+from sepmind.streaming import emit_step
 from ..schemas import PlannerChoice, DecisionRecord, Reason
 from ..schemas.process import ProcessDesignBasis, ProcessDesignState, ExtractionSearch, parse_process_basis
 from ..workflow.process_revision import extraction_revision_options, ExtractionRevisionChoice
@@ -162,7 +162,7 @@ class ProcessEngineeringOrchestrator(EngineeringOrchestrator):
 
     def respond(self,user_message,task_updates=None):
         with self._run_lock:
-            from pha.utils.request_stats import request_stats
+            from sepmind.utils.request_stats import request_stats
             request_stats.reset()
             self.add_user_message(user_message)
             intent=route(user_message,self.state is not None)

@@ -1,8 +1,8 @@
 """PHA specialist adapters with deterministic engineering tools and sourced prompts."""
 
-from pha.agents import DataScienceAgent, DomainExpertAgent, HealthCoachAgent
-from pha.prompts.engineering_prompts import load_engineering_prompt
-from pha.streaming import emit_step
+from sepmind.agents import DataScienceAgent, DomainExpertAgent, HealthCoachAgent
+from sepmind.prompts.engineering_prompts import load_engineering_prompt
+from sepmind.streaming import emit_step
 from ..tools import EngineeringToolRegistry
 from ..skills import ExpertSkillRegistry
 
@@ -14,7 +14,7 @@ class EngineeringCalculationAgent(DataScienceAgent):
 
     def execute(self, state, gate, tool_name):
         emit_step("EngineeringCalc", f"{gate}: {tool_name}")
-        from pha.utils.request_stats import request_stats
+        from sepmind.utils.request_stats import request_stats
         request_stats.record_tool(tool_name)
         args = {"basis": state.basis.model_dump()} if self.registry.TOOLS[tool_name][1].model_fields else {}
         return self.registry.execute(tool_name,state,gate,args)

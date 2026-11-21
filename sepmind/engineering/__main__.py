@@ -1,4 +1,4 @@
-"""Run a real PHA engineering slice: python -m pha.engineering --basis FILE."""
+"""Run a real PHA engineering slice: python -m sepmind.engineering --basis FILE."""
 
 import argparse
 import json

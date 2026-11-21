@@ -207,7 +207,7 @@ def simulate_column(manager, payload, Array, Double, ObjectType, StreamSpec, val
     physical = all(math.isfinite(v) for v in all_numbers) and all(0<=x<=1 for s in (f,d,b) for x in s['mole_fractions']) and min(d['flow_mol_s'],b['flow_mol_s'])>0
     if not physical or max(map(abs,residuals))>1e-4 or energy_residual>1e-4 or specification_error>1e-4:
         if p.save_path:
-            from pha.engineering.tools.atomic_recovery import save
+            from sepmind.engineering.tools.atomic_recovery import save
             rejected_profiles=[dict(temperature_K=float(col.Tf[i]),liquid_flow_mol_s=float(col.Lf[i]),
                 vapor_flow_mol_s=float(col.Vf[i]),
                 liquid_mole_fractions=[float(col.xf[i][order.index(c)]) for c in p.components],

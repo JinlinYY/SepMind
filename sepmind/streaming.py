@@ -4,12 +4,12 @@ This module provides a thread-safe mechanism for agents to emit
 intermediate steps that can be streamed to the frontend via SSE.
 
 Usage in agents:
-    from pha.streaming import emit_step
+    from sepmind.streaming import emit_step
     emit_step("DS", "Generating analysis approach...")
     emit_step("DS", "Executing code...", detail="avg = df['sleep'].mean()")
 
 Usage in API (SSE endpoint):
-    from pha.streaming import create_emitter, get_events, destroy_emitter
+    from sepmind.streaming import create_emitter, get_events, destroy_emitter
     
     emitter_id = create_emitter()
     # ... run agent in thread ...

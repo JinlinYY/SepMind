@@ -13,12 +13,12 @@ import numpy as np
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from separation.tools.mixture import mixture_card,MixtureProbeRequest
 from separation.tools.multifeed import MultiFeedColumnRequest,MultiFeedDwsimBackend
-from pha.engineering.thermo.lle import NRTLModel,flash_lle,stability_screen
-from pha.engineering.design.extraction import contact
-from pha.engineering.design.extraction_simultaneous import extraction_simultaneous
-from pha.engineering.design.recycle import converge_component_recycle
-from pha.engineering.validation.multifeed import review_multifeed_column
-from pha.engineering.validation.initialization import material_consistent_profile
+from sepmind.engineering.thermo.lle import NRTLModel,flash_lle,stability_screen
+from sepmind.engineering.design.extraction import contact
+from sepmind.engineering.design.extraction_simultaneous import extraction_simultaneous
+from sepmind.engineering.design.recycle import converge_component_recycle
+from sepmind.engineering.validation.multifeed import review_multifeed_column
+from sepmind.engineering.validation.initialization import material_consistent_profile
 from scripts.run_case5_native import run
 
 def read(path):return json.loads(path.read_text(encoding='utf8'))

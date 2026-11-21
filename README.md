@@ -56,8 +56,12 @@ python -m reproducibility replay-column --case D01 --design sepmind --output rep
 
 | Path | Research material |
 | --- | --- |
-| [`pha/engineering/`](pha/engineering/) | Orchestrator, specialist roles, design state, thermodynamics, balances, equipment calculations, and independent review |
-| [`pha/engineering/topology/`](pha/engineering/topology/) | Autonomous flowsheet proposals, graph validation, unit execution, and flowsheet review |
+| [`sepmind/engineering/`](sepmind/engineering/) | Orchestrator, specialist roles, design state, thermodynamics, balances, equipment calculations, and independent review |
+| [`sepmind/engineering/agents/`](sepmind/engineering/agents/) | Expert-guided orchestrator, thermodynamics expert, engineering calculation expert, and process design advisor |
+| [`sepmind/engineering/workflow/`](sepmind/engineering/workflow/) | Stage dependencies, design revisions, and affected-result invalidation |
+| [`sepmind/engineering/validation/`](sepmind/engineering/validation/) | Independent numerical checks and design acceptance |
+| [`sepmind/llm/`](sepmind/llm/) | DeepSeek and Qwen configuration and provider interfaces |
+| [`sepmind/engineering/topology/`](sepmind/engineering/topology/) | Autonomous flowsheet proposals, graph validation, unit execution, and flowsheet review |
 | [Runtime Skills](engineering/runtime_skills/), [model cards](engineering/knowledge/), [tool contracts](engineering/contracts/) | Rules, parameter evidence, and numerical interfaces |
 | [`separation/tools/`](separation/tools/) | DWSIM adapters and numerical worker |
 | [`case/curated/`](case/curated/) | Case inputs and English worked calculations from the human designs |

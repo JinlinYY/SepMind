@@ -367,8 +367,8 @@ function ChatInterface({ session, apiBase, onEndSession, onRefresh, refreshing, 
           <div className="session-info">
             <span className="session-badge baseline">
               {userStudyMode
-                ? { pha: 'AGENT A', parallel: 'AGENT B', phia: 'AGENT C' }[session.config.baseline]
-                : session.config.baseline === 'pha' ? 'SepMind' : session.config.baseline.toUpperCase()}
+                ? { sepmind: 'AGENT A', parallel: 'AGENT B', phia: 'AGENT C' }[session.config.baseline]
+                : session.config.baseline === 'sepmind' ? 'SepMind' : session.config.baseline.toUpperCase()}
             </span>
             {!userStudyMode && (
               <>
@@ -392,8 +392,8 @@ function ChatInterface({ session, apiBase, onEndSession, onRefresh, refreshing, 
         </div>
       </header>
 
-      <div className="pha-disclaimer" role="note">
-        <span className="pha-disclaimer-label">NOTE:</span>
+      <div className="sepmind-disclaimer" role="note">
+        <span className="sepmind-disclaimer-label">NOTE:</span>
         仅展示实际执行的初步计算；设备估算与完整性能验证的范围以本次证据为准，需专业复核。
       </div>
 

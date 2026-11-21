@@ -1,4 +1,4 @@
-"""Role-specific prompt templates, mirroring pha/prompts."""
+"""Role-specific prompt templates, mirroring sepmind/prompts."""
 from .common import COMMON
 from .separation_design_prompts import DESIGN
 from .process_simulation_prompts import SIMULATION

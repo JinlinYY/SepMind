@@ -4,10 +4,10 @@ import json
 import threading
 from pathlib import Path
 
-from pha.agents.orchestrator import MultiAgentOrchestrator
-from pha.prompts.engineering_prompts import load_engineering_prompt, planning_prompt
-from pha.streaming import emit_step
-from pha.utils.request_stats import request_stats
+from sepmind.agents.orchestrator import MultiAgentOrchestrator
+from sepmind.prompts.engineering_prompts import load_engineering_prompt, planning_prompt
+from sepmind.streaming import emit_step
+from sepmind.utils.request_stats import request_stats
 from ..schemas import DesignBasis, DesignState, DecisionRecord, PlannerChoice, Reason
 from ..tools.registry import missing_specifications
 from ..workflow.graph import changed_gates, require_gate, descendants

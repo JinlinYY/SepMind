@@ -11,8 +11,8 @@ from pathlib import Path
 import sys
 import time
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from pha.engineering import EngineeringOrchestrator
-from pha.engineering.schemas import DesignBasis
+from sepmind.engineering import EngineeringOrchestrator
+from sepmind.engineering.schemas import DesignBasis
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -55,7 +55,7 @@ def main():
     parser.add_argument('--provider',choices=['deepseek','deterministic'],default='deepseek')
     parser.add_argument('--jobs',type=int,choices=[1,2,3],default=3)
     args=parser.parse_args();folder=Path(args.output).resolve();folder.mkdir(parents=True,exist_ok=True)
-    files=sorted([*ROOT.glob('pha/engineering/**/*.py'),*ROOT.glob('engineering/runtime_skills/**/SKILL.md'),
+    files=sorted([*ROOT.glob('sepmind/engineering/**/*.py'),*ROOT.glob('engineering/runtime_skills/**/SKILL.md'),
                   *ROOT.glob('separation/tools/*dwsim*.py')])
     manifest={'files':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
               'provider':args.provider,'cases':args.case,'physical_results':'native DWSIM only',

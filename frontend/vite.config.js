@@ -8,7 +8,7 @@ export default defineConfig({
     hmr: false,
     proxy: {
       '/api': {
-        target: process.env.PHA_API_TARGET || 'http://localhost:8000',
+        target: process.env.SEPMIND_API_TARGET || process.env.PHA_API_TARGET || 'http://localhost:8000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

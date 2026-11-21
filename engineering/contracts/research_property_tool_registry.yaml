@@ -56,8 +56,8 @@ tools:
       - saved seed feed, model, conditions and parameter hash must match
       - native MESH target reproduction is not product or property qualification
   - name: review_candidate_column_goals
-    implementation: pha.engineering.validation.column_goals.review_column_goals
-    goal_contract: pha.engineering.validation.column_goals.ColumnProductGoal
+    implementation: sepmind.engineering.validation.column_goals.review_column_goals
+    goal_contract: sepmind.engineering.validation.column_goals.ColumnProductGoal
     purpose: property_qualification
     design_admitted: false
     checks:
@@ -66,7 +66,7 @@ tools:
       - product mass purity separate from component recovery
       - explicit origin of every internal unit allocation
   - name: review_candidate_stage_equilibrium
-    implementation: pha.engineering.validation.column_goals.review_candidate_stage_equilibrium
+    implementation: sepmind.engineering.validation.column_goals.review_candidate_stage_equilibrium
     purpose: property_qualification
     design_admitted: false
     checks:

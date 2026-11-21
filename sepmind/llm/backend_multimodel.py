@@ -2,7 +2,7 @@
 # Only shared behavior used by the separation-design extension remains active.
 import os
 from abc import ABC, abstractmethod
-from pha.llm.config import get_config, DEFAULT_MODELS
+from sepmind.llm.config import get_config, DEFAULT_MODELS
 
 class LLMBackend(ABC):
     """Abstract base class for LLM backends."""

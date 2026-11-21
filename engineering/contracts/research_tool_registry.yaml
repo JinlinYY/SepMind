@@ -23,7 +23,7 @@ completion_followup_20261111:
   external_vle_dataset: engineering/data/hybrid/mch_toluene_independent_vle_hartanto2025.json
   external_vle_result: output/engineering/case35_completion_20261111/external_validation.json
   external_lle_result: output/engineering/case35_completion_20261111/binary_lle_validation.json
-  near_pure_solvent_screen: pha.engineering.validation.phase_admission.near_pure_freezing_screen
+  near_pure_solvent_screen: sepmind.engineering.validation.phase_admission.near_pure_freezing_screen
   warning: Historical case03 293.15K liquid-only result fails a necessary near-pure sulfolane freezing screen. Numerical closure alone is not engineering phase admission.
   warm_case03_evidence: output/engineering/case3_warm_20261111/flowsheet_result.json
   pressure_case03_evidence: output/engineering/case3_warm_pressure_20261111/flowsheet_result.json

@@ -8,7 +8,7 @@ from dataclasses import asdict
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
-from pha.llm.local_credentials import deepseek_key
+from sepmind.llm.local_credentials import deepseek_key
 
 from .analyze import group, summarize
 from .config import ROOT, TASKS, arms

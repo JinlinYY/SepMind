@@ -6,7 +6,7 @@ import './App.css'
 
 // API base URL - use proxy in dev
 const API_BASE = '/api'
-const ACTIVE_SESSION_KEY = 'pha_active_session'
+const ACTIVE_SESSION_KEY = 'sepmind_active_session'
 const INITIAL_TOPOLOGY_RUN = new URLSearchParams(window.location.search).get('topology_run')
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
   }
 
   const restoreSession = async (latestConfig) => {
-    const raw = localStorage.getItem(ACTIVE_SESSION_KEY)
+    const raw = (localStorage.getItem(ACTIVE_SESSION_KEY) || localStorage.getItem('pha_active_session'))
     if (!raw) return false
 
     let storedSession

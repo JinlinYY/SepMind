@@ -14,10 +14,10 @@ These commands use Python 3.11 or later and the standard library. [evidence.json
 
 | Manuscript item | What the export derives | Code or records |
 | --- | --- | --- |
-| Fig. 1 and Tables S1–S3 | Design stages, executable expert rules, tool registration and validation | [Orchestrator](../pha/engineering/agents/orchestrator.py), [runtime Skills](../engineering/runtime_skills/), [property knowledge](../engineering/knowledge/), [tool contracts](../engineering/contracts/), [validation](../pha/engineering/validation/) |
+| Fig. 1 and Tables S1–S3 | Design stages, executable expert rules, tool registration and validation | [Orchestrator](../sepmind/engineering/agents/orchestrator.py), [runtime Skills](../engineering/runtime_skills/), [property knowledge](../engineering/knowledge/), [tool contracts](../engineering/contracts/), [validation](../sepmind/engineering/validation/) |
 | Fig. 2, Table 1 and Tables S4–S6 | Common-basis product checks, design basis, tower parameters, duties and preliminary sizing | [Binary table extraction](tables.py), [four source cases](../case/curated/) |
 | Fig. 3 and Tables S7–S8 | Ethanol/water candidate scores, observed strict-tower attempts and the paired cooling-water calculation | The `ethanol_water_trace` record in [evidence.json](evidence.json) |
-| Table 2 | Recorded Setting I metrics and the planned Setting II rows for A1–A4 | [Prescribed benchmark controller](../experiments/sepmind_controls/controller.py), [autonomous design controller](../pha/engineering/topology/binary.py) |
+| Table 2 | Recorded Setting I metrics and the planned Setting II rows for A1–A4 | [Prescribed benchmark controller](../experiments/sepmind_controls/controller.py), [autonomous design controller](../sepmind/engineering/topology/binary.py) |
 | Figs. 4–5, Table 3 and Tables S9–S10 | Original product constraints and reported streams for the accepted prescribed H01 and H02 flowsheets | [H01 calculation](../scripts/complete_case3_flowsheet.py), [H02 calculation](../scripts/complete_case5_flowsheet.py) and the `hybrid` records in [evidence.json](evidence.json) |
 | Table S11 | Binary component and energy residuals recalculated from recorded streams, and the archived integrated closure results | [Closure calculation](tables.py) |
 
