@@ -1,12 +1,12 @@
 ---
 skill_id: azeotropic_route_review
 version: '1.0'
-title: 共沸约束与路线审查
+title: Azeotropic limits and route review
 owner: thermodynamics
 applies_to: any
 gates: [G1]
 tools: [assess_separation_feasibility]
 checks: [target_interval, azeotropic_boundary, alternative_data_requirements]
-hypothesis: 普通单塔可在已核验的目标组成区间内完成所请求的富集。
+hypothesis: A conventional single column can achieve the requested enrichment within the verified composition interval.
 ---
-根据真实 VLE 求模型共沸边界，检查原料与产品所在的组成区间。不能因全物系存在共沸就否定所有目标，也不能跨过边界继续逐板。路线被反证时提出待验证的替代概念，明确溶剂、相平衡或设备数据需求。
+Locate model azeotropic boundaries using calculated VLE and check the composition intervals containing the feed and products. Check the specific target even when the mixture exhibits an azeotrope. Stop stage stepping at the boundary. If the route fails, propose alternatives for verification and specify the missing solvent, phase-equilibrium, or equipment data.

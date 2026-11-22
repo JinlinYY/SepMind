@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class RunRequest(Contract):
-    message: str = Field(default="执行当前设计依据",max_length=20000)
+    message: str = Field(default="Run the current design basis",max_length=20000)
     task_updates: dict | None = None
 
 

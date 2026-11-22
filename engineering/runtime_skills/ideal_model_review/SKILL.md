@@ -1,14 +1,14 @@
 ---
 skill_id: ideal_model_review
 version: '1.1'
-title: 理想性假设审查
+title: Review ideality assumptions
 owner: thermodynamics
 applies_to: ideal
 gates: [G2]
 tools: [select_thermodynamic_model]
 checks: [model_eligibility, explicit_ideality, pair_coverage]
-hypothesis: 已支持物系在明确理想性假设下，或苯／甲苯通过测量筛查且明确接受有限研究外推时，可以进入理想相平衡数值检验。
+hypothesis: A supported pair may enter ideal VLE testing under explicit ideality assumptions. Benzene/toluene may enter within the research scope after independent measurement screening and explicit acceptance of extrapolation.
 ---
-检查理想性是否明确给定，不能把缺少二元参数当作理想性的证据。区分纯物性关联式的有效性与混合物理想性是否得到实验支持。不满足条件时请求证据，不能自动退化为 Raoult。
+Check that ideality is explicitly declared. Missing binary parameters do not establish ideality. Distinguish pure-component correlation validity from experimental support for ideal mixture behavior. When the conditions fail, request evidence and keep Raoult's law outside the candidate set.
 
-苯／甲苯研究适配例外必须同时满足 CAS 白名单、106.325±0.025 kPa 项目压力守卫、research_scope_low_pressure_vle 标记和独立测量 P-x-T 筛查。其测量温度仅覆盖 333.15/353.15 K；塔底温度区域属于明确外推，不能声称整个塔的物性已由实验验证。
+The research exception for benzene/toluene requires every condition to hold: allowlisted CAS identities, pressure within 106.325 ± 0.025 kPa, the research_scope_low_pressure_vle flag, and independent measured P-x-T screening. The measurements cover 333.15 and 353.15 K. Bottoms temperatures beyond that range are an explicit extrapolation.

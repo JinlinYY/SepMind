@@ -45,12 +45,12 @@ class ThermodynamicsExpertAgent(DomainExpertAgent):
     @staticmethod
     def knowledge_answer(question):
         if "wilson" in question.lower():
-            return ("普通 Wilson 模型不能表示稳定液液分相，不能用于本流程的 LLE 设计。"
-                    "应核验适用的 NRTL/UNIQUAC 模型及来源参数。当前仅对常压乙醇／水的 NRTL 做了来源及实验筛查，不能推广到其他物系或 LLE；未执行数值计算。\n"
-                    "依据：engineering/prompts/MODEL_SELECTOR.md（工程规则卡，非外部实验数据）。")
-        return ("模型选择需核验组分、相态、压力、参数来源和适用范围。当前支持常压乙醇／水的条件性 NRTL 自主方案合成，以及显式理想性假设下的"
-                "正庚烷/正壬烷二元 VLE 与 McCabe–Thiele；其他物系和模型需另行验证。未执行工艺计算。\n"
-                "依据：engineering/prompts/MODEL_SELECTOR.md 与已注册计算工具。")
+            return ("The standard Wilson model cannot represent stable liquid–liquid phase splitting and is unsuitable for this LLE design. "
+                    "Review the applicability and parameter provenance of NRTL or UNIQUAC. The current source and experimental screening covers atmospheric ethanol/water VLE. Other mixtures and LLE require separate qualification. This response contains model guidance only. \n"
+                    "See the engineering rule in engineering/prompts/MODEL_SELECTOR.md.")
+        return ("Model selection requires component identities, phase behavior, pressure, parameter provenance, and the validity range. The workflow supports conditional NRTL design for atmospheric ethanol/water and "
+                "binary VLE and McCabe–Thiele calculations for n-heptane/n-nonane under explicit ideality assumptions. Other systems and models require separate validation. This response contains model guidance only. \n"
+                "See engineering/prompts/MODEL_SELECTOR.md and the registered tools.")
 
 
 class ProcessDesignAdvisorAgent(HealthCoachAgent):

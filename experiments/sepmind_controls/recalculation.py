@@ -45,7 +45,7 @@ def run(root,repeats=3):
             print(json.dumps(row),flush=True)
     summary={c:{k:average([r[k] for r in rows if r['case']==c]) for k in ['tools_saved','native_saved','upstream_time_saved_s']} for c in TASKS}
     save(out/'summary.json',summary)
-    note='\n\n## 同条件配对上游重算微基准\n\n仅测量在相同任务与级数／进料位置修订场景下，上游准备和原生VLE的重算开销。严格塔求解不在此微基准内，因此不能解释为整套Agent加速。两分支顺序按固定种子打散，全部为真实工具计时，无额外LLM。\n\n|案例|重复n|节省工具调用均值±SD|节省原生VLE次数均值±SD|上游节省秒均值±SD|\n|---|---|---|---|---|\n'
+    note='\n\n## Paired upstream recalculation microbenchmark\n\nEach pair uses identical tasks and stage/feed-location revisions. Timing covers upstream preparation and native VLE only. Branch order uses a fixed seed. All timings are from tool calls with no additional model requests.\n\n| Case | Pairs | Workflow calls saved (mean ± SD) | VLE calls saved (mean ± SD) | Upstream time saved (s, mean ± SD) |\n|---|---|---|---|---|\n'
     for c in TASKS:
         cells=[]
         for k in ['tools_saved','native_saved','upstream_time_saved_s']:

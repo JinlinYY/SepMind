@@ -51,45 +51,45 @@ def report_data(state):
 
 def render_report(state):
     data = report_data(state)
-    labels = {"awaiting_clarification": "等待补充设计条件", "preliminary_complete": "简捷初步设计完成（有条件）",
-              "needs_engineering_review": "需要进一步工程验证", "tool_failed": "计算或数值证据检查失败",
-              "budget_exhausted": "已达到本轮计算预算", "agent_failed": "代理执行或任务交接失败"}
-    lines = [f"状态：{labels.get(state.status, state.status)}",
-             f"运行模式：{'真实 LLM 三代理' if state.mode == 'llm' else '三角色规则基线（未调用 LLM）'}",
-             f"决策策略：{'假设驱动主动验证' if state.strategy == 'hypothesis' else '原规则流程'}",
-             f"任务版本：{state.task_revision}", ""]
+    labels = {"awaiting_clarification": "Awaiting design inputs", "preliminary_complete": "Conditional shortcut design complete",
+              "needs_engineering_review": "Engineering verification required", "tool_failed": "Calculation or evidence check failed",
+              "budget_exhausted": "Calculation budget reached", "agent_failed": "Agent execution or handoff failed"}
+    lines = [f"Status {labels.get(state.status, state.status)}",
+             f"Mode {'Three-agent LLM workflow' if state.mode == 'llm' else 'Deterministic three-role workflow'}",
+             f"Strategy {'Hypothesis-driven verification' if state.strategy == 'hypothesis' else 'Rule-based workflow'}",
+             f"Task revision {state.task_revision}", ""]
     if state.questions:
-        lines += ["需要补充："] + [f"- {q}" for q in state.questions] + [""]
+        lines += ["Required inputs"] + [f"- {q}" for q in state.questions] + [""]
     o = data["numerical_results"]
     if o:
-        lines += ["DWSIM 简捷计算结果（产品组成与回收率为施加的分配规格）：",
-                  f"- 回流比：{o['reflux_ratio']:.6g}",
-                  f"- 理论级数估计：{o['stages_estimate']:.6g}",
-                  f"- 最小理论级数估计：{o['minimum_stages']:.6g}",
-                  f"- 最小回流比估计：{o['minimum_reflux_ratio']:.6g}",
-                  f"- 再沸器负荷估计：{o['reboiler_duty_kw']:.6g} kW",
-                  f"- 轻关键组分馏出液摩尔分数：{o['distillate_light_purity']:.8g}",
-                  f"- 轻关键组分回收率：{o['light_recovery']:.8g}",
-                  f"- 证据编号：{data['numerical_evidence_id']}", ""]
+        lines += ["DWSIM shortcut results under imposed product composition and recovery specifications",
+                  f"- Reflux ratio {o['reflux_ratio']:.6g}",
+                  f"- Estimated equilibrium stages {o['stages_estimate']:.6g}",
+                  f"- Estimated minimum equilibrium stages {o['minimum_stages']:.6g}",
+                  f"- Estimated minimum reflux ratio {o['minimum_reflux_ratio']:.6g}",
+                  f"- Estimated reboiler duty {o['reboiler_duty_kw']:.6g} kW",
+                  f"- Light-key mole fraction in the distillate {o['distillate_light_purity']:.8g}",
+                  f"- Light-key recovery {o['light_recovery']:.8g}",
+                  f"- Evidence ID {data['numerical_evidence_id']}", ""]
     if data["issues"]:
-        lines += ["尚未解决的问题："] + [f"- {issue}" for issue in data["issues"]] + [""]
+        lines += ["Open issues"] + [f"- {issue}" for issue in data["issues"]] + [""]
     if state.status == "agent_failed":
         errors = [e.details.get("reason", "") for e in state.events if e.action == "execution_error"]
-        lines += ["代理错误："] + [f"- {error}" for error in errors] + [""]
+        lines += ["Agent errors"] + [f"- {error}" for error in errors] + [""]
     if state.strategy == "hypothesis":
-        lines += ["设计假设状态（结论限定于当前模型和已采样条件）："]
-        lines += [f"- {h.hypothesis_id}: {h.status}；证据：{', '.join(h.evidence_ids) or '尚无'}"
+        lines += ["Design hypotheses under the stated model and sampled conditions"]
+        lines += [f"- {h.hypothesis_id}: {h.status}. Evidence {', '.join(h.evidence_ids) or 'None'}"
                   for h in state.hypotheses]
-        lines += ["", "验证动作及选择依据："]
+        lines += ["", "Verification actions and selection rationale"]
         for decision in state.verification_decisions:
             chosen = next(a for a in decision.options if a.action_id == decision.selected_action_id)
-            lines.append(f"- {chosen.kind}；优先级 {chosen.score:.4g}；预计相对成本 "
-                         f"{chosen.estimated_cost_units:.4g}；{decision.rationale}")
-        lines += [f"- 停止原因：{reason}" for reason in data["verification_stop_reasons"]]
-        lines += [f"- 累计预计相对成本：{state.estimated_cost_spent:.4g}（不是实际耗时）。", ""]
-    lines += ["适用限制："] + [f"- {limit}" for limit in data["limitations"]]
-    lines += ["", f"调用统计：{state.tool_calls} 次计算工具，{state.llm_calls} 次 LLM，{state.rounds} 轮协作。"]
+            lines.append(f"- {chosen.kind}. Priority {chosen.score:.4g}. Estimated relative cost "
+                         f"{chosen.estimated_cost_units:.4g}. {decision.rationale}")
+        lines += [f"- Stop reason {reason}" for reason in data["verification_stop_reasons"]]
+        lines += [f"- Total estimated relative cost {state.estimated_cost_spent:.4g} (relative units).", ""]
+    lines += ["Applicability limits"] + [f"- {limit}" for limit in data["limitations"]]
+    lines += ["", f"Calls and rounds {state.tool_calls} tool calls, {state.llm_calls} LLM calls, {state.rounds} rounds."]
     if data["served_models"]:
-        lines.append("实际模型：" + ", ".join(data["served_models"]))
-        lines.append(f"已记录的模型响应 token 总数：{data['usage']['recorded_total_tokens']}。")
+        lines.append("Model used " + ", ".join(data["served_models"]))
+        lines.append(f"Recorded response tokens {data['usage']['recorded_total_tokens']}.")
     return "\n".join(lines)

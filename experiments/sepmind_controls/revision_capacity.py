@@ -111,11 +111,11 @@ def publish(root):
     stop_at_first_target = rules.pop()
 
     lines = [
-        '# SepMind 五次修订预算下的架构对比与机制消融', '',
-        'D01–D04 为既定单塔任务。原版与新版各完成 320 次正式运行，每配置 40 次。',
-        '每次运行至多启动 6 次严格塔计算（首轮加最多 5 次追加计算）和 2 次原生汽液平衡计算。后述原版与新版分别指实验控制策略 `legacy` 与 `evidence_v2`。',
-        *(['产品达标后仅执行该组的审查和提交步骤。若内部独立审查发现问题，可继续修订。统一外部评测在结束后执行。'] if stop_at_first_target else []), '',
-        '| 配置 | 策略 | 验证成功 | 成功率 | LLM 调用／运行 | LLM 总调用 | 严格仿真／运行 | 平均 Token／运行 |',
+        '# SepMind architecture and ablation results with up to five revisions', '',
+        'D01–D04 use prescribed single columns. Each numerical policy has 320 formal runs with 40 per arm.',
+        'Each run permits six rigorous-column starts including the initial calculation, and two native VLE calls. The policies are original numerical review and revision, and numerical review with explicit initialization evidence.',
+        *(['After a design meets the product targets, the arm proceeds to review and submission. An internal review failure can reopen revision. The external evaluator runs after the episode.'] if stop_at_first_target else []), '',
+        '| Arm | Policy | Verified runs | Success rate | LLM calls/run | Total LLM calls | Simulations/run | Tokens/run |',
         '| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |',
     ]
     for arm, cfg in config.items():
@@ -128,9 +128,9 @@ def publish(root):
                          f' | {call_total} | {fixed(stats["strict_calls"]["mean"],2)}'
                          f' | {fixed(stats["tokens"]["mean"],0)} |')
     lines.extend([
-        '', '均值包含成功和失败运行，Token 均值按有完整使用量记录的运行统计。严格仿真统计实际启动，包含失败及超时。', '',
-        '## 与三次修订历史批次的对照', '',
-        '| 配置 | 策略 | 验证成功数 3 → 5 次修订 | 成功率变化（百分点） | 第 5 次严格塔达到数 | 第 6 次严格塔达到数 | 第 5–6 次才首次达到外部验收且最终提交 |',
+        '', 'Means include successes and failures. Token means use complete usage records. Simulation counts include every start, including solver failures and timeouts.', '',
+        '## Comparison with historical runs allowing three revisions', '',
+        '| Arm | Policy | Verified runs, three to five revisions | Change (percentage points) | Fifth column starts | Sixth column starts | First external pass at starts 5–6 and finally submitted |',
         '| --- | --- | ---: | ---: | ---: | ---: | ---: |',
     ])
     for arm in config:
@@ -148,13 +148,13 @@ def publish(root):
                          f' | {sum(r["strict_calls"] >= 5 for r in data)}'
                          f' | {sum(r["strict_calls"] >= 6 for r in data)} | {selected_late} |')
     lines.extend([
-        '', '历史原版批次与本轮的严格塔底层源码存在差异。历史新版批次与本轮共享数值实现。提供商采样跨批次独立，并且 Agent 在运行中可见预算，因此到达第 5–6 次的证据与整体成功率变化应分别解读。', '',
-        *(['旧批次和当前批次的停止规则不同。跨批次成功率变化也包含提前停止规则的影响。', ''] if stop_at_first_target else []),
-        '## 正式记录', '',
-        '[原版逐运行结果](legacy/main/results.json) · [新版逐运行结果](evidence_v2/main/results.json) · '
-        '[原版逐案例报告](legacy/main/analysis/experiment_report.md) · [新版逐案例报告](evidence_v2/main/analysis/experiment_report.md)',
+        '', 'The historical original-policy batch used different rigorous-column code. The explicit-initialization batches share the numerical implementation. The provider samples independently across batches, and the agent sees the budget. Interpret late-start passes separately from differences in success rate.', '',
+        *(['These batches used different stopping rules, so changes in success rate also reflect the early stopping rule.', ''] if stop_at_first_target else []),
+        '## Formal records', '',
+        '[Original-policy runs](legacy/main/results.json) · [Explicit-initialization runs](evidence_v2/main/results.json) · '
+        '[Original-policy report](legacy/main/analysis/experiment_report.md) · [Explicit-initialization report](evidence_v2/main/analysis/experiment_report.md)',
     ])
-    (root / 'SepMind_五次修订_架构对比与消融.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    (root / 'sepmind_five_revision_comparison.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
 def main():

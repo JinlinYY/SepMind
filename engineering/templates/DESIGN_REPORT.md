@@ -1,48 +1,48 @@
-# 分离过程初步工艺设计说明书
+# Preliminary separation process design report
 
-> 项目：{{project_name}} ｜状态：{{report_status}} ｜运行ID：{{run_id}} ｜发布日期：{{date}}
->
-> 注意：本报告是模型支持的初步工艺设计；设备机械强度、安全评估和施工详设尚需专业复核。
+> Project {{project_name}} | Status {{report_status}} | Run {{run_id}} | Date {{date}}
 
-## 0 设计任务书与设计依据
-- 进料、产品、操作条件、约束、原始单位和换算
-- 缺失条件、用户确认的假设、数据来源与计算边界
+> This is a preliminary design. Mechanical qualification, safety assessment, and construction design require professional review.
 
-## 1 可行性分析与工艺方案
-- 相平衡与共沸/分相限制
-- 候选流程及优缺点、优选理由、拒绝方案说明
-- 初步工艺流程图与设备/物流编号
+## 0 Design brief and basis
+- Feed, products, operating conditions, constraints, units, and conversions
+- Missing inputs, approved assumptions, data sources, and calculation boundary
 
-## 2 热力学模型与物性参数
-- 纯物性、相平衡、传热和输运物性模型
-- 模型适用性、参数形式、来源、温压有效范围
+## 1 Feasibility and flowsheet selection
+- Phase equilibrium, azeotropic limits, and liquid phase splitting
+- Candidate routes, trade-offs, and selection or rejection rationale
+- Preliminary flowsheet and equipment and stream identifiers
 
-## 3 全流程物料及热量衡算
-- 总物流表及组分衡算
-- 纯度/回收率定义和计算
-- 冷凝器/再沸器等热量衡算和公用工程
+## 2 Thermodynamic models and property parameters
+- Pure-component, phase-equilibrium, heat-transfer, and transport models
+- Model applicability, parameter equations, provenance, and temperature and pressure ranges
 
-## 4 分离计算与操作参数
-- 工况选择、Rmin、R、理论级/实际板数及进料位置
-- 分离目标校核、操作线/相图、关键假设
+## 3 Process material and energy balances
+- Stream table and component balances
+- Purity and recovery definitions and calculations
+- Condenser and reboiler duties and utility balances
 
-## 5 塔体和内件初步工艺设计
-- 塔径、塔高、板间距、塔板型式、溢流和开孔布置
+## 4 Separation calculations and operating parameters
+- Operating conditions, minimum and operating reflux, equilibrium stages, trays, and feed location
+- Product checks, operating lines, phase diagrams, and key assumptions
 
-## 6 水力学校核与负荷性能图
-- 液泛、漏液、雾沫夹带、压降、操作弹性
+## 5 Preliminary column and internals design
+- Diameter, height, tray spacing and type, weirs, and valve layout
 
-## 7 附属设备选型与公用工程
-- 冷凝器、再沸器、泵、管线、接管、贮罐及供应能力
+## 6 Hydraulics and load performance
+- Flooding, weeping, entrainment, pressure drop, and turndown
 
-## 8 方案比较与节能分析
-- 替代流程、回流比-板数-能耗权衡、回收热量可行性
+## 7 Auxiliary equipment and utilities
+- Condensers, reboilers, pumps, piping, nozzles, storage, and utility capacity
 
-## 9 总体结果表与验证结论
-- 每个数值注明单位、工具ID、证据来源和验证状态
-- 物理约束、边界条件、剩余不确定性、是否可做下一阶段设计
+## 8 Design comparison and energy assessment
+- Alternative flowsheets, reflux-stage-energy trade-offs, and heat recovery
 
-## 10 风险、限制和后续工作
-- 未验证约束、HAZOP与安全审查需求、设备规范、人工签核
+## 9 Results and verification
+- Units, tool identifiers, provenance, and verification status for numerical results
+- Physical constraints, boundary conditions, uncertainty, and outstanding checks
 
-## 参考文献、原始数据、参数、计算日志与审计附录
+## 10 Risks, limits, and follow-up
+- Unverified constraints, HAZOP and safety review, equipment specifications, and professional approval
+
+## References, source data, parameters, logs, and audit appendices

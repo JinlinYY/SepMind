@@ -10,54 +10,54 @@ def selected_review(state):
 
 def render_report(state):
     review = selected_review(state)
-    lines = ['# SepMind自主拓扑综合运行报告', '',
-             f'运行编号 {state.run_id}。当前状态 {state.status}。', '',
-             '## 设计依据与综合范围', '',
-             f'组分按以下顺序执行计算 {"、".join(state.basis.components)}。',
-             f'进料 {state.basis.feed_flow_mol_s:g} mol/s，摩尔组成 {state.basis.feed_mole_fractions}，压力 {state.basis.pressure_Pa:g} Pa。',
-             '外部进料明确指定为饱和液体，单元连接继承上游实际组成、流量和比焓。',
-             f'物性假设依据 {state.basis.ideality_assumption_source}', '',
-             f'当前运行范围为 {state.scope}。物性方法为 {state.basis.property_package}。',
-             '设备效率与压降采用当前平衡级模型定义，数值验收范围为声明模型下的相平衡、物料、能量和原产品指标。', '',
-             '## 选定流程', '']
+    lines = ['# SepMind autonomous flowsheet synthesis report', '',
+             f'Run ID {state.run_id}. Current status {state.status}.', '',
+             '## Design basis and synthesis scope', '',
+             f'Component order {",".join(state.basis.components)}.',
+             f'Feed {state.basis.feed_flow_mol_s:g} mol/s, mole fractions {state.basis.feed_mole_fractions}, pressure {state.basis.pressure_Pa:g} Pa.',
+             'External feeds are saturated liquids. Connected streams carry the calculated upstream composition, flow rate, and specific enthalpy.',
+             f'Property assumptions {state.basis.ideality_assumption_source}', '',
+             f'Run scope {state.scope}. Property method {state.basis.property_package}.',
+             'The equilibrium-stage model defines the efficiency and pressure-drop assumptions. Verification covers phase equilibrium, material and energy balances, and the original product specifications under this model.', '',
+             '## Selected flowsheet', '']
     if state.accepted_candidate_id:
-        lines += [f'选定候选 {state.accepted_candidate_id}。选择依据为已核验候选中的总再沸负荷，其次为塔数量。', '',
-                  '|产品|目标组分|摩尔纯度|要求下限|回收率|要求下限|', '|---|---|---|---|---|---|']
+        lines += [f'Selected candidate {state.accepted_candidate_id}. Verified candidates are ranked first by total reboiler duty and then by column count.', '',
+                  '| Product | Target component | Mole fraction | Minimum | Recovery | Minimum |', '|---|---|---|---|---|---|']
         for target in review['targets']:
             lines.append(f"|{target['product_id']}|{target['component']}|{target['mole_fraction']:.10f}|{target['required_mole_fraction']:.10f}|{target['recovery']:.10f}|{target['required_recovery']:.10f}|")
-        lines += ['', f"总再沸负荷 {review['duties']['reboiler_kW']:.6g} kW，总冷凝负荷 {review['duties']['condenser_kW']:.6g} kW。",
-                  f"归一化组分残差 {review['component_residual']:.6e}，质量残差 {review['mass_residual']:.6e}，能量残差 {review['energy_residual']:.6e}。"]
+        lines += ['', f"Total reboiler duty {review['duties']['reboiler_kW']:.6g} kW, total condenser duty {review['duties']['condenser_kW']:.6g} kW.",
+                  f"Normalized component residual {review['component_residual']:.6e}, mass residual {review['mass_residual']:.6e}, energy residual {review['energy_residual']:.6e}."]
     else:
-        lines += ['搜索结束时获得的候选及失败证据如下。当前验收结果保留为未通过。']
-    lines += ['', '## 候选与计算反证', '', '|候选|状态|图变更类型|塔数量|说明|', '|---|---|---|---|---|']
+        lines += ['The search ended without an accepted design. The evaluated candidates and failed checks are listed below.']
+    lines += ['', '## Candidates and failed checks', '', '| Candidate | Status | Graph change | Column count | Details |', '|---|---|---|---|---|']
     for candidate in state.candidates:
         error = candidate.get('error', '').replace('|', '/').replace('\n', ' ')[:700]
         lines.append(f"|{candidate['candidate_id']}|{candidate['status']}|{candidate.get('change_kind', 'rejected_proposal')}|{len(candidate.get('graph', {}).get('columns', []))}|{error}|")
     for candidate in state.candidates:
         failed_targets = [target for target in candidate.get('review', {}).get('targets', []) if not target['purity_passed'] or not target['recovery_passed']]
         for target in failed_targets:
-            lines += ['', f"候选 {candidate['candidate_id']} 的 {target['product_id']} 实际摩尔纯度 {target['mole_fraction']:.10f}，回收率 {target['recovery']:.10f}。", '']
-    lines += ['', '## 专家公开决策', '']
+            lines += ['', f"Candidate {candidate['candidate_id']}, {target['product_id']} mole fraction {target['mole_fraction']:.10f}, recovery {target['recovery']:.10f}.", '']
+    lines += ['', '## Expert decisions', '']
     for decision in state.decisions:
         lines += [f"### {decision['role']}", '', decision.get('rationale', decision.get('observation', ''))]
         if decision.get('recommendation'):
             lines.append(decision['recommendation'])
-        lines += ['', '证据编号 '+', '.join(decision.get('evidence_ids', [])), '']
-    lines += ['## 执行统计与边界', '',
-              f'实际LLM请求 {state.llm_calls} 次，实际原生请求 {state.native_calls} 次，阶段工具调用 {state.tool_calls} 次。',
-              f"已验证的不同拓扑 {len({c['topology_signature'] for c in state.candidates if c['status']=='passed'})} 个，声明搜索目标 {state.basis.budget.desired_verified_topologies} 个。",
-              '原生请求包含严格塔和阶段逸度探针。匹配输入与原始证据哈希的单元可复用，实际复用记录保存在events.jsonl。',
-              f'实现版本哈希 {state.implementation_sha256}，运行期间源码一致性检查 {state.source_integrity_passed}。',
-              '初始任务的流程拓扑为空，图连接与单元参数由本次Agent提出。图、数值请求、原生结果和独立验收均保存。',
-              '适用范围为声明单元库内的有界流程综合。复杂萃取、循环、反应、膜与吸附流程需要对应的注册单元和验证方法。',
-              '模型假设与数值闭合的证据需结合实验物性、动态可操作性及设备设计资格继续审查。', '']
+        lines += ['', 'Evidence IDs '+', '.join(decision.get('evidence_ids', [])), '']
+    lines += ['## Execution statistics and scope', '',
+              f'LLM requests {state.llm_calls}, simulator calls {state.native_calls}, workflow tool calls {state.tool_calls}.',
+              f"Distinct verified topologies {len({c['topology_signature'] for c in state.candidates if c['status']=='passed'})}. Search target {state.basis.budget.desired_verified_topologies}.",
+              'Simulator calls include rigorous columns and stage fugacity probes. Units can be reused when inputs and source evidence hashes match. Reuse is recorded in events.jsonl.',
+              f'Implementation hash {state.implementation_sha256}, source integrity during the run {state.source_integrity_passed}.',
+              'The initial task has an empty flowsheet. SepMind proposes connections and parameters. The graph, simulator requests, results, and independent review are saved.',
+              'The search is bounded by the registered unit library. Complex extraction, recycle, reaction, membrane, and adsorption flowsheets require suitable unit models and verification methods.',
+              'Review experimental properties, dynamic operability, and equipment qualification separately from numerical closure.', '']
     usage = [event['usage'] for event in state.provider_events if isinstance(event.get('usage'), dict)]
     recorded_tokens = [item['total_tokens'] for item in usage if isinstance(item.get('total_tokens'), int)]
-    lines += [f'已记录Token合计 {sum(recorded_tokens)}，含完整Token计数的响应 {len(recorded_tokens)} 个，实际请求 {state.llm_calls} 次。',
-              '缺少用量的请求保持缺失记录，调用明细以events.jsonl为准。', '']
+    lines += [f'Recorded tokens {sum(recorded_tokens)}, responses with complete token counts {len(recorded_tokens)}, LLM requests {state.llm_calls}.',
+              'Missing token usage is left blank. See events.jsonl for call details.', '']
     lines += [question+'\n' for question in state.questions]
     if state.graph is not None:
-        lines += ['## 流程图', '', '![生成的流程图](flowsheet.svg)', '', '```mermaid', render_mermaid(state), '```', '']
+        lines += ['## Flowsheet', '', '![Generated flowsheet](flowsheet.svg)', '', '```mermaid', render_mermaid(state), '```', '']
     return '\n'.join(lines)
 
 

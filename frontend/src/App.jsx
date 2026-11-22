@@ -155,7 +155,7 @@ function App() {
     try {
       if (sessionConfig.workspace === 'engineering') {
         const current = await fetch(`${API_BASE}/engineering/sessions/${session.session_id}/state`)
-        if (!current.ok) throw new Error('无法读取当前设计依据，原会话已保留，请稍后重试')
+        if (!current.ok) throw new Error('Could not read the design basis. Try again later.')
         const state = await current.json()
         const basis = state.design_basis || state.run?.basis
         if (basis) sessionConfig = { ...sessionConfig, engineering_basis: basis }
@@ -207,7 +207,7 @@ function App() {
     return (
       <div className="app-loading">
         <div className="spinner"></div>
-        <p>正在加载SepMind分离设计…</p>
+        <p>Loading SepMind…</p>
       </div>
     )
   }
@@ -218,7 +218,7 @@ function App() {
       <div className="app-error">
         <h2>⚠️ Connection Error</h2>
         <p>{error}</p>
-        <p className="hint">请在 SepMind 仓库根目录启动后端。</p>
+        <p className="hint">Start the backend from the SepMind repository root.</p>
         <code>python -m uvicorn api.main:app --host 127.0.0.1 --port 8000</code>
         <button onClick={() => { setError(null); fetchConfig(); }}>
           Retry
@@ -229,9 +229,9 @@ function App() {
 
   return (
     <div className="app">
-      {(!session || workspace === 'topology') && <nav className="workspace-choice" aria-label="工作区">
-        <button onClick={() => { setWorkspace('engineering'); setError(null) }}>既定拓扑设计</button>
-        <button onClick={() => { setWorkspace('topology'); setError(null) }}>自主流程设计</button>
+      {(!session || workspace === 'topology') && <nav className="workspace-choice" aria-label="Design settings">
+        <button onClick={() => { setWorkspace('engineering'); setError(null) }}>Prescribed flowsheet design</button>
+        <button onClick={() => { setWorkspace('topology'); setError(null) }}>Autonomous flowsheet design</button>
       </nav>}
       {workspace === 'topology' ? <TopologyWorkspace initialRunId={INITIAL_TOPOLOGY_RUN} /> : !session ? (
         <EngineeringStart onStart={createSession} loading={loading} error={error} />

@@ -69,26 +69,26 @@ def audit(root,phase):
         'interpretation':'Event counts can include a native timeout and its enclosing tool failure; they are not independent failed episodes. Blocked proposals are distinct from actually executed constraint violations.',
         'integrity':integrity,'per_run':cases}
     save(p/'analysis/post_audit.json',result)
-    md='\n\n## JSONL独立事后审计\n\n'
-    md+=f'逐次核对{len(rows)}个已启动运行的LLM、工具、原生启动计数和最终外部评分。失败事件分类：`{dict(categories)}`。同一原生超时可同时在工具层记录，事件数不等于失败运行数。\n\n'
-    md+=f'被安全执行层阻止的固定条件违规提案按组计数：`{dict(violations)}`。这与已执行方案的固定约束违反分开报告，避免将“拦截后为0”解释为Agent没有提出违规动作。完整逐运行审计见`{phase}/analysis/post_audit.json`。\n'
-    md+='\n主表恢复率采用首次实际严格塔失败作为可重复定义的分母；另报告广义恢复率，分母为出现工具失败、无效提案、求解失败或已收敛但指标失败的运行，分子为这些运行最终验证成功数。它不将未启动任务视作失败，也不表示共享同一个反例的因果对照。成功宣称按最终结构化claim_success定义，非事后自由解释措辞。\n\n|配置|广义恢复成功／出现任意失败的运行|\n|---|---|\n'
+    md='\n\n## Independent audit of JSONL records\n\n'
+    md+=f'Checked LLM, workflow tool, and native start counts and final external scores for {len(rows)} launched runs. Failure event categories: {dict(categories)}. A native timeout may also be logged at the tool layer, so event counts and failed-run counts can differ.\n\n'
+    md+=f'Blocked proposals that violated fixed conditions by arm: {dict(violations)}. Proposed violations and executed constraint violations are reported separately. See {phase}/analysis/post_audit.json for per-run records.\n'
+    md+='\nPrimary recovery uses runs that failed their first actual rigorous-column attempt. Broad recovery uses runs with a tool failure, invalid proposal, solver failure, or a converged candidate that missed specifications. The numerator is the number of such runs that ultimately passed verification. This reports outcomes of launched runs and their individual decision traces. Success claims come from the final structured claim_success field.\n\n| Arm | Broad recoveries / runs with any failure |\n|---|---|\n'
     for v in broad_recovery:
         if v['case']=='ALL':md+=f"|{v['arm']}|{v['numerator']}/{v['denominator']}|\n"
-    md+='\n严格仿真次数指实际启动的固定设计DWSIM请求。原有数值驱动在同一请求内可能尝试多个求解器，所有组的数值设置相同；已返回记录的solver_attempts另计，超时导致完整内部轨迹未知时保持未知，不能假定只有一次或填充为零。返回记录的原生收敛标志与未强制产品组成标志亦独立核查。\n'
+    md+='\nRigorous simulation counts are actual launches of fixed-design DWSIM requests. A single request may try several solvers with identical settings across arms. Solver attempts are counted separately when returned. Internal trajectories after a timeout remain unknown. Native convergence and the absence of imposed product compositions are checked independently.\n'
     expected=10 if phase=='main' else 3
     complete=all(sum(r['arm']==a and r['case']==c for r in rows)==expected for a in arms() for c in ['D01','D02','D03','D04'])
     if complete:
-        baseline=group(rows,'A4');md+='\n## 完整阶段的观测差异与成本\n\n下表为同一预算上限、相同四任务权重下的描述性差异，不是显著性或因果优势声明。成功率差按A4减对照组计算，允许为负。\n\n|对照|A4−对照验证成功率／百分点|对照LLM均值±SD|A4 LLM均值±SD|对照方法时间s均值±SD|A4方法时间s均值±SD|\n|---|---|---|---|---|---|\n'
+        baseline=group(rows,'A4');md+='\n## Observed differences and cost in the formal batch\n\nValues are descriptive under common caps and equal case weights. Success-rate differences are A4 minus the comparison arm.\n\n| Comparison | A4 minus comparison (percentage points) | Comparison LLM calls (mean ± SD) | A4 LLM calls (mean ± SD) | Comparison method time (s, mean ± SD) | A4 method time (s, mean ± SD) |\n|---|---|---|---|---|---|\n'
         for a in ['A1','A2','A3','B1','B2','B3','B4']:
             other=group(rows,a);delta=100*(baseline['success']['rate']-other['success']['rate'])
             md+='|'+a+'|'+f'{delta:+.1f}'+'|'+mean(other['llm_requests'])+'|'+mean(baseline['llm_requests'])+'|'+mean(other['method_time_s'])+'|'+mean(baseline['method_time_s'])+'|\n'
-        md+='\n四例属于三个相关体系，重复为服务调用层级重复；差异应同时结合逐案例结果、未知成本覆盖率、失败类型和接口限制解释。零次观测到错误接受不表示真实错误概率为零。\n'
+        md+='\nThe four tasks cover three related systems and the repeats sample model calls. Interpret differences alongside case-level results, missing cost records, failure categories, and simulator limits. A zero observed false acceptance count leaves population risk uncertain.\n'
     concordance=root/'historical_request_concordance.json'
     if concordance.exists():
-        md+='\n## 历史乙醇失败的实现版本溯源\n\n10次历史35级候选与既有接受记录在忽略保存路径与证据ID后数值请求完全相同，包括初始化；但历史冻结源码与当前驱动／worker／严格塔实现存在版本差异，enthalpy_seed与rigorous修正模块则相同。源代码差异本身不能证明二元求解行为改变，仍不能单独判定资源调度、数值稳定性或具体实现的因果贡献。旧新源码哈希及diff单列保存；这些诊断资料没有进入新Agent提示，也不以新结果覆盖旧失败。\n'
+        md+='\n## Provenance of historical ethanol/water failures\n\nAll ten historical 35-stage requests matched the accepted reference, including initialization, after excluding save paths and evidence identifiers. The frozen and current numerical driver, worker, and rigorous-column code differ, while the enthalpy seed and rigorous revision modules match. The differences document provenance and leave the effects of scheduling, numerical stability, and implementation unresolved. Hashes and diffs are stored separately from agent inputs and historical failure records.\n'
     report=root/'experiment_report.md'
-    if report.exists() and '## JSONL独立事后审计' not in report.read_text(encoding='utf8'):
+    if report.exists() and '## Independent audit of JSONL records' not in report.read_text(encoding='utf8'):
         with report.open('a',encoding='utf8') as f:f.write(md)
     return result
 

@@ -55,7 +55,7 @@ class EngineeringOrchestrator(MultiAgentOrchestrator):
 
     def _decide(self,state,gate,tool,skill_context=None):
         if gate=='G0' and missing_specifications(state.basis,state.intent=='THERMODYNAMIC_CALCULATION'):
-            return '先完成本地输入检查，缺少设计依据时不调用 LLM 或启动工艺计算。',None
+            return 'Complete the design basis before starting model calls or process calculations.',None
         refs = sorted(set(state.basis.source_ids)|{ref for a in state.artifacts.values() if a.status == 'success'
                        for ref in [a.artifact_id]+[e.evidence_id for e in a.evidence]})
         rationale = "Execute the next registered method after its prerequisite gates and evidence checks."
@@ -222,7 +222,7 @@ class EngineeringOrchestrator(MultiAgentOrchestrator):
                 for gate in ("G5","G6","G7"):
                     if state.gates[gate].status == 'not_started':
                         state.gates[gate].status = "blocked"
-                        state.gates[gate].reason = ("当前选择流程筛查模式，未请求严格塔、能量和设备深化计算；可选择 preliminary_equipment。"
+                        state.gates[gate].reason = ("This screening run covers preliminary calculations. Select preliminary_equipment for rigorous column, energy, and equipment calculations."
                             if basis.design_level != 'preliminary_equipment' else 'Prerequisite calculation or qualified equipment inputs still required.')
                 if state.gates["G0"].status == "passed":
                     self._gate(state,"G8",("check_design_consistency",))
@@ -250,13 +250,13 @@ class EngineeringOrchestrator(MultiAgentOrchestrator):
             if intent == "KNOWLEDGE_QA":
                 response = self.thermodynamics_agent.knowledge_answer(user_message)
             elif intent == "UNSUPPORTED":
-                response = "该任务超出已验证的二元普通精馏范围；未执行工艺设计或生成设备数值。"
+                response = "This request is outside the verified scope for conventional binary distillation."
             elif intent == "RESULT_EXPLANATION":
                 response = self.state.report_markdown
             else:
                 patch = task_updates if task_updates is not None else extract_patch(user_message,self.basis)
                 if intent == "DESIGN_REVISION" and not patch:
-                    response = "未识别到明确可更新的字段，设计依据保持不变。请说明字段和单位，例如‘改为80 kPa’，或使用结构化表单。"
+                    response = "Specify the variable and unit, for example, change pressure to 80 kPa, or use the structured form."
                     self.add_response(response)
                     return response
                 updated = merge_basis(self.basis,patch)

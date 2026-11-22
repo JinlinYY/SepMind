@@ -43,7 +43,7 @@ def mean(v):
     return f"{v['mean']:.2f}"+(f" ± {v['sd']:.2f}" if v['sd'] is not None else '')+f" [n={v['n']}]"
 
 def tabulate(summary,ids):
-    h=['配置','案例','实际n','验证成功','错误接受／宣称成功','首次失败后恢复','LLM请求','token','阶段工具','严格仿真','总时间s','仿真时间s','设计修订']
+    h=['Arm','Case','Runs','Verified','False acceptances / success claims','Recovery after first failure','LLM requests','Tokens','Workflow tools','Rigorous simulations','Total time (s)','Simulation time (s)','Revisions']
     lines=['| '+' | '.join(h)+' |','| '+' | '.join(['---']*len(h))+' |']
     for a in ids:
         for g in [v for v in summary if v['arm']==a]:
@@ -138,67 +138,67 @@ def summarize(root,phase):
     expected=protocol['expected'];n=len(rows);terms=Counter(r['terminal'] for r in rows)
     budget = protocol['budgets']
     stopping_scope = (
-        '收敛并达到原始产品指标后，控制器要求按该组规则完成当前候选的审查或提交。'
-        '带内部审查的组只有在审查未通过后才可继续修订。统一外部评测留在运行结束后。'
-        if protocol.get('stop_at_first_target') else '各组按各自的决策与修订策略结束运行。'
+        'Once a converged design meets the original product specifications, the controller requires review or submission under that arm’s rules. '
+        'Arms with internal review allow further revision only after a failed review. The common external evaluation runs after the episode.'
+        if protocol.get('stop_at_first_target') else 'Each arm stops according to its assigned decision and revision policy.'
     )
-    report=f'''# SepMind架构对比与机制消融实验报告
+    report=f'''# SepMind architecture comparison and mechanism ablation
 
-当前阶段：**{phase}**。实际完成 {n}／计划 {expected} 次。预实验与正式实验分别统计，缺失任务保留为空。
+Phase **{phase}** completed {n} of {expected} planned runs. Pilot and formal runs are summarized separately. Missing runs remain blank.
 
-## 实验设置与实现范围
+## Experimental design and scope
 
-使用D01–D04原始进料、压力、热状态、产品要求和Raoult／Raoult／NRTL／NRTL方法。保留D04的1.6倍初筛最小回流约束。共同计算阶段由PHA派生的原有协调器及注册工具执行；Agent对固定设计原子工具进行决策。H01/H02不参与。A4为匹配严格塔范围的完整机制适配器，不是生产G0–G9设备流程的字节级重放。
+The benchmark uses the original D01–D04 feeds, pressures, feed states, product specifications, and Raoult/Raoult/NRTL/NRTL methods. D04 retains the reflux constraint of 1.6 times the screening minimum. The inherited coordinator and registered tools prepare the common design basis. Agents choose from atomic actions for a prescribed column. This benchmark covers D01–D04. A4 implements the full mechanism within the matched rigorous-column scope.
 
-所有组使用真实 DeepSeek，请求模型为 {protocol['model']}，控制策略为 {protocol.get('controller_policy', 'legacy')}。采用温度 0.2、关闭 thinking 和 JSON 模式，每次最多 {budget['max_output_tokens']} 个输出 Token。单次运行上限为 {budget['llm']} 次 LLM 请求、{budget['actions']} 次动作、{budget['tools']} 次含重复准备的阶段工具和 {budget['native']} 次原生计算（严格塔最多 {budget['columns']} 次、VLE 最多 {budget['vle']} 次）。单次原生计算时限为 {budget['native_timeout_s']} s，运行时限为 {budget['episode_timeout_s']} s。所有角色通信均计入同一预算。
+All arms call DeepSeek with model {protocol['model']} under the {protocol.get('controller_policy', 'legacy')} control policy. Temperature is 0.2, thinking is disabled, JSON mode is enabled, and responses are capped at {budget['max_output_tokens']} tokens. Each run permits {budget['llm']} LLM requests, {budget['actions']} actions, {budget['tools']} workflow tool calls including repeated preparation, and {budget['native']} native calls (up to {budget['columns']} rigorous columns and {budget['vle']} VLE calls). The native timeout is {budget['native_timeout_s']} s and the episode timeout is {budget['episode_timeout_s']} s. Communication across roles shares these limits.
 
 {stopping_scope}
 
-各运行重新计算共同初筛，完整知识文本相同；A4应用可执行的阶段／Skill约束、独立数值验收、失败分类修正及依赖复用。B1仅移除决策强制约束，保留知识与物理数据安全条件；B2移除最终设计内部独立审查；B3取消机器分类修正，保留通用LLM合法重试；B4实际重算上游准备及已取得的原生VLE。详情见独立模块DESIGN.md和八份JSON配置。
+Each run repeats common screening and uses the same knowledge text. A4 applies stage and Skill constraints, independent verification, failure-specific revision, and dependency-based reuse. B1 disables decision enforcement while retaining knowledge and physical input checks. B2 disables final internal review. B3 switches to general retries within valid actions. B4 repeats upstream preparation and any previously obtained native VLE. See DESIGN.md and the eight arm configuration files.
 
-## 统计定义
+## Metrics and denominators
 
-验证成功率分母为实际启动任务，包括失败；未启动任务另报。错误接受率分母为最终宣称成功的任务，同时JSON保留相对全部启动任务的比例。恢复率分母为首次实际严格塔尝试失败的任务，包括求解器失败；没有首次严格塔的任务不进入恢复分母。每案例正式目标n=10，预实验目标n=3。均值与样本标准差使用已观测值，n<2不填标准差，缺失费用不记0。重复调用不是新的独立工业物系。
+Verified success uses all launched runs, including failures. Report unlaunched tasks separately. False acceptance uses the runs that claimed success as its denominator. The JSON also reports the fraction of all launched runs. Recovery uses only runs that attempted and failed their first rigorous column, including solver failures. Formal and pilot targets are 10 and 3 runs per case, respectively. Means and sample standard deviations use observed values. Standard deviations require at least two observations. Missing costs remain blank. Repeats sample the model service on the same binary systems.
 
-最终外部评测独立重算原始物流的全部产品要求、组分／质量／能量闭合、输入冻结、模型与压力、级数及预算内回流范围，不调用运行时product_checks，不反馈给Agent，也不额外求解救援。所有候选保留，按最终提交记录评分，不择优替换。
+The external evaluator independently recomputes product specifications and component, mass, and energy closure from raw streams. It checks fixed inputs, model, pressure, stage count, and permitted reflux bounds. It scores the submitted candidate and retains all attempts, using separate checks from the controller and no additional recovery simulations.
 
-## Table 1 架构对比
+## Table 1. Architecture comparison
 
 {tabulate(summary,['A1','A2','A3','A4'])}
 
-## Table 2 核心机制消融
+## Table 2. Mechanism ablation
 
 {tabulate(summary,['A4','B1','B2','B3','B4'])}
 
-## 图与轨迹
+## Figures and decision trace
 
-![验证可靠性](figures/Figure1_reliability.png)
+![Verification reliability](figures/Figure1_reliability.png)
 
-图1：各指标采用各自统计分母，柱上给出实际成功次数／分母；NA表示无相应宣称成功或首次失败集合，不能记0。完整范围0–100%。
+Figure 1. Bars show percentages and observed counts over the relevant denominator. NA indicates no success claims or first-failure episodes for that comparison. The axis spans 0–100%.
 
-![调用与时间](figures/Figure2_costs.png)
+![Calls and runtime](figures/Figure2_costs.png)
 
-图2：LLM请求、严格塔次数与方法耗时，误差条为样本标准差。方法耗时含自身准备与审查，外部评分时间单列。两进程并发，时间反映当前机器调度，不证明普遍算法加速。
+Figure 2. LLM requests, rigorous column starts, and method runtime. Error bars are sample standard deviations. Method time includes preparation and internal review, with external evaluation reported separately. Times reflect the scheduling of two concurrent workers on this machine.
 
-![决策与恢复](figures/Figure3_trajectory.png)
+![Decisions and recovery](figures/Figure3_trajectory.png)
 
-图3：确定性选择D03/A4中严格塔调用最多、并列最早的运行，展示其实际决策与执行，未按成功或美观择优。未获得恢复时如实显示失败终点。
+Figure 3. The trace shows the D03/A4 run with the most rigorous-column calls, using the earliest run to break ties. It includes the observed decisions, executions, and final status.
 
-## 失败原因与预算
+## Failures and budgets
 
-终点分布：`{dict(terms)}`。逐次错误、拒绝提案、原生启动、超时及预算在events.jsonl；所有原生尝试另有请求与原始输出。求解不收敛不判作物理不可行。无可评分输出时物性／残差缺失，不能计算“0误差”。
+Terminal status counts: {dict(terms)}. Individual errors, rejected proposals, native starts, timeouts, and budgets appear in events.jsonl. Each native attempt also has a request and raw output if returned. Record nonconvergence as a numerical outcome. Missing properties and residuals remain blank when there is no scorable output.
 
-历史SI乙醇／水10次重复审计另见批次根目录historical_ethanol_failure_audit.json：10次都失败，每次3次严格塔180s超时、1次VLE成功，耗尽4次原生上限；14–15次LLM未耗尽24次上限。新批不覆盖或合并这些失败，也不能把预算增加后的结果当作同预算改进。
+The historical_ethanol_failure_audit.json records 10 earlier ethanol/water failures. Each reached the limit of four native calls with three 180 s rigorous-column timeouts and one successful VLE call. LLM usage was 14–15 requests out of 24. These episodes retain their original budget and are reported separately from the current batch.
 
-## 成本与选择性重计算
+## Cost and selective recalculation
 
-完整统计包含实际token、阶段工具、严格塔、VLE、总方法时间、数值时间、修订、约束违反、重复计算和保留证据ID。B4的recalculation_tools/time记录实际重复开销；A4保留引用不伪装为已测时间节省。若两组轨迹不同，不能将总时间差归因于选择性重算；当前未执行同决策配对重放的时间为NA。
+The report records observed tokens, workflow calls, rigorous-column starts, VLE, method and numerical time, revisions, constraint violations, recalculation, and retained evidence IDs. B4 recalculation tools and time measure actual repeated work. A4 evidence reuse identifies retained results. Differences between unpaired runs reflect their full decision trajectories. Paired replay time remains NA.
 
-## 局限与公平性
+## Scope and limitations
 
-四例已经用于开发，只覆盖三个相关二元体系。物性方法固定，因此B1不能评价自主选择不同热力学模型。A4为共同终点机制适配器，结论不得扩写为完整生产系统或所有多Agent架构排名。模型别名不等于固定权重版本；实际served_models随运行保存。提供方采样seed不可控，仅保证任务／调度／本地种子可追踪。全部结果来自本批真实运行，不预设SepMind获胜，失败不剔除。
+The four development cases cover three related binary systems. All arms use fixed property methods, so B1 addresses rule enforcement within that scope. A4 is a matched-endpoint implementation. Served model metadata are saved because a provider alias can change. Task order and local seeds are recorded, while provider-side sampling remains uncontrolled. All launched failures contribute to the reported outcomes.
 
-无新物性实验、工业运行验证或完整设备资格声明；无生产默认行为改动或远程推送。
+The study evaluates preliminary designs and numerical verification under the specified model and simulation boundaries.
 '''
     (dest/'experiment_report.md').write_text(report,encoding='utf8')
     (root/'experiment_report.md').write_text(report.replace('](figures/',f']({phase}/analysis/figures/'),encoding='utf8')

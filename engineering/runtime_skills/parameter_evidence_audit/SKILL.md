@@ -1,12 +1,12 @@
 ---
 skill_id: parameter_evidence_audit
 version: '1.0'
-title: 参数与实验依据审查
+title: Audit parameter and experimental evidence
 owner: thermodynamics
 applies_to: any
 gates: [G2]
 tools: [resolve_property_parameters]
 checks: [parameter_provenance, experimental_reference, declared_limitations]
-hypothesis: 参数方向、单位、来源及独立参考检验足以支持声明范围内的条件性计算。
+hypothesis: Parameter order, units, provenance, and independent measurements can support conditional calculations within the stated range.
 ---
-检查 CAS 顺序、参数方程、单位、来源哈希和实际范围。对具有独立实验数据的模型执行参考检验。来源未公开拟合区间时保留缺口，项目保护窗不能冒充文献拟合区间；不通过参考检验的模型不得传播到设计阶段。
+Check CAS order, the parameter equation, units, source hashes, and the applicable range. Test against independent experimental data when available. Record unknown fitting ranges and distinguish project bounds from literature fitting ranges. Reject downstream use if the model fails reference checks.

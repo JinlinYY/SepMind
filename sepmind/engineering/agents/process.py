@@ -170,19 +170,19 @@ class ProcessEngineeringOrchestrator(EngineeringOrchestrator):
             if intent=='RESULT_EXPLANATION':
                 response=self.state.report_markdown
             elif intent=='KNOWLEDGE_QA':
-                response=('SepMind 先核对原料和目标，再审查物性证据、检验分相、比较实际计算的萃取候选，最后独立复核级间连接与组分守恒。'
-                          '当前醋酸／水／乙酸乙酯分支仅准入经实验点筛查的 NRTL 液液平衡模型，不能据此批准气液平衡、缔合、能量或完整溶剂循环。'
-                          '普通 Wilson 不用于稳定液液分相设计。依据：engineering/runtime_process_skills/ 与 engineering/data/hybrid/acid_lle_colombo1999_v1.json。'
-                          '本条为方法说明，未新增数值计算；具体结果以已保存的运行证据为准。')
+                response=('SepMind checks the feed and targets, reviews property evidence, tests phase separation, compares calculated extraction candidates, and independently verifies stage connections and component balances. '
+                          'The acetic acid/water/ethyl acetate branch uses NRTL liquid–liquid equilibrium screened against experimental data. Vapor–liquid equilibrium, association, energy balances, and complete solvent recycle require separate qualification. '
+                          'Stable liquid–liquid separation requires a model that represents phase splitting. See engineering/runtime_process_skills/ and engineering/data/hybrid/acid_lle_colombo1999_v1.json. '
+                          'See the saved run evidence for numerical results.')
             elif intent in ('UNSUPPORTED','THERMODYNAMIC_CALCULATION'):
-                response='该请求不在当前已验证的联合流程工具范围内；未新增工艺数值。请使用结构化任务和已准入的萃取工具。'
+                response='Use a structured task and qualified extraction tools. The requested integrated calculation is outside the current verified scope.'
             else:
                 patch=task_updates
                 if patch is None:
                     legacy_patch=extract_patch(user_message,self.basis)
                     patch={'extraction_pressure_Pa':legacy_patch['feed']['pressure_kPa']*1000} if set(legacy_patch)=={'feed'} and set(legacy_patch['feed'])=={'pressure_kPa'} else {}
                 if intent=='DESIGN_REVISION' and not patch:
-                    response='未识别到明确的可更新字段，设计依据保持不变。可明确说“压力改为100 kPa”，其他字段请使用结构化任务。'
+                    response='Specify the pressure change, for example, change pressure to 100 kPa. Use a structured task for other fields.'
                 else:
                     if patch:
                         # Full recalculation until fine-grained reuse is qualified.
@@ -199,23 +199,23 @@ class ProcessEngineeringOrchestrator(EngineeringOrchestrator):
 
     @staticmethod
     def report(state):
-        lines=['# SepMind 联合流程初步设计','',f'运行状态：{state.status}。以下区分已计算的萃取段与尚未验证的回收流程。','',
-               '| 关卡 | 状态 | 说明 |','|---|---|---|']
+        lines=['# SepMind preliminary integrated process design','',f'Run status {state.status}. Calculated extraction results and outstanding recovery checks are reported below.','',
+               '| Stage | Status | Details |','|---|---|---|']
         lines += [f'| {k} | {v.status} | {v.reason} |' for k,v in state.gates.items() if k!='G9']
         a=state.artifacts.get('explore_extraction_candidates')
         if a and a.status=='success':
-            lines += ['','## 实际萃取候选','', '| 候选 | 接触级数 | S/F（质量比） | 萃取回收率 | 状态 |','|---|---:|---:|---:|---|']
+            lines += ['','## Calculated extraction candidates','', '| Candidate | Contact stages | S/F mass ratio | Extraction recovery | Status |','|---|---:|---:|---:|---|']
             for r in a.data['candidates']:
-                recovery=f"{r['raw']['solute_extraction_recovery']*100:.4f}%" if 'raw' in r else '未接受计算结果'
+                recovery=f"{r['raw']['solute_extraction_recovery']*100:.4f}%" if 'raw' in r else 'No accepted result'
                 lines.append(f"| {r['candidate_id']} | {r['stages']} | {r['solvent_feed_mass_ratio']} | {recovery} | {r['status']} |")
-        if state.accepted_candidate_id:lines+=['',f'选定萃取候选：{state.accepted_candidate_id}。不是整套联合流程的完成状态。']
+        if state.accepted_candidate_id:lines+=['',f'Selected extraction candidate {state.accepted_candidate_id}. This selection covers the extraction section.']
         if state.revision_history:
-            lines+=['','## 计算反证与有界修正','',
-                '原始目标不变；以下修改仅涉及设计变量，每次修改均重新检查分相、级联和独立校核。']
-            lines += [f"- 修正 {r['revision']}：{r['action_id']}。{r['rationale']}" for r in state.revision_history]
-        lines+=['','模型经过来源实验点筛查；相稳定性采用有限多起点检查，不是全局证明。稀释末端组成超出所用实验连线端点，属于明确保留的初步模型外推。',
-                '完整产品纯度、溶剂再生与补加、能量、水力学及设备设计尚未验证，不提供虚构值。',
-                '公开决策记录说明依据、工具与校验，不是模型私有思维链。']
+            lines+=['','## Failed checks and bounded revision','',
+                'Each revision modifies design variables within the original targets and repeats the phase-split, cascade, and independent review checks.']
+            lines += [f"- Revision {r['revision']}. {r['action_id']}.{r['rationale']}" for r in state.revision_history]
+        lines+=['','The model was screened against measured points. Phase stability uses a finite multistart check. Dilute outlet compositions beyond measured tie-line endpoints are preliminary extrapolations.',
+                'Full-process purity, solvent regeneration and makeup, energy, hydraulics, and equipment design remain unverified.',
+                'The decision record documents supporting evidence, tools, and numerical checks.']
         return '\n'.join(lines)
 
 

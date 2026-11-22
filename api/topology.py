@@ -25,7 +25,7 @@ _lock = threading.Lock()
 class TopologyRunRequest(Contract):
     basis: TopologyDesignBasis | BinaryTopologyBasis
     provider: Literal['deepseek', 'qwen'] = 'deepseek'
-    message: str = Field(default='根据原料和产品要求提出、计算并比较流程拓扑', max_length=6000)
+    message: str = Field(default='Propose, calculate, and compare flowsheets for the specified feed and product requirements', max_length=6000)
 
 
 def run_folder(identifier):

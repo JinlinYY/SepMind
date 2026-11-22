@@ -195,7 +195,7 @@ function ChatInterface({ session, apiBase, onEndSession, onRefresh, refreshing, 
   }, [loading])
 
   const getWelcomeMessage = () => {
-    return '欢迎使用分离设计 Agent。请先查看右侧的设计依据状态；依据完整后，点击“执行已提交设计依据”开始计算。若提示缺项，可明确载入案例或在此输入完整任务。'
+    return 'Review the design basis in the right panel and select Run submitted design. If required inputs are missing, load a case or enter the complete task here.'
   }
 
   const sendMessage = useCallback(async (e) => {
@@ -361,7 +361,7 @@ function ChatInterface({ session, apiBase, onEndSession, onRefresh, refreshing, 
     <div className="chat-container">
       <header className="chat-header">
         <div className="chat-header-info">
-          <h1>SepMind · 分离设计对话</h1>
+          <h1>SepMind · Design chat</h1>
           <div className="session-info">
             <span className="session-badge model">
               {session.config.model_id.split('/').pop()}
@@ -380,7 +380,7 @@ function ChatInterface({ session, apiBase, onEndSession, onRefresh, refreshing, 
 
       <div className="sepmind-disclaimer" role="note">
         <span className="sepmind-disclaimer-label">NOTE:</span>
-        仅展示实际执行的初步计算；设备估算与完整性能验证的范围以本次证据为准，需专业复核。
+        This page displays preliminary calculation results. Review the run evidence for equipment estimates and performance checks.
       </div>
 
       <div className="chat-messages">
@@ -421,7 +421,7 @@ function ChatInterface({ session, apiBase, onEndSession, onRefresh, refreshing, 
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="输入设计问题，或明确修改：压力改为80 kPa"
+            placeholder="Enter a design question or change, such as pressure to 80 kPa"
             disabled={loading}
             autoFocus
           />

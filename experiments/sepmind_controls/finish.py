@@ -41,7 +41,7 @@ def finish(root,paired=True):
         'paired_upstream_timing_executed':recalculation is not None,'visual_review_pending':True,
         'raw_data_preserved':True,'no_production_defaults_changed':True,'no_remote_push':True}
     save(root/'DELIVERY_STATUS.json',final)
-    target=root/'SepMind_Agent架构与机制消融实验_完整记录.zip'
+    target=root/'sepmind_architecture_ablation_records.zip'
     with zipfile.ZipFile(target,'w',zipfile.ZIP_DEFLATED) as z:
         for p in root.rglob('*'):
             if p.is_file() and p!=target:z.write(p,p.relative_to(root))
