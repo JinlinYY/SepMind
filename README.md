@@ -97,6 +97,22 @@ Select **Autonomous flowsheet design** on the homepage or **Open autonomous flow
 
 ![Autonomous flowsheet design form showing the D03 ethanol/water task, provider selector, and Start flowsheet synthesis button before execution](docs/portal/autonomous-design.png)
 
+### Inspect the D03 simulation in DWSIM
+
+To reproduce the archived SepMind ethanol/water column, configure `DWSIM_HOME` as described above and run this command from the repository root.
+
+```text
+python -m reproducibility replay-column --case D03 --design sepmind --output reproduced/D03-sepmind
+```
+
+In DWSIM 9.0.5, open `reproduced/D03-sepmind/column.dwxmz` and select **Flowsheet**. The rigorous NRTL simulation gives a condenser duty of 1,259.24 kW and a reboiler duty of 1,264.97 kW.
+
+![Native DWSIM flowsheet for the D03 ethanol/water column showing the feed, distillate, bottoms, condenser duty, and reboiler duty](docs/portal/dwsim-d03-flowsheet.png)
+
+Open the **Distillate** stream and select **Results → Compounds → Amounts**. Set **Basis** to **Mass Fractions** and enable **Show as percentages**. The distillate contains 93.6680 wt% ethanol. The same view for **Bottoms** gives 2.0422 wt% ethanol.
+
+![Native DWSIM results panel showing the D03 distillate composition on a mass percent basis, with 93.6680 wt% ethanol](docs/portal/dwsim-d03-distillate.png)
+
 ## Repository guide
 
 | Path | Research material |
