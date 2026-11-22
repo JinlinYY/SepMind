@@ -1,0 +1,29 @@
+{
+  "example_id": "sep_design_shortcut_initialization",
+  "role": "design",
+  "phase": "shortcut_initialization",
+  "title": "Propose a shortcut candidate after screening",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "task": {
+      "initial_reflux_ratio": 2.5,
+      "reflux_ratio_limit": 10
+    },
+    "last_review": {
+      "action": "continue_design",
+      "evidence_id": "demo_vle_001"
+    },
+    "available_evidence_ids": [
+      "demo_vle_001"
+    ]
+  },
+  "response": {
+    "action": "simulate_shortcut",
+    "reflux_ratio": 2.5,
+    "rationale": "Test the declared initial reflux ratio conditionally after phase screening.",
+    "evidence_ids": [
+      "demo_vle_001"
+    ]
+  }
+}

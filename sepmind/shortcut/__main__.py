@@ -33,7 +33,7 @@ def main():
     parser.add_argument("--max-tool-calls", type=int, default=6)
     parser.add_argument("--report", type=Path, help="Optional readable Markdown design report")
     parser.add_argument("--no-few-shots", action="store_true", help="Disable demonstration examples for ablation")
-    parser.add_argument("--few-shots-dir", type=Path, help="Chemical exemplar notebook directory")
+    parser.add_argument("--few-shots-dir", type=Path, help="Few-shot example directory")
     args = parser.parse_args()
     if args.action == "design":
         if args.task is None:

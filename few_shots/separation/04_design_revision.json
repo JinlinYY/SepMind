@@ -1,0 +1,34 @@
+{
+  "example_id": "sep_design_revision",
+  "role": "design",
+  "phase": "revision",
+  "title": "Revise within bounds after exceeding the stage limit",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "task": {
+      "max_stages": 15,
+      "reflux_ratio_limit": 10
+    },
+    "last_review": {
+      "action": "revise_design",
+      "suggested_reflux_ratio": 3.75,
+      "evidence_id": "demo_column_001"
+    },
+    "illustrative_result": {
+      "stages_estimate": 18,
+      "reflux_ratio": 2.5
+    },
+    "available_evidence_ids": [
+      "demo_column_001"
+    ]
+  },
+  "response": {
+    "action": "simulate_shortcut",
+    "reflux_ratio": 3.75,
+    "rationale": "Test the bounded reflux increase, then check stages and duty again; no optimum is asserted.",
+    "evidence_ids": [
+      "demo_column_001"
+    ]
+  }
+}

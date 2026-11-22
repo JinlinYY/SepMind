@@ -1,0 +1,20 @@
+{
+  "example_id": "sep_simulation_vle_execution",
+  "role": "simulation",
+  "phase": "vle_execution",
+  "title": "Call the registered equilibrium tool",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "design_proposal": {
+      "action": "screen_vle",
+      "evidence_ids": []
+    },
+    "available_evidence_ids": []
+  },
+  "response": {
+    "tool": "binary_vle",
+    "rationale": "Run the validated bubble-point protocol with task-derived pressure, component order and grid; do not generate executable code.",
+    "evidence_ids": []
+  }
+}

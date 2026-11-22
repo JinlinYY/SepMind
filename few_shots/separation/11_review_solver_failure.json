@@ -1,0 +1,30 @@
+{
+  "example_id": "sep_review_solver_failure",
+  "role": "review",
+  "phase": "solver_failure",
+  "title": "Distinguish solver failure from physical infeasibility",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "latest_evidence": [
+      {
+        "tool": "shortcut_distillation",
+        "status": "failed",
+        "evidence_id": "demo_failure_001",
+        "record": {
+          "error": "Illustrative convergence failure"
+        }
+      }
+    ],
+    "available_evidence_ids": [
+      "demo_failure_001"
+    ]
+  },
+  "response": {
+    "action": "stop",
+    "rationale": "Inspect the solver error and assumptions; absent successful evidence does not prove physical infeasibility.",
+    "evidence_ids": [
+      "demo_failure_001"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "example_id": "sep_review_stage_review",
+  "role": "review",
+  "phase": "stage_review",
+  "title": "Request revision when the stage limit is exceeded",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "task": {
+      "max_stages": 15
+    },
+    "latest_evidence": [
+      {
+        "tool": "shortcut_distillation",
+        "status": "ok",
+        "evidence_id": "demo_column_001",
+        "record": {
+          "outputs": {
+            "stages_estimate": 18,
+            "reflux_ratio": 2.5
+          }
+        }
+      }
+    ],
+    "deterministic_checks": {
+      "stage_limit_satisfied": false,
+      "duty_limit_satisfied": true
+    },
+    "available_evidence_ids": [
+      "demo_column_001"
+    ]
+  },
+  "response": {
+    "action": "revise_design",
+    "rationale": "The stage limit is exceeded; test a bounded reflux revision and reassess duty.",
+    "evidence_ids": [
+      "demo_column_001"
+    ]
+  }
+}

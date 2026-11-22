@@ -1,0 +1,27 @@
+{
+  "example_id": "sep_simulation_shortcut_execution",
+  "role": "simulation",
+  "phase": "shortcut_execution",
+  "title": "Execute the DWSIM shortcut column",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "design_proposal": {
+      "action": "simulate_shortcut",
+      "reflux_ratio": 3.75,
+      "evidence_ids": [
+        "demo_column_001"
+      ]
+    },
+    "available_evidence_ids": [
+      "demo_column_001"
+    ]
+  },
+  "response": {
+    "tool": "shortcut_distillation",
+    "rationale": "Evaluate the revised candidate with the native DWSIM shortcut tool; purity and recovery are imposed split specifications.",
+    "evidence_ids": [
+      "demo_column_001"
+    ]
+  }
+}

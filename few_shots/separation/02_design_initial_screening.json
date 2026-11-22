@@ -1,0 +1,25 @@
+{
+  "example_id": "sep_design_initial_screening",
+  "role": "design",
+  "phase": "initial_screening",
+  "title": "Screen phase equilibrium first",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "task": {
+      "components": [
+        "Benzene",
+        "Toluene"
+      ],
+      "pressure_pa": 101325
+    },
+    "missing_fields": [],
+    "last_review": null,
+    "available_evidence_ids": []
+  },
+  "response": {
+    "action": "screen_vle",
+    "rationale": "Screen the nominated light key and sampled phase boundary before column initialization.",
+    "evidence_ids": []
+  }
+}

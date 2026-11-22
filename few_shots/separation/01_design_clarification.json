@@ -1,0 +1,25 @@
+{
+  "example_id": "sep_design_clarification",
+  "role": "design",
+  "phase": "clarification",
+  "title": "Clarify missing feed state",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "task": {
+      "feed_state": null
+    },
+    "missing_fields": [
+      "feed_state"
+    ],
+    "available_evidence_ids": []
+  },
+  "response": {
+    "action": "clarify",
+    "questions": [
+      "Please specify the feed state; this protocol requires saturated-liquid feed."
+    ],
+    "rationale": "Do not infer missing feed state.",
+    "evidence_ids": []
+  }
+}

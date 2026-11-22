@@ -1,0 +1,31 @@
+{
+  "example_id": "sep_design_refinement",
+  "role": "design",
+  "phase": "refinement",
+  "title": "Refine the grid around a possible boundary",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "last_review": {
+      "action": "refine_vle",
+      "evidence_id": "demo_boundary_001",
+      "suggested_grid": [
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6
+      ]
+    },
+    "available_evidence_ids": [
+      "demo_boundary_001"
+    ]
+  },
+  "response": {
+    "action": "screen_vle",
+    "rationale": "Resolve the sampled boundary with the requested finer grid before initialization.",
+    "evidence_ids": [
+      "demo_boundary_001"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "example_id": "sep_review_vle_review",
+  "role": "review",
+  "phase": "vle_review",
+  "title": "Review the conditional scope of equilibrium screening",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "latest_evidence": [
+      {
+        "tool": "binary_vle",
+        "status": "ok",
+        "evidence_id": "demo_vle_001"
+      }
+    ],
+    "deterministic_checks": {
+      "sampled_y_minus_x_range": [
+        0.01,
+        0.15
+      ],
+      "crossing_intervals": [],
+      "near_diagonal_samples": []
+    },
+    "available_evidence_ids": [
+      "demo_vle_001"
+    ]
+  },
+  "response": {
+    "action": "continue_design",
+    "rationale": "Sampled VLE supports conditional initialization, not a global phase-stability or no-azeotrope proof.",
+    "evidence_ids": [
+      "demo_vle_001"
+    ]
+  }
+}

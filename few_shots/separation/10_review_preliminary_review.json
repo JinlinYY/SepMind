@@ -1,0 +1,34 @@
+{
+  "example_id": "sep_review_preliminary_review",
+  "role": "review",
+  "phase": "preliminary_review",
+  "title": "Retain open checks at preliminary acceptance",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "latest_evidence": [
+      {
+        "tool": "shortcut_distillation",
+        "status": "ok",
+        "evidence_id": "demo_column_002"
+      }
+    ],
+    "deterministic_checks": {
+      "specified_split_reproduced": true,
+      "stage_limit_satisfied": true,
+      "duty_limit_satisfied": true,
+      "rigorous_performance_verified": false,
+      "property_parameters_independently_verified": false
+    },
+    "available_evidence_ids": [
+      "demo_column_002"
+    ]
+  },
+  "response": {
+    "action": "accept_preliminary",
+    "rationale": "Accept only conditional shortcut initialization. Imposed product splits do not independently validate performance; property and rigorous-column checks remain outstanding.",
+    "evidence_ids": [
+      "demo_column_002"
+    ]
+  }
+}

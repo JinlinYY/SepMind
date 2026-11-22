@@ -1,0 +1,38 @@
+{
+  "example_id": "sep_review_constraint_review",
+  "role": "review",
+  "phase": "constraint_review",
+  "title": "Stop recommending candidates that exceed load limits",
+  "provenance": "synthetic_illustration",
+  "expert_validated": false,
+  "context": {
+    "task": {
+      "max_reboiler_duty_kw": 40
+    },
+    "latest_evidence": [
+      {
+        "tool": "shortcut_distillation",
+        "status": "ok",
+        "evidence_id": "demo_column_003",
+        "record": {
+          "outputs": {
+            "reboiler_duty_kw": 50
+          }
+        }
+      }
+    ],
+    "deterministic_checks": {
+      "duty_limit_satisfied": false
+    },
+    "available_evidence_ids": [
+      "demo_column_003"
+    ]
+  },
+  "response": {
+    "action": "stop",
+    "rationale": "Duty exceeds the constraint; the supported policy has not established a lower-duty feasible design.",
+    "evidence_ids": [
+      "demo_column_003"
+    ]
+  }
+}
