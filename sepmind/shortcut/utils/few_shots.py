@@ -36,9 +36,9 @@ class FewShotExample(Contract):
 class FewShotLibrary:
     """Lazy, bounded catalog of authored instructional examples.
 
-    Only JSON in raw cells marked separation_example is parsed. No Python cells,
-    outputs, or health examples are evaluated or used. Hashes identify the exact
-    example files used for each prompt. A library instance freezes its catalog.
+    Parse JSON from cells marked separation_example. Markdown cells display the
+    JSON in a fenced block. Existing raw cells remain supported. Hashes identify
+    the exact example files used for each prompt. A library instance freezes its catalog.
     """
 
     def __init__(self, directory=None, max_examples_per_call=2):
@@ -68,10 +68,16 @@ class FewShotLibrary:
             for cell in notebook.get("cells", []):
                 if not cell.get("metadata", {}).get("separation_example"):
                     continue
-                if cell.get("cell_type") != "raw":
-                    raise ValueError("Few-shot data must be in a raw JSON cell, never executable code.")
+                cell_type = cell.get("cell_type")
+                if cell_type not in {"raw", "markdown"}:
+                    raise ValueError("Few-shot data must be in a raw JSON or fenced Markdown cell.")
                 source = cell.get("source", [])
                 source = source if isinstance(source, str) else "".join(source)
+                if cell_type == "markdown":
+                    lines = source.strip().splitlines()
+                    if len(lines) < 3 or lines[0] != "```json" or lines[-1] != "```":
+                        raise ValueError("Marked Markdown cells must contain a single JSON fence.")
+                    source = "\n".join(lines[1:-1])
                 if len(source) > 12000:
                     raise ValueError("Few-shot example exceeds the prompt size limit.")
                 example = FewShotExample.model_validate_json(source)
